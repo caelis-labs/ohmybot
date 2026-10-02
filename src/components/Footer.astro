@@ -1,0 +1,14 @@
+---
+import Brand from './Brand.astro';
+import Icon from './Icon.astro';
+import { localePath, projects, ui, type Locale } from '../data/site';
+const { lang = 'en', compact = false } = Astro.props as { lang?: Locale; compact?: boolean }; const t = ui[lang];
+---
+<footer class:list={['site-footer', { 'compact-footer': compact }]}>
+  {!compact && <div class="container footer-main">
+    <div class="footer-brand"><Brand lang={lang}/><p>{t.footerLine}</p><a class="text-link" href="https://github.com/caelis-labs">GitHub <Icon name="external" size={15}/></a></div>
+    <div class="footer-links"><span class="eyebrow">{t.projects}</span>{projects.map(p => <a href={localePath(lang, `/projects/${p.id}/`)}>{p.name}</a>)}</div>
+    <div class="footer-links"><span class="eyebrow">{lang === 'en' ? 'GET STARTED' : '开始探索'}</span><a href={localePath(lang, '/docs/')}>{t.docs}</a><a href={localePath(lang, '/docs/choose/')}>{lang === 'en' ? 'Choose a project' : '选择项目'}</a><a href="https://github.com/caelis-labs/caelis.dev">{lang === 'en' ? 'Website source' : '网站源码'}</a><a href={localePath(lang, '/brand/')}>{lang === 'en' ? 'Brand resources' : '品牌资源'}</a></div>
+  </div>}
+  <div class="container footer-bottom"><span>© {new Date().getFullYear()} Caelis Labs</span><span>{t.footerNote}</span><a href="#top" aria-label={lang === 'en' ? 'Back to top' : '返回顶部'}>↑</a></div>
+</footer>

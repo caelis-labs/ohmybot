@@ -1,0 +1,5 @@
+---
+import { localePath, type Locale } from '../data/site';
+const { lang = 'en' } = Astro.props as { lang?: Locale };
+---
+<a class="brand" href={localePath(lang)} aria-label="Oh My Bot — Caelis Bot"><img src="/bot-icon.png" width="36" height="36" alt=""/><span class="brand-name">ohmybot</span></a>

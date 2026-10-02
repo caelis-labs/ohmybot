@@ -1,0 +1,52 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import BotDownload from './BotDownload.astro';
+import demo from '../data/bot-demo.json';
+import type { Locale, Project } from '../data/site';
+import '../styles/bot-project.css';
+const { lang, project } = Astro.props as { lang: Locale; project: Project };
+const zh = lang === 'zh-cn';
+const story = demo[lang];
+const media = `/assets/video/caelis-bot-demo-${lang}`;
+const scenarios = zh ? [
+  {title:'交代目标，让它把事情做完', input:'把具体问题交给 Bot：', prompt:'修复登录成功后仍停在登录页的问题，补上回归测试，最后告诉我改了什么。', output:'从检查代码到交付改动，任务在后台推进，完成后带回结果。'},
+  {title:'不必开口，也能得到适时的关心', input:'主动关怀 · 可编程事件回调', prompt:'从对话中发现持续工作的线索 → 自行安排回调 → 任务结束后主动关心。', output:'结合上下文决定做什么、何时做，再根据你的回应调整。你不用为每一次关心重新发出指令。主动关怀仍处于实验阶段。'},
+  {title:'桌面有伙伴，后台有多个 Worker', input:'把几件事一起交代：', prompt:'修复登录问题、核对 API 迁移文档，再整理发布清单。分别推进，有结果告诉我。', output:'3D 角色脚边的任务气泡连接后台工作。悬停看原始任务，点击打开对应终端；关掉终端，任务继续。'},
+] : [
+  {title:'Give it a goal. Get the work back.', input:'Hand Bot a specific problem:', prompt:'Fix the redirect after login, add regression tests, then tell me what changed.', output:'From investigating code to delivering a fix, work continues in the background and returns with a result.'},
+  {title:'A thoughtful nudge, without asking again', input:'Proactive care · programmable event hooks', prompt:'Notice a clue in conversation → create a callback → reach out when the work is done.', output:'Context shapes what to do and when; your reply shapes what happens next. You do not have to request every follow-up. Proactive care is experimental.'},
+  {title:'A desktop companion. A team at work.', input:'Hand over several tasks:', prompt:'Fix login, review the API migration guide and prepare a release checklist. Work on each and report back.', output:'Task bubbles beside the 3D character connect to your background workers. Hover for the original request; click to open its terminal. Closing the terminal keeps work running.'},
+];
+---
+<SiteLayout lang={lang} title={project.name} description={project[lang].description} compactFooter>
+  <div class="bot-product">
+    <section class="page-hero bot-page-hero" id="top">
+      <div class="container bot-intro">
+        <div><p class="eyebrow">{zh ? '桌面上的个人助手' : 'YOUR DESKTOP ASSISTANT'}</p><h1>Caelis Bot<span class="heading-period">.</span></h1><p class="bot-promise">{zh ? '交代任务，继续手头的事。' : 'Hand off a task. Keep your focus.'}</p></div>
+        <div class="bot-get"><BotDownload lang={lang}/><span>macOS · Apple Silicon</span></div>
+      </div>
+    </section>
+
+    <section class="container bot-demo-section" aria-labelledby="bot-demo-title">
+      <div class="bot-demo-heading"><h2 id="bot-demo-title">{story.headline}</h2><span>{demo.duration} {zh ? '秒' : 'seconds'}</span></div>
+      <div class="bot-film" data-bot-demo>
+        <video autoplay muted loop playsinline preload="metadata" poster={`${media}.webp`} width="1600" height="900" aria-label={zh ? 'Caelis Bot 场景演示：完成任务、主动关怀、3D 桌宠与多个 Worker' : 'Caelis Bot scenario demo: tasks, proactive care, a 3D companion and workers'}>
+          <source src={`${media}.mp4`} type="video/mp4"/>
+          <track kind="captions" src={`${media}.vtt`} srclang={zh ? 'zh-CN' : 'en'} label={zh ? '中文' : 'English'}/>
+          {zh ? '你的浏览器不支持视频播放。' : 'Your browser does not support video playback.'}
+        </video>
+        <button class="bot-playback" type="button" data-playback data-state="paused" data-play-label={zh ? '播放演示' : 'Play demo'} data-pause-label={zh ? '暂停演示' : 'Pause demo'} aria-label={zh ? '播放演示' : 'Play demo'} hidden>
+          <svg class="bot-play-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="m6 3 11 7-11 7Z" fill="currentColor"/></svg>
+          <svg class="bot-pause-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 3h3v14H5zm7 0h3v14h-3z" fill="currentColor"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <section class="container bot-scenarios" aria-labelledby="bot-scenarios-title">
+      <div class="bot-section-heading"><h2 id="bot-scenarios-title">{zh ? '一起做事，也适时关心。' : 'Useful work. Thoughtful presence.'}</h2><p>{zh ? '三个值得试一试的方向。' : 'Three ways to work with Bot.'}</p></div>
+      {scenarios.map((scenario,i) => <article class="bot-scenario"><div class="bot-scenario-title"><span>{String(i+1).padStart(2,'0')}</span><div><h3>{scenario.title}</h3></div></div><div class="bot-scenario-example"><p>{scenario.input}</p><blockquote>{scenario.prompt}</blockquote><p class="bot-outcome">{scenario.output}</p></div></article>)}
+      <p class="bot-runtime-note">{zh ? 'Caelis Bot 连接你本机的 Caelis 或 Codex。模型与工具决定能完成的任务；需要你决定的操作，会回来询问。' : 'Caelis Bot connects to your local Caelis or Codex. Available models and tools determine what it can do; actions that need your decision come back to you.'}</p>
+    </section>
+  </div>
+  <script>import '../scripts/bot-demo';</script>
+</SiteLayout>

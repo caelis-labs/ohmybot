@@ -1,0 +1,131 @@
+{
+  "duration": 60,
+  "sourceVersion": "v0.2.0",
+  "previewSource": "poc/eventbot",
+  "en": {
+    "headline": "You start the work. Bot carries it forward.",
+    "request": "Two hours at my desk already. Fix login and review the release checklist in parallel.",
+    "ack": "I’ll start two Workers: one to fix login and add tests, another to review the release checklist. I’ll bring the results back here.",
+    "taskPrompts": [
+      "Fix the login redirect and add regression tests.",
+      "Review the release checklist and flag open questions."
+    ],
+    "complete": "Login is fixed and all three regression tests pass. The release checklist is ready, with one item for you to confirm.",
+    "notice": "You’ve been working for two hours. This is a good stopping point. Take a moment to stretch?",
+    "feedback": "Good idea. Next time, wait until my current task is finished before reminding me.",
+    "remember": "Got it. I’ll wait for a natural break in your work before nudging you again.",
+    "placeholder": "Write a thought…",
+    "scenes": [
+      {
+        "at": 0,
+        "title": "Start a conversation",
+        "summary": "Type a request in Caelis Bot. It replies and starts two background Workers."
+      },
+      {
+        "at": 10,
+        "title": "Follow the work",
+        "summary": "Hover a task bubble and open its Codex terminal. Results return to the same Bot conversation."
+      },
+      {
+        "at": 30,
+        "title": "Bot reaches out",
+        "summary": "Bot notices a long work session in the conversation, creates a callback for a natural break, then reaches out. Your reply shapes the next reminder."
+      }
+    ],
+    "clue": "Two hours at my desk already.",
+    "observation": "A long work session, with two tasks still underway.",
+    "callback": "When these tasks finish, check the latest context and offer a break at a good moment."
+  },
+  "zh-cn": {
+    "headline": "你发起一件事，或者让它先开口。",
+    "request": "已经连着忙了两个小时。帮我修复登录跳转，再核对发布清单，两个任务分别推进。",
+    "ack": "好，我启动两个 Worker：一个修复登录并补测试，一个核对发布清单。有结果会回到这里告诉你。",
+    "taskPrompts": [
+      "修复登录跳转，并补上回归测试。",
+      "核对发布清单，标出仍需确认的问题。"
+    ],
+    "complete": "登录跳转已修复，3 个回归测试全部通过。发布清单也整理好了，还有一项需要你确认。",
+    "notice": "已经连续忙了两个小时。刚好告一段落，要不要起来活动一下？",
+    "feedback": "好，我先休息一下。下次等手头任务结束再提醒我。",
+    "remember": "好，记住了。以后等任务告一段落，再轻轻提醒你。",
+    "placeholder": "写下想法…",
+    "scenes": [
+      {
+        "at": 0,
+        "title": "交代任务",
+        "summary": "在聊天框中输入请求，Bot 回复并启动两个后台 Worker。"
+      },
+      {
+        "at": 10,
+        "title": "查看 Worker",
+        "summary": "悬停任务气泡，点击打开对应的 Codex 终端。完成后，结果回到同一段对话。"
+      },
+      {
+        "at": 30,
+        "title": "Bot 主动开口",
+        "summary": "Bot 从对话中发现持续工作的线索，自行安排回调，等任务结束后主动关心；再根据你的回复调整下一次提醒。"
+      }
+    ],
+    "clue": "已经连着忙了两个小时。",
+    "observation": "已经连续工作，手头还有两个任务在推进。",
+    "callback": "等当前任务结束，再结合最新上下文，找合适的时机提醒休息。"
+  },
+  "timing": [
+    [
+      0,
+      0
+    ],
+    [
+      6,
+      4.8
+    ],
+    [
+      13.8,
+      10.4
+    ],
+    [
+      16.4,
+      12
+    ],
+    [
+      24.6,
+      18.5
+    ],
+    [
+      32.2,
+      25
+    ],
+    [
+      39.6,
+      29.5
+    ],
+    [
+      40,
+      30
+    ],
+    [
+      46.2,
+      40
+    ],
+    [
+      50.8,
+      43.5
+    ],
+    [
+      57.5,
+      48.5
+    ],
+    [
+      63,
+      53
+    ],
+    [
+      67.6,
+      56.5
+    ],
+    [
+      72,
+      60
+    ]
+  ]
+}

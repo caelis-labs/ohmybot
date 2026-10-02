@@ -1,0 +1,10 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:10.000
+Type a request in Caelis Bot. It replies and starts two background Workers.
+
+00:00:10.000 --> 00:00:30.000
+Hover a task bubble and open its Codex terminal. Results return to the same Bot conversation.
+
+00:00:30.000 --> 00:01:00.000
+Bot notices a long work session in the conversation, creates a callback for a natural break, then reaches out. Your reply shapes the next reminder.

@@ -1,0 +1,31 @@
+---
+import Brand from './Brand.astro';
+import Icon from './Icon.astro';
+import { alternatePath, localePath, ui, type Locale } from '../data/site';
+const { lang = 'en' } = Astro.props as { lang?: Locale };
+const t = ui[lang];
+const github = 'https://github.com/caelis-labs/caelis-bot';
+const project = { name: 'Caelis Bot' };
+const links = [{ label: 'Caelis Labs', href: 'https://caelis.dev/' }, { label: lang === 'en' ? 'Guide' : '使用指南', href: `https://caelis.dev${localePath(lang, '/docs/caelis-bot/installation/')}` }];
+---
+<a class="skip-link" href="#main">{t.skip}</a>
+<header class="site-header">
+  <div class="header-inner">
+    <Brand lang={lang}/>
+    <nav class="desktop-nav" aria-label={lang === 'en' ? 'Main navigation' : '主导航'}>
+      {links.map(link => <a href={link.href} aria-current={Astro.url.pathname.startsWith(link.href) ? 'page' : undefined}>{link.label}</a>)}
+      <a href={github} aria-label={project ? `${project.name} GitHub` : 'Caelis Labs GitHub'} target="_blank" rel="noopener noreferrer">GitHub <Icon name="external" size={13}/></a>
+    </nav>
+    <div class="header-tools">
+      <a class="language-link" href={Astro.url.pathname.includes('/404') ? '/zh-cn/' : alternatePath(Astro.url.pathname)} lang={lang === 'en' ? 'zh-CN' : 'en'} aria-label={lang === 'en' ? '切换到中文' : 'Switch to English'}>{lang === 'en' ? '中文' : 'EN'}</a>
+      <button class="icon-button theme-toggle" type="button" data-theme-toggle aria-label={t.theme}><span class="theme-sun"><Icon name="sun" size={18}/></span><span class="theme-moon"><Icon name="moon" size={18}/></span></button>
+      <details class="mobile-menu">
+        <summary class="icon-button" aria-label={t.menu}><span class="menu-open"><Icon name="menu"/></span><span class="menu-close"><Icon name="close"/></span></summary>
+        <nav aria-label={lang === 'en' ? 'Mobile navigation' : '移动导航'}>
+          {links.map(link => <a href={link.href}>{link.label}<Icon name="arrow" size={18}/></a>)}
+          <a href={github} aria-label={project ? `${project.name} GitHub` : 'Caelis Labs GitHub'}>GitHub<Icon name="external" size={18}/></a>
+        </nav>
+      </details>
+    </div>
+  </div>
+</header>
