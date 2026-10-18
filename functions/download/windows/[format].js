@@ -31,9 +31,9 @@ export async function resolveDownload(format, fetcher = (url, options) => global
     stage = 'validate';
     const location = downloadURL(JSON.parse(body), format);
     return new Response(null, { status: 302, headers: { Location: location, 'Cache-Control': 'no-store' } });
-  } catch {
+  } catch (error) {
     return new Response('Download temporarily unavailable. Please try again shortly. / 下载暂时不可用，请稍后重试。', {
-      status: 503, headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store', 'Retry-After': '30', 'X-Download-Stage': stage },
+      status: 503, headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store', 'Retry-After': '30', 'X-Download-Stage': stage, 'X-Download-Diagnostic': encodeURIComponent(String(error.message).slice(0, 160)) },
     });
   }
 }
