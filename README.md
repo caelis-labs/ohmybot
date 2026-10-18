@@ -1,6 +1,6 @@
 # CaelisBot
 
-The single English / Simplified Chinese marketing website for **CaelisBot**, at https://ohmybot.si. Guides and the macOS release resolver live at caelis.dev. Windows downloads point to the official GitHub latest release.
+The single English / Simplified Chinese marketing website for **CaelisBot**, at https://ohmybot.si. Guides and the macOS release resolver live at caelis.dev. Windows Setup and ZIP use `/download/windows/setup/` and `/download/windows/zip/`. Cloudflare Pages Functions resolve the latest verified Windows index on R2 and redirect only to its allowlisted R2 artifact paths. No package bytes pass through the website; both installation formats support signed automatic updates.
 
 ## Development
 
@@ -42,3 +42,7 @@ GitHub Actions builds pushes and PRs without a publishing step. Git-connected Cl
 ## License
 
 Code inherits Apache-2.0 from the original website. Character artwork and media remain subject to the original asset terms. This repository does not relicense character assets.
+
+## Windows downloads
+
+Run `node --test scripts/windows-download.test.mjs` for resolver checks. `public/_routes.json` limits Functions to the download routes; the marketing pages remain static. The resolver is served by Pages, not Astro’s static preview. GitHub remains the release history/backup source. Invalid or unavailable R2 metadata returns a retryable error instead of silently selecting a different package. Publish Windows with `publish_updates=true` so both Setup and ZIP receive the signed update manifest.
