@@ -21,19 +21,16 @@ export function downloadURL(index, format) {
 
 export async function resolveDownload(format, fetcher = (url, options) => globalThis.fetch(url, options)) {
   if (!Object.hasOwn(suffixes, format)) return new Response('Download not found.', { status: 404 });
-  let stage = 'fetch';
   try {
-    const response = await fetcher(indexURL, { redirect: 'error', signal: AbortSignal.timeout(8000), headers: { Accept: 'application/json' }, cf: { cacheTtl: 0 } });
-    if (!response.ok) { stage = `upstream-${response.status}`; throw new Error('Index unavailable'); }
-    stage = 'read';
+    const response = await fetcher(indexURL, { redirect: 'manual', signal: AbortSignal.timeout(8000), headers: { Accept: 'application/json' }, cf: { cacheTtl: 0 } });
+    if (!response.ok) throw new Error('Index unavailable');
     const body = await response.text();
     if (body.length > 16384) throw new Error('Index too large');
-    stage = 'validate';
     const location = downloadURL(JSON.parse(body), format);
     return new Response(null, { status: 302, headers: { Location: location, 'Cache-Control': 'no-store' } });
-  } catch (error) {
+  } catch {
     return new Response('Download temporarily unavailable. Please try again shortly. / 下载暂时不可用，请稍后重试。', {
-      status: 503, headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store', 'Retry-After': '30', 'X-Download-Stage': stage, 'X-Download-Diagnostic': encodeURIComponent(String(error.message).slice(0, 160)) },
+      status: 503, headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store', 'Retry-After': '30' },
     });
   }
 }

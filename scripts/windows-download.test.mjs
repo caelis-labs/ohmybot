@@ -13,7 +13,7 @@ test('Setup and ZIP resolve the same current R2 release without a site rebuild',
     const data=index(tag);
     const response=await resolveDownload(format,async(url,options)=>{
       assert.equal(url,'https://releases.caelis.dev/caelis-bot/downloads/windows-amd64/latest.json');
-      assert.equal(options.redirect,'error');
+      assert.equal(options.redirect,'manual');
       return Response.json(data);
     });
     assert.equal(response.status,302);
@@ -30,7 +30,7 @@ test('untrusted paths, malformed or duplicate artifacts cannot redirect a downlo
   }
 });
 test('missing metadata and unsupported formats fail without a GitHub fallback',async()=>{
-  for(const fetcher of [async()=>{throw Error('network');},async()=>new Response('',{status:404}),async()=>new Response('broken'),async()=>new Response('x'.repeat(16385))]) assert.equal((await resolveDownload('zip',fetcher)).status,503);
+  for(const fetcher of [async()=>{throw Error('network');},async()=>new Response('',{status:404}),async()=>new Response('',{status:302,headers:{Location:'https://example.com'}}),async()=>new Response('broken'),async()=>new Response('x'.repeat(16385))]) assert.equal((await resolveDownload('zip',fetcher)).status,503);
   assert.equal((await resolveDownload('other',()=>{throw Error('must not fetch');})).status,404);
 });
 
