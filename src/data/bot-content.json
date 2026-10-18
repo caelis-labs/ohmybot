@@ -1,0 +1,334 @@
+{
+  "en": {
+    "pageDescription": "Meet CaelisBot, your personal AI companion for questions, files and everyday tasks. Available for macOS and Windows.",
+    "navExplore": "What it does",
+    "navFAQ": "Good to know",
+    "navGet": "Get Bot",
+    "eyebrow": "YOUR DAY, WITH A LITTLE HELP",
+    "promise": [
+      "A little presence.",
+      "A lot off your mind."
+    ],
+    "intro": "Your personal AI companion. For the questions, files and little things that fill your day.",
+    "get": "Get CaelisBot",
+    "explore": "See what’s possible",
+    "platform": "Made for macOS & Windows",
+    "hello": "A little help? I’m here.",
+    "heroCaption": "A familiar face. A helping hand.",
+    "outcomeEyebrow": "FROM “COULD YOU…” TO “HERE YOU GO.”",
+    "outcomeTitle": [
+      "Small asks.",
+      "Useful things."
+    ],
+    "outcomeIntro": "Bring a thought. Leave with something you can use.",
+    "example": "Interactive examples",
+    "inputLabel": "YOU BRING",
+    "outputLabel": "YOU KEEP",
+    "sampleNote": "Illustrative workflows. Your results depend on the model and tools you connect.",
+    "workflows": [
+      {
+        "id": "plan",
+        "tab": "Plan",
+        "inputTitle": "A weekend, loosely planned.",
+        "prompt": "Turn these notes into a checklist. Keep my afternoons free.",
+        "inputFile": "weekend-notes.txt",
+        "inputLines": [
+          "Saturday: library, then groceries",
+          "Sunday: tidy up, water the plants",
+          "After 3 pm: leave it open"
+        ],
+        "resultTitle": "A weekend with room to breathe.",
+        "resultKind": "WEEKEND PLAN",
+        "resultLines": [
+          "Saturday · Visit the library",
+          "Saturday · Pick up groceries",
+          "Sunday · Tidy the desk",
+          "Sunday · Water the plants"
+        ],
+        "resultFooter": "Both afternoons are yours.",
+        "action": "Keep this sample",
+        "file": "weekend-plan-en.md"
+      },
+      {
+        "id": "note",
+        "tab": "Notes",
+        "inputTitle": "A few things worth keeping.",
+        "prompt": "Keep a note of how I like to write. We’ll use it next time.",
+        "inputFile": "writing-preferences.txt",
+        "inputLines": [
+          "Short, direct sentences",
+          "A warm, matter-of-fact voice",
+          "Specific examples over jargon"
+        ],
+        "resultTitle": "Your voice, remembered.",
+        "resultKind": "WRITING NOTES",
+        "resultLines": [
+          "Keep the point clear",
+          "Write like a thoughtful colleague",
+          "Make examples concrete",
+          "Leave room to edit"
+        ],
+        "resultFooter": "A Markdown note you can make your own.",
+        "action": "Keep this sample",
+        "file": "writing-notes-en.md"
+      },
+      {
+        "id": "reminder",
+        "tab": "Reminders",
+        "inputTitle": "One less thing to hold in mind.",
+        "prompt": "Remind me tomorrow morning to review the draft.",
+        "inputFile": "A thought for later",
+        "inputLines": [
+          "The draft is ready",
+          "Give it a fresh look tomorrow",
+          "Then get on with today"
+        ],
+        "resultTitle": "We’ll come back to it.",
+        "resultKind": "REMINDER EXAMPLE",
+        "resultLines": [
+          "Tomorrow · 09:00",
+          "Review the draft"
+        ],
+        "resultFooter": "Reminders run while Bot stays open.",
+        "action": "How reminders work",
+        "file": ""
+      }
+    ],
+    "presenceEyebrow": "ON YOUR DESKTOP. ON YOUR SIDE.",
+    "presenceTitle": [
+      "A familiar face.",
+      "Room to focus."
+    ],
+    "presenceBody": "Say hello, share a file, or point to something on your screen. Bot is close when you need a hand, and quiet when you need space.",
+    "features": [
+      [
+        "Share a little context.",
+        "Bring files into the conversation."
+      ],
+      [
+        "Point to the question.",
+        "Capture a screen region and ask about it."
+      ],
+      [
+        "Keep the useful parts.",
+        "Notes and reminders help you pick things up again."
+      ]
+    ],
+    "presenceNote": "Move it. Resize it. Or hide it for a while.",
+    "faqTitle": "Before you say hello.",
+    "faqs": [
+      [
+        "How do I get started?",
+        "Download the app for your computer, connect a model service, and give your companion a name. The setup guide walks you through your first conversation."
+      ],
+      [
+        "Which computers can run it?",
+        "macOS on Apple Silicon, or Windows 10 22H2 x64 and later with Microsoft Edge WebView2. Windows packages are not Authenticode signed, so SmartScreen or organization policies may warn or block them. Linux desktop is not supported."
+      ],
+      [
+        "Do I need a model account?",
+        "Yes, connect a supported model service or your local Codex installation. Caelis is included in the desktop packages. The app download does not include a paid model subscription; available models and costs depend on your service."
+      ],
+      [
+        "Are my chats entirely offline?",
+        "Bot keeps its conversation history and Notebook on your computer. A connected model service or tool may receive the context needed for your request. Local storage does not make online model calls offline."
+      ],
+      [
+        "Can it see and do anything on my computer?",
+        "You choose what to share and which tools to enable. Screen questions require an image-capable model; desktop actions may need system permissions and foreground access. Account logins and decisions that need your approval remain with you."
+      ],
+      [
+        "Can I hide the character?",
+        "Yes. Move, resize or hide it to suit your day. Closing chat or hiding the character keeps Bot running. Quitting the app pauses scheduled reminders until it is running again."
+      ]
+    ],
+    "guide": "Read the setup guide",
+    "downloadEyebrow": "A LITTLE COMPANY. A LITTLE LESS TO DO.",
+    "downloadTitle": [
+      "Make room",
+      "for CaelisBot."
+    ],
+    "downloadText": "Bring your own intelligence. Make it your own.",
+    "mac": "Download for macOS",
+    "windows": "Windows downloads",
+    "macNote": "Apple Silicon",
+    "winNote": "Windows x64",
+    "downloadHelp": "Installation & checksums",
+    "footerNote": "Code is open source. Character assets have their own license.",
+    "filmLabel": "Watch the product film",
+    "closeFilm": "Close film",
+    "sampleDone": "Sample ready to keep",
+    "filmEyebrow": "48 SECONDS WITH CaelisBot",
+    "filmTitle": "See it come together.",
+    "filmNote": "A creative look at notes, screen questions and work in progress.",
+    "captions": "Subtitles",
+    "fullscreen": "Fullscreen",
+    "heroExampleLabel": "Example result"
+  },
+  "zh-cn": {
+    "pageDescription": "认识 CaelisBot，你的个人 AI 桌面伙伴。一起聊问题、处理文件、完成日常小事，支持 macOS 与 Windows。",
+    "navExplore": "能做什么",
+    "navFAQ": "开始之前",
+    "navGet": "下载 Bot",
+    "eyebrow": "日常小事，多一个帮手",
+    "promise": [
+      "有个伴，",
+      "也有个帮手。"
+    ],
+    "intro": "你的个人 AI 桌面伙伴。\n问题、文件、日常小事，一起解决。",
+    "get": "下载 CaelisBot",
+    "explore": "看看能做什么",
+    "platform": "为 macOS 与 Windows 而来",
+    "hello": "需要帮忙？我在呢。",
+    "heroCaption": "熟悉的身影，随时的帮手。",
+    "outcomeEyebrow": "从「帮我看看」到「整理好了」",
+    "outcomeTitle": [
+      "小小的交代，",
+      "实在的成果。"
+    ],
+    "outcomeIntro": "带来一个想法，带走一份用得上的成果。",
+    "example": "互动示例",
+    "inputLabel": "你带来的",
+    "outputLabel": "你留下的",
+    "sampleNote": "以下为工作流示意。实际结果取决于你连接的模型与工具。",
+    "workflows": [
+      {
+        "id": "plan",
+        "tab": "清楚的安排",
+        "inputTitle": "周末，先有个大概。",
+        "prompt": "把这些笔记整理成清单，下午留给我自己。",
+        "inputFile": "周末安排.txt",
+        "inputLines": [
+          "周六：图书馆，然后买点东西",
+          "周日：收拾桌子，给植物浇水",
+          "下午三点后：自由安排"
+        ],
+        "resultTitle": "一个留有余地的周末。",
+        "resultKind": "周末清单",
+        "resultLines": [
+          "周六 · 去图书馆",
+          "周六 · 买点需要的东西",
+          "周日 · 收拾桌子",
+          "周日 · 给植物浇水"
+        ],
+        "resultFooter": "两个下午，都留给你自己。",
+        "action": "保存这份示例",
+        "file": "weekend-plan-zh-cn.md"
+      },
+      {
+        "id": "note",
+        "tab": "有用的笔记",
+        "inputTitle": "值得记住的几个偏好。",
+        "prompt": "记下我喜欢的写作方式，下次我们接着用。",
+        "inputFile": "写作偏好.txt",
+        "inputLines": [
+          "句子短一点，表达直接",
+          "像同事聊天一样自然",
+          "用具体例子，少一点术语"
+        ],
+        "resultTitle": "你的风格，留在身边。",
+        "resultKind": "写作笔记",
+        "resultLines": [
+          "先把重点说清楚",
+          "语气自然，也有分寸",
+          "让例子具体可用",
+          "留出继续修改的余地"
+        ],
+        "resultFooter": "一份可以随时修改的 Markdown 笔记。",
+        "action": "保存这份示例",
+        "file": "writing-notes-zh-cn.md"
+      },
+      {
+        "id": "reminder",
+        "tab": "及时的提醒",
+        "inputTitle": "少一件需要惦记的事。",
+        "prompt": "明天早上提醒我，再看一遍初稿。",
+        "inputFile": "留给明天的一句话",
+        "inputLines": [
+          "初稿已经写好",
+          "明早用新眼光再看一遍",
+          "现在，继续手头的事"
+        ],
+        "resultTitle": "到时候，我们再回来。",
+        "resultKind": "提醒示例",
+        "resultLines": [
+          "明天 · 09:00",
+          "检查初稿"
+        ],
+        "resultFooter": "提醒需要 Bot 保持运行。",
+        "action": "了解提醒功能",
+        "file": ""
+      }
+    ],
+    "presenceEyebrow": "在你的桌面，也在你身边",
+    "presenceTitle": [
+      "熟悉的陪伴，",
+      "刚好的距离。"
+    ],
+    "presenceBody": "聊几句，分享一份文件，或指给它看屏幕上的疑问。需要时靠近，专注时留白。",
+    "features": [
+      [
+        "给它一点上下文。",
+        "把文件带进对话，一起整理。"
+      ],
+      [
+        "把疑问指给它看。",
+        "截取屏幕中的一部分，再提问。"
+      ],
+      [
+        "把有用的留在身边。",
+        "用笔记和提醒，接着上次的思路。"
+      ]
+    ],
+    "presenceNote": "移动、缩放，或暂时隐藏，都随你。",
+    "faqTitle": "打个招呼之前。",
+    "faqs": [
+      [
+        "怎样开始使用？",
+        "下载适合电脑的版本，连接模型服务，再给伙伴取个名字。使用指南会带你完成第一次对话。"
+      ],
+      [
+        "支持哪些电脑？",
+        "支持 Apple Silicon Mac，以及 Windows 10 22H2 x64 或更高版本；Windows 需安装 Microsoft Edge WebView2。Windows 安装包未做 Authenticode 签名，SmartScreen 或组织策略可能提示或拦截。暂不支持 Linux 桌面。"
+      ],
+      [
+        "需要模型账号吗？",
+        "需要连接受支持的模型服务，或你本机安装的 Codex。桌面安装包已包含 Caelis，但不包含付费模型订阅；可用模型及费用由你选择的服务决定。"
+      ],
+      [
+        "对话完全离线吗？",
+        "Bot 将对话历史与 Notebook 笔记保存在你的电脑。连接的模型服务或工具可能接收完成请求所需的上下文。本地存储不代表在线模型调用变成了离线处理。"
+      ],
+      [
+        "它能随意查看和操作电脑吗？",
+        "由你决定分享哪些内容、启用哪些工具。屏幕提问需要支持图片的模型，桌面操作可能需要系统权限和前台访问。账号登录以及需要你审批的决定仍由你完成。"
+      ],
+      [
+        "可以隐藏角色吗？",
+        "可以。按自己的习惯移动、缩放或隐藏。关闭聊天窗口、隐藏角色不会退出 Bot；退出应用后，定时提醒会暂停，直到再次运行。"
+      ]
+    ],
+    "guide": "阅读开始使用指南",
+    "downloadEyebrow": "多一个伙伴，少一点琐事",
+    "downloadTitle": [
+      "给 CaelisBot，",
+      "留个位置。"
+    ],
+    "downloadText": "连接你选择的智能，成为你的伙伴。",
+    "mac": "下载 macOS 版",
+    "windows": "Windows 下载",
+    "macNote": "Apple Silicon",
+    "winNote": "Windows x64",
+    "downloadHelp": "安装与文件校验",
+    "footerNote": "代码开源。角色资产适用独立许可。",
+    "filmLabel": "观看功能短片",
+    "closeFilm": "关闭短片",
+    "sampleDone": "示例已准备好",
+    "filmEyebrow": "48 秒，走近 CaelisBot",
+    "filmTitle": "看看，小事怎样变轻松。",
+    "filmNote": "用一支创意短片，看看笔记、屏幕提问和后台任务。",
+    "captions": "字幕",
+    "fullscreen": "全屏",
+    "heroExampleLabel": "成果示意"
+  }
+}

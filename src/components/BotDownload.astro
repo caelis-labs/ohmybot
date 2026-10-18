@@ -1,6 +1,0 @@
----
-import Icon from './Icon.astro';
-import { type Locale } from '../data/site';
-const { lang = 'en' } = Astro.props as { lang?: Locale };
----
-<a class="button primary" href="https://caelis.dev/download/caelis-bot/">{lang === 'en' ? 'Download for macOS' : '下载 macOS 版'}<Icon name="download" size={18}/></a>
