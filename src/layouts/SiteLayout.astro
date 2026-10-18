@@ -4,9 +4,9 @@ import '../styles/bot-landing.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { alternatePath, type Locale } from '../data/site';
-const { lang = 'en', title = 'Caelis Bot', description, noindex = false } = Astro.props as { lang?: Locale; title?: string; description: string; noindex?: boolean };
+const { lang = 'en', title = 'CaelisBot', description, noindex = false } = Astro.props as { lang?: Locale; title?: string; description: string; noindex?: boolean };
 const canonical = new URL(Astro.url.pathname, Astro.site);
-const pageTitle = `${title} · Oh My Bot`;
+const pageTitle = title === 'CaelisBot' ? title : `${title} · CaelisBot`;
 ---
 <!doctype html>
 <html lang={lang === 'en' ? 'en' : 'zh-CN'} data-theme="light">
@@ -17,7 +17,7 @@ const pageTitle = `${title} · Oh My Bot`;
     <meta name="description" content={description}/>
     <meta name="theme-color" content="#0b0c12" media="(prefers-color-scheme: dark)"/>
     <meta name="theme-color" content="#fafaf8" media="(prefers-color-scheme: light)"/>
-    <meta property="og:type" content="website"/><meta property="og:site_name" content="Oh My Bot"/>
+    <meta property="og:type" content="website"/><meta property="og:site_name" content="CaelisBot"/>
     <meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:url" content={canonical}/>
     <meta property="og:locale" content={lang === 'en' ? 'en_US' : 'zh_CN'}/>
     <meta name="twitter:card" content="summary"/>

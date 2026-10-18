@@ -7,4 +7,4 @@
 
 一份可以随时修改的 Markdown 笔记。
 
-Caelis Bot 官网的虚构示例资料。
+CaelisBot 官网的虚构示例资料。

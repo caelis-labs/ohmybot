@@ -7,4 +7,4 @@
 
 A Markdown note you can make your own.
 
-A fictional example from the Caelis Bot website.
+A fictional example from the CaelisBot website.

@@ -1,6 +1,6 @@
 {
   "en": {
-    "pageDescription": "Meet Caelis Bot, your personal AI companion for questions, files and everyday tasks. Available for macOS and Windows.",
+    "pageDescription": "Meet CaelisBot, your personal AI companion for questions, files and everyday tasks. Available for macOS and Windows.",
     "navExplore": "What it does",
     "navFAQ": "Good to know",
     "navGet": "Get Bot",
@@ -10,7 +10,7 @@
       "A lot off your mind."
     ],
     "intro": "Your personal AI companion. For the questions, files and little things that fill your day.",
-    "get": "Get Caelis Bot",
+    "get": "Get CaelisBot",
     "explore": "See what’s possible",
     "platform": "Made for macOS & Windows",
     "hello": "A little help? I’m here.",
@@ -146,7 +146,7 @@
     "downloadEyebrow": "A LITTLE COMPANY. A LITTLE LESS TO DO.",
     "downloadTitle": [
       "Make room",
-      "for Caelis Bot."
+      "for CaelisBot."
     ],
     "downloadText": "Bring your own intelligence. Make it your own.",
     "mac": "Download for macOS",
@@ -158,7 +158,7 @@
     "filmLabel": "Watch the product film",
     "closeFilm": "Close film",
     "sampleDone": "Sample ready to keep",
-    "filmEyebrow": "48 SECONDS WITH CAELIS BOT",
+    "filmEyebrow": "48 SECONDS WITH CaelisBot",
     "filmTitle": "See it come together.",
     "filmNote": "A creative look at notes, screen questions and work in progress.",
     "captions": "Subtitles",
@@ -166,7 +166,7 @@
     "heroExampleLabel": "Example result"
   },
   "zh-cn": {
-    "pageDescription": "认识 Caelis Bot，你的个人 AI 桌面伙伴。一起聊问题、处理文件、完成日常小事，支持 macOS 与 Windows。",
+    "pageDescription": "认识 CaelisBot，你的个人 AI 桌面伙伴。一起聊问题、处理文件、完成日常小事，支持 macOS 与 Windows。",
     "navExplore": "能做什么",
     "navFAQ": "开始之前",
     "navGet": "下载 Bot",
@@ -176,7 +176,7 @@
       "也有个帮手。"
     ],
     "intro": "你的个人 AI 桌面伙伴。\n问题、文件、日常小事，一起解决。",
-    "get": "下载 Caelis Bot",
+    "get": "下载 CaelisBot",
     "explore": "看看能做什么",
     "platform": "为 macOS 与 Windows 而来",
     "hello": "需要帮忙？我在呢。",
@@ -311,7 +311,7 @@
     "guide": "阅读开始使用指南",
     "downloadEyebrow": "多一个伙伴，少一点琐事",
     "downloadTitle": [
-      "给 Caelis Bot，",
+      "给 CaelisBot，",
       "留个位置。"
     ],
     "downloadText": "连接你选择的智能，成为你的伙伴。",
@@ -324,7 +324,7 @@
     "filmLabel": "观看功能短片",
     "closeFilm": "关闭短片",
     "sampleDone": "示例已准备好",
-    "filmEyebrow": "48 秒，走近 Caelis Bot",
+    "filmEyebrow": "48 秒，走近 CaelisBot",
     "filmTitle": "看看，小事怎样变轻松。",
     "filmNote": "用一支创意短片，看看笔记、屏幕提问和后台任务。",
     "captions": "字幕",

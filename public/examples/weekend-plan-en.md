@@ -7,4 +7,4 @@
 
 Both afternoons are yours.
 
-A fictional example from the Caelis Bot website.
+A fictional example from the CaelisBot website.
