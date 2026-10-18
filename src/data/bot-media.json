@@ -1,38 +1,38 @@
 {
   "ready": true,
   "kind": "product-film",
-  "generation": 3,
+  "generation": 3.1,
   "duration": 48,
   "sourceVersion": "v0.15.2",
   "en": {
-    "base": "/assets/video/caelis-bot-film-v3-en",
+    "base": "/assets/video/caelis-bot-film-v3.1-en",
     "description": "What CaelisBot can do — a 48-second illustrative product film",
-    "mobileBase": "/assets/video/caelis-bot-film-v3-en-mobile"
+    "mobileBase": "/assets/video/caelis-bot-film-v3.1-en-mobile"
   },
   "zh-cn": {
-    "base": "/assets/video/caelis-bot-film-v3-zh-cn",
+    "base": "/assets/video/caelis-bot-film-v3.1-zh-cn",
     "description": "CaelisBot 能做什么：48 秒功能示意短片",
-    "mobileBase": "/assets/video/caelis-bot-film-v3-zh-cn-mobile"
+    "mobileBase": "/assets/video/caelis-bot-film-v3.1-zh-cn-mobile"
   },
   "sha256": {
-    "caelis-bot-film-v3-en-mobile.mp4": "f8d27965548fb5e47774af49aff45ffa95d7b9e2ba10c634075afaacd95e087c",
-    "caelis-bot-film-v3-en-mobile.webp": "18c7ebd45c851ba2c5cc9174d6df90c45e74656c929cc3f0b859e32e33c191e0",
-    "caelis-bot-film-v3-en-mobile.vtt": "2d6feda9f082e2ed3a5ba2a343f0493b90a9804bab66f65614ad78db37362ac6",
-    "caelis-bot-film-v3-en.mp4": "c0604f109a5392564535193bd020387b38d290c95e7932adebfe1c9d9e35e009",
-    "caelis-bot-film-v3-en.webp": "c9ddef41eeb04e9ff0852e1efd2c5b3859ef29a1ff40e6ef42d51727c2ebcd59",
-    "caelis-bot-film-v3-en.vtt": "9a8f187f8876571d609005ac7b31d28a0e5cf8a95986e1af36b2864781a7b9d0",
-    "caelis-bot-film-v3-zh-cn-mobile.mp4": "24c501bd56440d5069fddd60ac8032f2ceaaface2f49d44b2a1d34df783df441",
-    "caelis-bot-film-v3-zh-cn-mobile.webp": "ab7d2769c5e49783b324d0d8d3e6c648e182038b0c17591dd26d93daaf95c33e",
-    "caelis-bot-film-v3-zh-cn-mobile.vtt": "209519a1e78511b3639c048709b11046b8f02b859efec238366d98b545f2616a",
-    "caelis-bot-film-v3-zh-cn.mp4": "e25469dad4818319572d4b48487fa136394db33d4324e9791ec0d3db89340590",
-    "caelis-bot-film-v3-zh-cn.webp": "a415b7d4ca54ab85af07578342786b832e57cb48a0f024a5f9d89f7558b583e9",
-    "caelis-bot-film-v3-zh-cn.vtt": "46c6ecf4c443f07d2c9e23f6edda2444fac96eb7f9da094ece5027113e31ed94"
+    "caelis-bot-film-v3.1-en.mp4": "b29a7e5a361f2898d94a014f37fc406d786375d8ffbfe6d9ea82d2bc3c0c290b",
+    "caelis-bot-film-v3.1-en.webp": "8fe85395273faf6d4434cafce9e6545001f45e984ccd7fb2bec10953d2752c58",
+    "caelis-bot-film-v3.1-en.vtt": "9a8f187f8876571d609005ac7b31d28a0e5cf8a95986e1af36b2864781a7b9d0",
+    "caelis-bot-film-v3.1-zh-cn.mp4": "e232974d5d56d851c8a634f084b20db76b5f2381c8fa5d46c3727013ee6d8d0d",
+    "caelis-bot-film-v3.1-zh-cn.webp": "2e90eea4b64dd776305a5fdb5d37ed256af9d9097eae1c786d8acfabc354f5be",
+    "caelis-bot-film-v3.1-zh-cn.vtt": "46c6ecf4c443f07d2c9e23f6edda2444fac96eb7f9da094ece5027113e31ed94",
+    "caelis-bot-film-v3.1-en-mobile.mp4": "81645a5a4d94607182b498ed76cf2cbc42d8d2045ec9a9505ecbc4c19f4cb284",
+    "caelis-bot-film-v3.1-en-mobile.webp": "91401b1578c78bdfdd52c91c64af6960530a9bca66f91fb13bf5aa05e1da2ac6",
+    "caelis-bot-film-v3.1-en-mobile.vtt": "4918a794f905e0cea126604fad8e0888f9c0b67183a2fbc281c87448a9e4c02b",
+    "caelis-bot-film-v3.1-zh-cn-mobile.mp4": "fe95c2cc51bb629e9fe193a41d02b45f762973c03bee74667a753576cce9a6ca",
+    "caelis-bot-film-v3.1-zh-cn-mobile.webp": "d1cb5a3b9923f3722aa7f58a73e5d30ecfc4155a37594e29a118920fe02687d7",
+    "caelis-bot-film-v3.1-zh-cn-mobile.vtt": "2b6971f11aba7fb41070c656d55217e02bf92cf41f03c38a4ebad0ff26dcf5c5"
   },
   "sourceSHA": "c6579eecb9da57a91090174b9a414750a3e3ef4f",
   "width": 1920,
   "height": 1080,
   "fps": 30,
-  "reviewStatus": "hold-awaiting-brand-and-character-revision",
+  "reviewStatus": "candidate-awaiting-final-experience-review",
   "mobileWidth": 1080,
   "mobileHeight": 1350
 }
