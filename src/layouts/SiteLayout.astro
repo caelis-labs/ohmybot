@@ -1,19 +1,19 @@
 ---
 import '../styles/fonts.css';
-import '../styles/site.css';
+import '../styles/bot-landing.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { alternatePath, type Locale } from '../data/site';
-const { lang = 'en', title = 'Caelis Labs', description, noindex = false, compactFooter = false } = Astro.props as { lang?: Locale; title?: string; description: string; noindex?: boolean; compactFooter?: boolean };
+const { lang = 'en', title = 'Caelis Bot', description, noindex = false } = Astro.props as { lang?: Locale; title?: string; description: string; noindex?: boolean };
 const canonical = new URL(Astro.url.pathname, Astro.site);
-const pageTitle = title === 'Caelis Labs' ? 'Caelis Labs — Open tools. Connected intelligence.' : `${title} · Oh My Bot`;
+const pageTitle = `${title} · Oh My Bot`;
 ---
 <!doctype html>
 <html lang={lang === 'en' ? 'en' : 'zh-CN'} data-theme="light">
   <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>{lang === 'zh-cn' && title === 'Caelis Labs' ? 'Caelis Labs — 开放的工具，协作的智能。' : pageTitle}</title>
+    <title>{pageTitle}</title>
     <meta name="description" content={description}/>
     <meta name="theme-color" content="#0b0c12" media="(prefers-color-scheme: dark)"/>
     <meta name="theme-color" content="#fafaf8" media="(prefers-color-scheme: light)"/>
@@ -38,7 +38,6 @@ const pageTitle = title === 'Caelis Labs' ? 'Caelis Labs — Open tools. Connect
   <body>
     <Header lang={lang}/>
     <main id="main"><slot/></main>
-    <Footer lang={lang} compact={compactFooter}/>
-    <script>import '../scripts/site';</script>
+    <Footer lang={lang}/>
   </body>
 </html>

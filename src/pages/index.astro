@@ -1,6 +1,4 @@
 ---
-import BotProjectPage from '../components/BotProjectPage.astro';
-import { projects } from '../data/site';
-const project = projects.find(project => project.id === 'caelis-bot')!;
+import BotLanding from '../components/BotLanding.astro';
 ---
-<BotProjectPage project={project} lang="en"/>
+<BotLanding lang="en"/>

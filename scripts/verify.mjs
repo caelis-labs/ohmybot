@@ -16,43 +16,58 @@ async function walk(dir) {
 }
 await walk(dist);
 let checked = 0;
+let largestInlineScriptBytes = 0;
 for (const lang of ['en', 'zh-cn']) {
   const route = lang === 'en' ? '/' : '/zh-cn/';
   const html = await readFile(path.join(dist, route, 'index.html'), 'utf8');
+  const inlineBytes = [...html.matchAll(/<script(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/g)].reduce((sum, match) => sum + Buffer.byteLength(match[1]), 0);
+  largestInlineScriptBytes = Math.max(largestInlineScriptBytes, inlineBytes);
   assert.equal((html.match(/<h1(?:\s|>)/g) || []).length, 1, `${route}: H1`);
   assert.ok(html.includes(`href="https://ohmybot.si${route}"`), `${route}: canonical`);
   assert.ok(html.includes('https://caelis.dev/download/caelis-bot/'), `${route}: macOS download`);
   assert.ok(html.includes('https://github.com/caelis-labs/caelis-bot/releases/latest'), `${route}: Windows downloads`);
   assert.ok(html.includes(`https://caelis.dev${lang === 'en' ? '' : '/zh-cn'}/docs/caelis-bot/installation/`), `${route}: localized guide`);
-  assert.ok(html.includes('Authenticode') && html.includes('WebView2'), `${route}: Windows requirements`);
+  assert.ok(html.includes('Authenticode') && html.includes('WebView2'), `${route}: platform requirements in FAQ`);
+  assert.ok(!/Caelis App|caelis-app|data-media-pending|caelis-bot-current|caelis-bot-demo/.test(html), `${route}: no obsolete content or video placeholder`);
+  const ids = new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]));
   for (const [, attr, raw] of html.matchAll(/\b(href|src|poster)="([^"]+)"/g)) {
-    if (/^(data:|mailto:|#)/.test(raw)) continue;
+    if (/^(data:|mailto:)/.test(raw)) continue;
     const url = new URL(raw, `https://ohmybot.si${route}`);
     if (url.origin !== 'https://ohmybot.si') continue;
     const target = decodeURIComponent(url.pathname);
     const file = target.endsWith('/') ? target + 'index.html' : target;
     assert.ok(files.has(file), `${route}: missing ${attr} ${raw}`);
+    if (url.hash && target === route) assert.ok(ids.has(url.hash.slice(1)), `${route}: missing fragment ${raw}`);
     checked++;
   }
-  assert.ok(media.ready && !html.includes('data-media-pending'), `${route}: current recording must be integrated`);
+  for (const name of ['plan','note','reminder']) {
+    assert.ok(ids.has(`tab-${name}`) && ids.has(`example-${name}`), `${route}: workflow ${name}`);
+  }
+  assert.equal((html.match(/role="tabpanel"/g)||[]).length, 3);
+  assert.equal((html.match(/<details(?:\s|>)/g)||[]).length, 6);
+  assert.ok(html.includes(`weekend-plan-${lang}.md`) && html.includes(`writing-notes-${lang}.md`));
   if (media.ready) {
-    assert.ok(media.sourceVersion && media.platform && media.duration > 0 && media[lang].description, 'Recording provenance');
+    assert.ok(media.sourceVersion && media.duration > 0 && media.duration <= 60 && media[lang].description, 'Reviewed film provenance');
     const base = media[lang].base.slice(1);
     const video = html.match(/<video\b[^>]*>/)?.[0] || '';
-    for (const attribute of ['autoplay', 'muted', 'loop', 'playsinline']) assert.match(video, new RegExp(`\\b${attribute}\\b`), `${route}: inline silent loop`);
-    assert.ok(html.includes('data-playback') && html.includes('data-captions') && html.includes('data-fullscreen'), `${route}: player controls`);
-    assert.ok(video.includes(`poster="${media[lang].base}.webp"`), `${route}: correct poster`);
+    for (const attribute of ['controls', 'muted', 'playsinline']) assert.match(video, new RegExp(`\\b${attribute}\\b`));
+    assert.ok(!video.includes('autoplay'), 'Film starts on user request');
+    assert.ok(video.includes('preload="none"') && video.includes(`poster="${media[lang].base}.webp"`));
     const track = html.match(/<track\b[^>]*>/)?.[0] || '';
-    assert.ok(track.includes(`src="${media[lang].base}.vtt"`) && track.includes(`srclang="${lang === 'en' ? 'en' : 'zh-CN'}"`), `${route}: localized captions`);
+    assert.ok(track.includes(`src="${media[lang].base}.vtt"`) && track.includes(`srclang="${lang === 'en' ? 'en' : 'zh-CN'}"`));
     for (const extension of ['mp4', 'webp', 'vtt']) {
       const asset = `${base}.${extension}`;
-      assert.equal(createHash('sha256').update(await readFile(path.join(dist, asset))).digest('hex'), media.sha256[path.basename(asset)], `${route}: reviewed media changed: ${asset}`);
+      assert.equal(createHash('sha256').update(await readFile(path.join(dist, asset))).digest('hex'), media.sha256[path.basename(asset)], `Reviewed media changed: ${asset}`);
     }
-    assert.ok(html.includes(`${media[lang].base}.mp4`), `${route}: recording source`);
-    assert.ok((await stat(path.join(dist, `${base}.mp4`))).size < 25_000_000, 'Recording exceeds 25 MB');
-    assert.ok((await readFile(path.join(dist, `${base}.vtt`), 'utf8')).startsWith('WEBVTT'), 'Recording captions');
+    assert.ok((await stat(path.join(dist, `${base}.mp4`))).size < 15_000_000, 'Film exceeds 15 MB');
+    assert.ok((await readFile(path.join(dist, `${base}.vtt`), 'utf8')).startsWith('WEBVTT'));
   } else {
-    assert.ok(html.includes('data-media-pending') && !html.includes('<video'), `${route}: honest recording placeholder`);
+    assert.ok(!html.includes('<video') && !/<button[^>]*data-open-film/.test(html), 'No empty film frame while creative V2 is pending');
   }
 }
-console.log(`Verified 2 language pages and ${checked} local links/assets; recording ${media.ready ? 'integrated' : 'pending'}.`);
+for(const file of files) assert.ok(!/caelis-bot-(current|demo)/.test(file), `Obsolete film: ${file}`);
+for(const width of [600,1000]) assert.ok((await stat(path.join(dist,`assets/bot/companion-${width}.webp`))).size < 160_000, 'Character image budget');
+const js = [...files].filter(file=>file.endsWith('.js'));
+const scriptBytes = (await Promise.all(js.map(file=>stat(path.join(dist,file))))).reduce((sum,file)=>sum+file.size,0) + largestInlineScriptBytes;
+assert.ok(scriptBytes < 20_000, `Script budget: ${scriptBytes}`);
+console.log(`Verified 2 locales, 3 workflows each, 6 FAQs each, ${checked} local links/assets; ${scriptBytes} JS bytes. Film: ${media.ready ? `integrated; review status: ${media.reviewStatus}` : 'pending, no public placeholder'}.`);

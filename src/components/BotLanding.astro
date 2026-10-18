@@ -1,0 +1,58 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import Icon from './Icon.astro';
+import content from '../data/bot-content.json';
+import media from '../data/bot-media.json';
+import type { Locale } from '../data/site';
+const { lang = 'en' } = Astro.props as {lang:Locale};
+const c = content[lang]; const zh = lang === 'zh-cn';
+const guide = `https://caelis.dev${zh ? '/zh-cn' : ''}/docs/caelis-bot/`;
+const film = media[lang];
+---
+<SiteLayout lang={lang} title="Caelis Bot" description={c.pageDescription}>
+  <section class="bot-hero" id="top" aria-labelledby="hero-title">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow hero-enter">{c.eyebrow}</p>
+        <h1 id="hero-title" class="hero-enter">Caelis Bot<span>.</span></h1>
+        <p class="hero-promise hero-enter">{c.promise.map(line=><span>{line}</span>)}</p>
+        <p class="hero-description hero-enter">{c.intro}</p>
+        <div class="hero-actions hero-enter"><a class="button primary" href="#download">{c.get}<Icon name="arrow" size={19}/></a><a class="quiet-link" href="#everyday">{c.explore}<span aria-hidden="true">↓</span></a></div>
+        <p class="platform-note hero-enter">{c.platform}</p>
+      </div>
+      <div class="hero-art hero-enter">
+        <p class="hello-note">{c.hello}</p>
+        <picture><source srcset="/assets/bot/companion-600.webp 600w, /assets/bot/companion-1000.webp 1000w" sizes="(max-width: 760px) 340px, 560px" type="image/webp"/><img class="hero-character" src="/assets/bot/companion-1000.webp" width="1000" height="1400" alt={zh ? '粉色头发、绿色裙子的 Caelis 桌面伙伴' : 'The pink-haired Caelis companion in its green outfit'} fetchpriority="high"/></picture>
+      </div>
+    </div>
+  </section>
+
+  <section class="outcomes section" id="everyday" aria-labelledby="outcomes-title">
+    <div class="wrap">
+      <div class="section-heading reveal"><p class="eyebrow">{c.outcomeEyebrow}</p><h2 id="outcomes-title">{c.outcomeTitle.map(line=><span>{line}</span>)}</h2><p>{c.outcomeIntro}</p></div>
+      <div class="workflow reveal" data-workflow>
+        <div class="workflow-nav"><span class="example-label">{c.example}</span><div class="workflow-tabs" role="tablist" aria-label={c.example}>{c.workflows.map((w,i)=><button id={`tab-${w.id}`} role="tab" aria-controls={`example-${w.id}`} aria-selected={i===0 ? 'true':'false'} tabindex={i===0 ? 0:-1} data-workflow-tab={w.id}>{w.tab}</button>)}</div></div>
+        {c.workflows.map((w,i)=><div class="workflow-panel" id={`example-${w.id}`} role="tabpanel" aria-labelledby={`tab-${w.id}`} tabindex="0" hidden={i!==0}>
+          <div class="workflow-input"><p class="micro-label">{c.inputLabel}</p><h3>{w.inputTitle}</h3><div class="input-note"><span class="file-name"><Icon name={w.id==='reminder'?'sun':'book'} size={17}/>{w.inputFile}</span><ul>{w.inputLines.map(line=><li>{line}</li>)}</ul></div><blockquote>“{w.prompt}”</blockquote><span class="workflow-arrow" aria-hidden="true"><Icon name="arrow" size={28}/></span></div>
+          <div class="workflow-output"><p class="micro-label">{c.outputLabel}</p><article class:list={['result-sheet',{'reminder-sheet':w.id==='reminder'}]}><div class="result-top"><span>{w.resultKind}</span><Icon name="check" size={18}/></div><h3>{w.resultTitle}</h3><ul>{w.resultLines.map(line=><li><span class="result-check"><Icon name="check" size={13}/></span>{line}</li>)}</ul><p class="result-footer">{w.resultFooter}</p></article><a class="result-action" href={w.file ? `/examples/${w.file}` : `${guide}conversation/`} download={w.file || undefined}>{w.action}<Icon name={w.file?'download':'arrow'} size={17}/></a></div>
+        </div>)}
+        <p class="workflow-disclosure">{c.sampleNote}</p>
+      </div>
+      {media.ready && <div class="film-entry reveal"><div class="film-copy"><p class="eyebrow">{c.filmEyebrow}</p><h3>{c.filmTitle}</h3><p>{c.filmNote}</p></div><button class="film-poster" data-open-film aria-label={c.filmLabel}><picture>{film.mobileBase && <source media="(max-width: 640px)" srcset={`${film.mobileBase}.webp`}/>}<img src={`${film.base}.webp`} width="1920" height="1080" loading="lazy" alt={film.description}/></picture><span>{c.filmLabel}<Icon name="play" size={20}/></span></button></div>}
+    </div>
+  </section>
+
+  <section class="presence section" id="companion" aria-labelledby="presence-title">
+    <div class="wrap presence-layout">
+      <div class="presence-art reveal"><img src="/assets/bot/companion-1000.webp" width="1000" height="1400" loading="lazy" alt=""/><span>{c.presenceNote}</span></div>
+      <div class="presence-copy reveal"><p class="eyebrow">{c.presenceEyebrow}</p><h2 id="presence-title">{c.presenceTitle.map(line=><span>{line}</span>)}</h2><p class="presence-description">{c.presenceBody}</p><div class="presence-features">{c.features.map(([title,body],i)=><div><span class="feature-number">0{i+1}</span><h3>{title}</h3><p>{body}</p></div>)}</div></div>
+    </div>
+  </section>
+
+  <section class="faq section" id="faq" aria-labelledby="faq-title"><div class="wrap faq-layout"><div><p class="eyebrow">{zh ? '简单了解，再开始' : 'A GOOD PLACE TO START'}</p><h2 id="faq-title">{c.faqTitle}</h2><a class="quiet-link" href={`${guide}installation/`}>{c.guide}<Icon name="arrow" size={18}/></a></div><div class="faq-list">{c.faqs.map(([question,answer])=><details><summary>{question}<Icon name="chevron" size={19}/></summary><p>{answer}</p></details>)}</div></div></section>
+
+  <section class="download-section" id="download" aria-labelledby="download-title"><div class="wrap download-inner reveal"><img class="download-mark" src="/bot-icon.png" width="96" height="96" loading="lazy" alt=""/><p class="eyebrow">{c.downloadEyebrow}</p><h2 id="download-title">{c.downloadTitle.map(line=><span>{line}</span>)}</h2><p class="download-description">{c.downloadText}</p><div class="download-actions"><div><a class="button primary" href="https://caelis.dev/download/caelis-bot/">{c.mac}<Icon name="download" size={18}/></a><span>{c.macNote}</span></div><div><a class="button secondary" href="https://github.com/caelis-labs/caelis-bot/releases/latest">{c.windows}<Icon name="download" size={18}/></a><span>{c.winNote}</span></div></div><a class="quiet-link download-guide" href={`${guide}installation/`}>{c.downloadHelp}<Icon name="arrow" size={16}/></a></div></section>
+
+  {media.ready && <dialog class="film-dialog" data-film-dialog aria-label={c.filmLabel}><div class="film-stage" data-film-stage><button class="film-close" data-close-film aria-label={c.closeFilm}><Icon name="close"/></button><video controls muted playsinline preload="none" data-desktop-base={film.base} data-mobile-base={film.mobileBase} poster={`${film.base}.webp`} aria-label={film.description}><source src={`${film.base}.mp4`} type="video/mp4"/><track kind="captions" src={`${film.base}.vtt`} srclang={zh?'zh-CN':'en'} label={zh?'中文':'English'}/></video><div class="film-controls"><p>{zh ? '功能示意短片 · 非现场录屏' : 'Illustrative product film · not a live recording'}</p><button data-film-captions aria-pressed="false">{c.captions}</button><button data-film-fullscreen>{c.fullscreen}<Icon name="expand" size={16}/></button></div></div></dialog>}
+  <script>import '../scripts/bot-landing';</script>
+</SiteLayout>

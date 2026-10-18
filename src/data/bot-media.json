@@ -1,24 +1,30 @@
 {
   "ready": true,
-  "duration": 56,
+  "kind": "product-film",
+  "generation": 2,
+  "duration": 48,
   "sourceVersion": "v0.15.2",
-  "sourceSHA": "c6579eecb9da57a91090174b9a414750a3e3ef4f",
-  "platform": "macOS",
-  "capture": "Native single-window recording from an isolated source build; fictional demo notes; waiting time edited.",
   "en": {
-    "base": "/assets/video/caelis-bot-current-en",
-    "description": "From model setup to a checklist saved in Notebook. Recorded on macOS with fictional notes; waiting time edited."
+    "base": "/assets/video/caelis-bot-film-v2-en",
+    "description": "What Caelis Bot can do — a 48-second illustrative product film",
+    "mobileBase": ""
   },
   "zh-cn": {
-    "base": "/assets/video/caelis-bot-current-zh-cn",
-    "description": "从连接模型、整理附件，到将清单保存至笔记本。macOS 实录，使用虚构演示资料，已剪去等待时间。"
+    "base": "/assets/video/caelis-bot-film-v2-zh-cn",
+    "description": "Caelis Bot 能做什么：48 秒功能示意短片",
+    "mobileBase": ""
   },
   "sha256": {
-    "caelis-bot-current-en.mp4": "07742ad14611512b022009e8f0b538ba63280acffff632d56f9d1d4560d35c88",
-    "caelis-bot-current-en.webp": "522f742caadbabfd571a91f55559058e52071946e3c327c00814d6ea10b303a6",
-    "caelis-bot-current-en.vtt": "68f09e58ccf54f2ed05b6a7ad30ae126a835a2d4de2b1485a3f05bafe6d767c2",
-    "caelis-bot-current-zh-cn.mp4": "8ee4f7b6fac49851161e1d9160e5008d9f4fc37f1a1614e9e5fca98ad4f13b81",
-    "caelis-bot-current-zh-cn.webp": "0a7f19a14defdb0b688a70b7f9f508f60e763015ef2ba9657e5bc8e4ddb8759b",
-    "caelis-bot-current-zh-cn.vtt": "7cc5fe6d539c7534bc50d59e9ce426f3d9698a778978472dfa704e0fd5af0be7"
-  }
+    "caelis-bot-film-v2-en.mp4": "915557980ecf625b8c28a527391f70644a4e67a49ead0fe0bc836c1608e74ea5",
+    "caelis-bot-film-v2-en.webp": "db70c3f99b436882b508aaa5fb4e51d57d993532e84b2c7510e5de544dbf1857",
+    "caelis-bot-film-v2-en.vtt": "bb1535f495a100c413131fbce082507b7023627ce00fdb0590a1c135a075c1f7",
+    "caelis-bot-film-v2-zh-cn.mp4": "b705841d4f274872396ffa0dea37f4691fc8e8f0af099e5ebce25b35be354d35",
+    "caelis-bot-film-v2-zh-cn.webp": "9f7f97732cdc79c71eb383162d233a26f3a97f3329cbe921e230618a8d0250b0",
+    "caelis-bot-film-v2-zh-cn.vtt": "627661fb4c99397dac7aa17b3678fc03083df9de270e0d71329223b462d304ba"
+  },
+  "sourceSHA": "c6579eecb9da57a91090174b9a414750a3e3ef4f",
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "reviewStatus": "rejected-by-independent-visual-review-awaiting-v3"
 }

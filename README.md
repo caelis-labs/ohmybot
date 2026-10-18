@@ -1,8 +1,6 @@
 # Oh My Bot
 
-Independent English and Simplified Chinese website for **Caelis Bot** at https://ohmybot.si, from the official `caelis-labs/ohmybot` repository. Caelis Bot is the desktop product; it is separate from the `caelis bot` terminal command and Caelis App.
-
-The original design was extracted from `caelis-labs/caelis.dev` at `2021fd8584be75124fe2d7d38e26d7a8bd09533b`. The refresh preserves its fonts, palette, hero, film frame, scenario rows, theme behavior and responsive layout. It expands the content with macOS/Windows downloads, setup, models, screenshots and FAQ. Guides and macOS download resolution use caelis.dev; Windows downloads use official GitHub Latest release assets.
+The single English / Simplified Chinese marketing website for **Caelis Bot**, at https://ohmybot.si. Guides and the macOS release resolver live at caelis.dev. Windows downloads point to the official GitHub latest release.
 
 ## Development
 
@@ -16,28 +14,31 @@ npm run verify
 npm run dev
 ```
 
-## Content and recording
+## Design and content
 
-`src/data/bot-content.json` owns English and Chinese product copy. The reviewed source is Bot v0.15.2 / `c6579eecb9da57a91090174b9a414750a3e3ef4f` (2026-10-18), also the verified main at review time. Windows availability follows the published Setup/ZIP and release notes; Windows binaries are unsigned. The app's code and docs contain some historical Windows-next statements, which do not override the actual public release assets. Marketing does not advertise every source/POC capability or promise complete platform parity.
+The 2026-10-18 redesign uses an open, warm canvas, the released Caelis companion artwork, concise bilingual copy, and three interactive input-to-result examples. The examples are explicitly illustrative, and their downloadable Markdown files are fictional public samples. They are not live inference or screenshots of the app. Model, platform and privacy details are in the expandable FAQ and linked guides.
 
-The current English and Chinese Bot films are 56-second native macOS recordings of v0.15.2 source (`c6579eecb9da57a91090174b9a414750a3e3ef4f`), made in an isolated ad-hoc build. This is not acceptance evidence for the signed download binary. The scenes show model setup, fictional attachment notes, actual model responses and a Markdown checklist saved in Notebook. Waiting time is edited. No separate desktop-pet, external messaging, file-preview click or download-click demonstration is claimed.
+`src/data/bot-content.json` owns both languages. Claims are checked against published Bot **v0.15.2** (`c6579eecb9da57a91090174b9a414750a3e3ef4f`). A later main commit is not a release. macOS Apple Silicon and Windows x64 are published; Windows is unsigned. Do not advertise POCs, plans or unverified platform parity.
 
-The six reviewed MP4/WebP/VTT files live in `public/assets/video/`. `src/data/bot-media.json` records their source, duration, localized paths and SHA-256 hashes; verification rejects altered media or a pending placeholder. Only public final assets are included, never recording profiles, raw takes or private paths. Old v0.2.0 files and `bot-demo.json` remain solely for URL compatibility and historical reproduction; current pages use `bot-media.json`.
+`BotLanding.astro`, `bot-landing.css` and `bot-landing.ts` own presentation and interaction. Tabs have arrow/Home/End keyboard behavior; FAQ uses native details; theme selection persists when storage is available. Hero/reveal/tab animation is short and respects reduced motion. No autoplay film, third-party requests, analytics or WebGL runtime is needed.
 
-The player keeps muted inline looping, explicit pause and reduced-motion behavior. Controls sit below the image, preserving every recorded pixel. The film includes embedded captions; optional localized VTT captions can be enabled with CC, including fullscreen. Standard fullscreen keeps the same controls; iPhone Safari uses native video fullscreen when available. If fullscreen is denied, native controls become available. Physical iOS/Android playback still requires device verification.
+## Artwork and optional film
+
+The transparent character image is rendered from the unmodified, publicly shipped `caelis-garden-outfit-v1.glb` at the release SHA above. It is artwork, not a product screenshot. See `public/assets/bot/PROVENANCE.md`, `ATTRIBUTION.md` and `LICENSE.md` for provenance and original asset terms. The logo is the existing owner-selected Bot mark. No user chats or credentials are included.
+
+The previous slideshow and 56-second recording were removed from the public bundle as part of the authorized V2 redesign. The separately produced V2 creative film is integrated in English and Chinese: 48 seconds, 1080p30, silent H.264. It combines released character rendering with authored illustrative workflows; it is not a native recording. `src/data/bot-media.json` records provenance and the six exact asset hashes. **Independent visual review rejected V2; it remains temporary local preview only. V3 is required before final acceptance or publication.** The page also works independently of it.
+
+For an approved replacement delivery, set `ready`, duration (maximum 60 seconds), source version, localized MP4/WebP/VTT bases/descriptions and file SHA-256 values. The explicit-play dialog uses native controls, muted inline playback, localized captions and native fullscreen with a reversible viewport-expanded fallback when the browser denies it. Optional `mobileBase` selects a separately composed mobile cut on opening at <=640px, with a corresponding poster and VTT; no mid-play resizing swaps the source. Test both languages on actual integrated pages before accepting the assets. Physical iOS/Android fullscreen needs separate device verification.
 
 ## Cloudflare Pages
 
-The existing repository documents:
+- Official repository: `caelis-labs/ohmybot`
+- Documented production branch: `main`
+- Build: `npm run build`, output: `dist`
+- Domains: `ohmybot.si`, `www.ohmybot.si`
 
-- Repository: `caelis-labs/ohmybot`
-- Production branch: `main`
-- Build command: `npm run build`
-- Output directory: `dist`
-- Custom domains: `ohmybot.si`, `www.ohmybot.si`
-
-GitHub Actions builds pushes and PRs; it contains no publishing step. Git-connected Cloudflare Pages may deploy independently. Verify live branch settings before pushing if production deployment could result. No domain, Pages or production configuration change is part of the content refresh. Static site; no secrets or runtime bindings required.
+GitHub Actions builds pushes and PRs without a publishing step. Git-connected Cloudflare Pages can deploy independently. Live branch deployment rules must be verified before any push. This work remains local; no domain, Pages account or production settings were changed.
 
 ## License
 
-Code inherits Apache-2.0 from the original website. Character artwork and media remain subject to their original asset terms; see `public/assets/bot/LICENSE.md` and `ATTRIBUTION.md`. The repository does not relicense character assets.
+Code inherits Apache-2.0 from the original website. Character artwork and media remain subject to the original asset terms. This repository does not relicense character assets.
