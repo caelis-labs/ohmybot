@@ -1,6 +1,6 @@
 # CaelisBot
 
-The single English / Simplified Chinese marketing website for **CaelisBot**, at https://ohmybot.si. Guides and the macOS release resolver live at caelis.dev. Windows Setup and ZIP use `/download/windows/setup/` and `/download/windows/zip/`. Cloudflare Pages Functions resolve the latest verified Windows index on R2 and redirect only to its allowlisted R2 artifact paths. No package bytes pass through the website; both installation formats support signed automatic updates.
+The single English / Simplified Chinese marketing website for **CaelisBot**, at https://ohmybot.si. Guides and the macOS release resolver live at caelis.dev. Windows Setup and ZIP use `/download/windows/setup/` and `/download/windows/zip/`. Cloudflare Pages Functions resolve the latest verified Windows index on R2 and redirect only to its allowlisted R2 artifact paths. No package bytes pass through the website; both installation formats support signed automatic updates. The page detects desktop platforms, presents their downloads first and keeps other platforms in an expandable selector. Mobile and unrecognized devices get the selector without a guessed download.
 
 ## Development
 

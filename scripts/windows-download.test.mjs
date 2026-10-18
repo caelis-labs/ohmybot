@@ -33,3 +33,16 @@ test('missing metadata and unsupported formats fail without a GitHub fallback',a
   for(const fetcher of [async()=>{throw Error('network');},async()=>new Response('',{status:404}),async()=>new Response('broken'),async()=>new Response('x'.repeat(16385))]) assert.equal((await resolveDownload('zip',fetcher)).status,503);
   assert.equal((await resolveDownload('other',()=>{throw Error('must not fetch');})).status,404);
 });
+
+import {detectDownloadPlatform} from '../src/scripts/download-platform.mjs';
+test('platform selection distinguishes desktop, mobile and unknown devices',()=>{
+  for (const [input, expected] of [
+    [{userAgent:'Mozilla/5.0 (Windows NT 10.0; Win64; x64)',platform:'Win32'},'windows'],
+    [{userAgent:'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)',platform:'MacIntel'},'mac'],
+    [{userAgent:'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)',platform:'MacIntel',maxTouchPoints:5},'mobile'],
+    [{userAgent:'Mozilla/5.0 (iPhone; CPU iPhone OS)',platform:'iPhone'},'mobile'],
+    [{userAgent:'Mozilla/5.0 (Linux; Android 14)',platform:'Linux arm'},'mobile'],
+    [{userAgent:'Mozilla/5.0 (X11; Linux x86_64)',platform:'Linux x86_64'},'other'],
+    [{},'other'],
+  ]) assert.equal(detectDownloadPlatform(input),expected);
+});

@@ -19,7 +19,7 @@ export function downloadURL(index, format) {
   return base + expected;
 }
 
-export async function resolveDownload(format, fetcher = fetch) {
+export async function resolveDownload(format, fetcher = (url, options) => globalThis.fetch(url, options)) {
   if (!Object.hasOwn(suffixes, format)) return new Response('Download not found.', { status: 404 });
   let stage = 'fetch';
   try {

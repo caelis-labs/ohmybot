@@ -152,7 +152,7 @@
     "mac": "Download for macOS",
     "windows": "Windows Setup.exe",
     "macNote": "Apple Silicon",
-    "winNote": "Windows x64 · Automatic updates",
+    "winNote": "Windows x64",
     "downloadHelp": "Installation & checksums",
     "footerNote": "Code is open source. Character assets have their own license.",
     "filmLabel": "Watch the product film",
@@ -165,7 +165,10 @@
     "fullscreen": "Fullscreen",
     "heroExampleLabel": "Example result",
     "windowsZip": "Windows ZIP",
-    "zipNote": "Portable · Automatic updates"
+    "zipNote": "Portable",
+    "otherPlatforms": "Other platforms",
+    "choosePlatform": "Choose your platform",
+    "desktopOnly": "Install on a macOS or Windows computer."
   },
   "zh-cn": {
     "pageDescription": "认识 CaelisBot，你的个人 AI 桌面伙伴。一起聊问题、处理文件、完成日常小事，支持 macOS 与 Windows。",
@@ -320,7 +323,7 @@
     "mac": "下载 macOS 版",
     "windows": "Windows 安装版 · Setup.exe",
     "macNote": "Apple Silicon",
-    "winNote": "Windows x64 · 支持自动更新",
+    "winNote": "Windows x64",
     "downloadHelp": "安装与文件校验",
     "footerNote": "代码开源。角色资产适用独立许可。",
     "filmLabel": "观看功能短片",
@@ -333,6 +336,9 @@
     "fullscreen": "全屏",
     "heroExampleLabel": "成果示意",
     "windowsZip": "Windows 免安装版 · ZIP",
-    "zipNote": "解压即用 · 支持自动更新"
+    "zipNote": "解压即用",
+    "otherPlatforms": "其他平台下载",
+    "choosePlatform": "选择下载平台",
+    "desktopOnly": "请在 macOS 或 Windows 电脑上安装。"
   }
 }

@@ -1,3 +1,23 @@
+import { detectDownloadPlatform } from './download-platform.mjs';
+
+const downloadPlatform = detectDownloadPlatform(navigator);
+const preferredDownloads = document.querySelector<HTMLElement>('[data-preferred-download]');
+const allPlatforms = document.querySelector<HTMLDetailsElement>('[data-download-platforms]');
+if (preferredDownloads && allPlatforms) {
+  const matches = allPlatforms.querySelectorAll<HTMLElement>(`[data-download-platform="${downloadPlatform}"]`);
+  if (matches.length) {
+    matches.forEach(item => preferredDownloads.append(item));
+    preferredDownloads.hidden = false;
+    const mainButton = preferredDownloads.querySelector('a');
+    mainButton?.classList.replace('secondary', 'primary');
+    const summary = allPlatforms.querySelector('summary');
+    if (summary?.dataset.otherLabel) summary.textContent = summary.dataset.otherLabel;
+  } else {
+    const note = document.querySelector<HTMLElement>('[data-download-device-note]');
+    if (note) note.hidden = false;
+  }
+}
+
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 
 document.querySelector<HTMLButtonElement>('[data-theme-toggle]')?.addEventListener('click', () => {
