@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile, readdir, stat } from 'node:fs/promises';
 import path from 'node:path';
+import { createHash } from 'node:crypto';
 
 const root = path.resolve(import.meta.dirname, '..');
 const dist = path.join(root, 'dist');
@@ -33,9 +34,20 @@ for (const lang of ['en', 'zh-cn']) {
     assert.ok(files.has(file), `${route}: missing ${attr} ${raw}`);
     checked++;
   }
+  assert.ok(media.ready && !html.includes('data-media-pending'), `${route}: current recording must be integrated`);
   if (media.ready) {
     assert.ok(media.sourceVersion && media.platform && media.duration > 0 && media[lang].description, 'Recording provenance');
     const base = media[lang].base.slice(1);
+    const video = html.match(/<video\b[^>]*>/)?.[0] || '';
+    for (const attribute of ['autoplay', 'muted', 'loop', 'playsinline']) assert.match(video, new RegExp(`\\b${attribute}\\b`), `${route}: inline silent loop`);
+    assert.ok(html.includes('data-playback') && html.includes('data-captions') && html.includes('data-fullscreen'), `${route}: player controls`);
+    assert.ok(video.includes(`poster="${media[lang].base}.webp"`), `${route}: correct poster`);
+    const track = html.match(/<track\b[^>]*>/)?.[0] || '';
+    assert.ok(track.includes(`src="${media[lang].base}.vtt"`) && track.includes(`srclang="${lang === 'en' ? 'en' : 'zh-CN'}"`), `${route}: localized captions`);
+    for (const extension of ['mp4', 'webp', 'vtt']) {
+      const asset = `${base}.${extension}`;
+      assert.equal(createHash('sha256').update(await readFile(path.join(dist, asset))).digest('hex'), media.sha256[path.basename(asset)], `${route}: reviewed media changed: ${asset}`);
+    }
     assert.ok(html.includes(`${media[lang].base}.mp4`), `${route}: recording source`);
     assert.ok((await stat(path.join(dist, `${base}.mp4`))).size < 25_000_000, 'Recording exceeds 25 MB');
     assert.ok((await readFile(path.join(dist, `${base}.vtt`), 'utf8')).startsWith('WEBVTT'), 'Recording captions');

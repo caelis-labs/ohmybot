@@ -22,27 +22,26 @@ const guide = (page: string) => `${independent ? 'https://caelis.dev' : ''}${loc
     </section>
 
     <section class="container bot-demo-section" aria-labelledby="bot-demo-title">
-      <div class="bot-demo-heading"><h2 id="bot-demo-title">{zh ? '一起把想法，变成进展。' : 'A little companion. Real progress.'}</h2><span>{demo.ready ? `${demo.duration} ${zh ? '秒' : 'seconds'} · ${demo.platform}` : story.mediaLabel}</span></div>
-      {demo.ready ? <>
+      <div class="bot-demo-heading"><h2 id="bot-demo-title">{zh ? '从开始设置，到保存清单。' : 'From first setup to a saved checklist.'}</h2><span>{demo.duration} {zh ? '秒' : 'seconds'} · {demo.platform}</span></div>
         <div class="bot-film" data-bot-demo>
           <video autoplay muted loop playsinline preload="metadata" poster={`${media.base}.webp`} width="1600" height="900" aria-label={media.description}>
             <source src={`${media.base}.mp4`} type="video/mp4"/>
             <track kind="captions" src={`${media.base}.vtt`} srclang={zh ? 'zh-CN' : 'en'} label={zh ? '中文' : 'English'}/>
             {zh ? '你的浏览器不支持视频播放。' : 'Your browser does not support video playback.'}
           </video>
+          <div class="bot-film-controls">
           <button class="bot-playback" type="button" data-playback data-state="paused" data-play-label={zh ? '播放演示' : 'Play demo'} data-pause-label={zh ? '暂停演示' : 'Pause demo'} aria-label={zh ? '播放演示' : 'Play demo'} hidden>
             <svg class="bot-play-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="m6 3 11 7-11 7Z" fill="currentColor"/></svg>
             <svg class="bot-pause-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 3h3v14H5zm7 0h3v14h-3z" fill="currentColor"/></svg>
           </button>
+          <button class="bot-playback" type="button" data-captions aria-pressed="false" data-show-label={zh ? '显示字幕' : 'Show captions'} data-hide-label={zh ? '隐藏字幕' : 'Hide captions'} aria-label={zh ? '显示字幕' : 'Show captions'} hidden><span aria-hidden="true">CC</span></button>
+          <button class="bot-playback" type="button" data-fullscreen data-enter-label={zh ? '全屏观看' : 'Watch fullscreen'} data-exit-label={zh ? '退出全屏' : 'Exit fullscreen'} aria-label={zh ? '全屏观看' : 'Watch fullscreen'} hidden>
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 3H3v4m10-4h4v4M3 13v4h4m6 0h4v-4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+          </button>
+          </div>
         </div>
-        <p class="bot-media-note">{media.description} · {demo.sourceVersion}</p>
-      </> : <>
-        <div class="bot-film bot-media-pending" data-media-pending>
-          <img src={independent ? '/bot-icon.png' : '/assets/bot/logo-256.webp'} width="128" height="128" alt=""/>
-          <h3>{story.pendingTitle}</h3><p>{story.pendingBody}</p>
-        </div>
-        <p class="bot-media-note">{story.mediaNote}</p>
-      </>}
+        <p class="bot-media-note">{media.description} · {demo.sourceVersion} · {zh ? '可全屏观看细节。' : 'Watch fullscreen for details.'}</p>
+
     </section>
 
     <section class="container bot-scenarios" aria-labelledby="bot-scenarios-title">

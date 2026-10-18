@@ -78,11 +78,7 @@
     "guide": "Installation and first launch",
     "modelsGuide": "Models, tasks and screenshots",
     "supportGuide": "Troubleshooting",
-    "windowsNotice": "Windows downloads are not Authenticode signed. SmartScreen or your organization’s policy may warn or block installation; see the installation guide.",
-    "pendingTitle": "A new look at Caelis Bot.",
-    "pendingBody": "A recording of the current app is being prepared. Explore what you can do below.",
-    "mediaLabel": "Recording in preparation",
-    "mediaNote": "The new demo will show the actual app. The earlier scripted film has been retired from this page."
+    "windowsNotice": "Windows downloads are not Authenticode signed. SmartScreen or your organization’s policy may warn or block installation; see the installation guide."
   },
   "zh-cn": {
     "scenarios": [
@@ -163,10 +159,6 @@
     "guide": "安装与首次使用",
     "modelsGuide": "模型、任务与截图",
     "supportGuide": "常见问题",
-    "windowsNotice": "Windows 下载尚未进行 Authenticode 签名，SmartScreen 或组织策略可能提示或阻止安装，详情见安装指南。",
-    "pendingTitle": "重新认识 Caelis Bot。",
-    "pendingBody": "新版应用实录正在准备中，先看看下方这些可以一起做的事。",
-    "mediaLabel": "新版实录准备中",
-    "mediaNote": "新版演示将展示实际应用。本页已撤下早期的脚本演示。"
+    "windowsNotice": "Windows 下载尚未进行 Authenticode 签名，SmartScreen 或组织策略可能提示或阻止安装，详情见安装指南。"
   }
 }
