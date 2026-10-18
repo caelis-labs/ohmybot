@@ -20,7 +20,7 @@ const pageTitle = title === 'Caelis Labs' ? 'Caelis Labs — Open tools. Connect
     <meta property="og:type" content="website"/><meta property="og:site_name" content="Oh My Bot"/>
     <meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:url" content={canonical}/>
     <meta property="og:locale" content={lang === 'en' ? 'en_US' : 'zh_CN'}/>
-    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:card" content="summary"/>
     <meta name="twitter:title" content={title}/><meta name="twitter:description" content={description}/>
     {!noindex && <>
       <link rel="canonical" href={canonical}/>
@@ -31,8 +31,8 @@ const pageTitle = title === 'Caelis Labs' ? 'Caelis Labs — Open tools. Connect
     {noindex && <meta name="robots" content="noindex"/>}
     <link rel="icon" href="/bot-icon.png" type="image/png"/>
     <link rel="apple-touch-icon" href="/bot-icon.png"/>
-    <meta property="og:image" content={new URL('/assets/video/caelis-bot-demo-en.webp', Astro.site)}/>
-    <meta name="twitter:image" content={new URL('/assets/video/caelis-bot-demo-en.webp', Astro.site)}/>
+    <meta property="og:image" content={new URL('/bot-icon.png', Astro.site)}/>
+    <meta name="twitter:image" content={new URL('/bot-icon.png', Astro.site)}/>
     <script is:inline src="/theme.js"></script>
   </head>
   <body>

@@ -1,0 +1,14 @@
+{
+  "ready": false,
+  "duration": 0,
+  "sourceVersion": "",
+  "platform": "",
+  "en": {
+    "base": "/assets/video/caelis-bot-current-en",
+    "description": ""
+  },
+  "zh-cn": {
+    "base": "/assets/video/caelis-bot-current-zh-cn",
+    "description": ""
+  }
+}

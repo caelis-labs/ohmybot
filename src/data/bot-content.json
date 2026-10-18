@@ -1,0 +1,172 @@
+{
+  "en": {
+    "scenarios": [
+      {
+        "title": "Give it a goal. Follow the result.",
+        "input": "Start with a clear request:",
+        "prompt": "Review these project notes, check the open questions and prepare a short action list.",
+        "output": "Share files in the conversation. Bot can delegate longer work, show task progress and bring the findings back. Review any action that needs your approval."
+      },
+      {
+        "title": "Show the part you mean.",
+        "input": "Capture, annotate and ask:",
+        "prompt": "Help me understand this part of the screen.",
+        "output": "Use F1 to select a region, mark it up or redact it, then copy, save or send it to Bot. Ask Bot needs a model that supports images. F3 pins a clipboard image for reference."
+      },
+      {
+        "title": "Keep the useful context close.",
+        "input": "Leave a note for next time:",
+        "prompt": "Remember this project’s writing preferences, and remind me tomorrow to review the draft.",
+        "output": "Keep editable Markdown notes in Notebook and ask for reminders. Reminders need Bot to stay running; hiding the character keeps it available, while quitting pauses scheduling."
+      }
+    ],
+    "setupTitle": "From download to your first conversation.",
+    "setupIntro": "Choose your connection, then make it yours.",
+    "setup": [
+      [
+        "Install for your computer",
+        "Use the macOS DMG on Apple Silicon, or the Windows x64 installer. Open the verified app and follow the first-run guide."
+      ],
+      [
+        "Connect a model",
+        "Caelis is included in the desktop packages. Choose a model service and complete its login. Or use your own local Codex installation and account."
+      ],
+      [
+        "Start with something small",
+        "Choose a model, optional screenshot tools, and your assistant’s name. Share a question or a file; you can change these choices later in Settings."
+      ]
+    ],
+    "connectionsTitle": "Your models. Your way of working.",
+    "connectionsIntro": "Set up what you need, when you need it.",
+    "connections": [
+      [
+        "Conversation and work models",
+        "Choose the model you talk to and a separate default for background work in Connections & Models. Available models and image support depend on your connection."
+      ],
+      [
+        "Tools and connected apps",
+        "Add supported plugins from Settings. Each service has its own setup, account and permissions. Desktop actions may use the foreground and need system access."
+      ],
+      [
+        "Keep in touch",
+        "Connect Telegram to the same Bot conversation. On macOS, configure an SSH machine for work you explicitly send there; accounts and files are not automatically copied."
+      ]
+    ],
+    "faqTitle": "A few things to know.",
+    "faqs": [
+      [
+        "Which computers can run it?",
+        "macOS packages are for Apple Silicon. Windows packages target Windows 10 22H2 x64 or later and need Microsoft Edge WebView2; native development testing used Windows 11. Intel Mac, Windows ARM64 and Linux desktop packages are not offered."
+      ],
+      [
+        "Does the download include a model or a subscription?",
+        "It includes Caelis, the software that connects to model services. It does not include a model-service account, credits or a subscription. Codex uses your own local installation and login. Provider terms and charges still apply."
+      ],
+      [
+        "Is my conversation entirely offline?",
+        "Notes and application data are kept on your computer. Prompts and attachments may be sent to the model provider or connected service you choose. Review a screenshot before sharing it; manual capture sends the selection you confirm."
+      ],
+      [
+        "Can I hide the character or close chat?",
+        "Yes. Bot stays in the menu bar on macOS or the system tray on Windows. Hiding the character or closing chat does not quit it. Use Quit to end the app."
+      ],
+      [
+        "How do updates work?",
+        "Check Settings → Updates. Restart and installation require your confirmation. Keep application data when replacing the app. Windows Stable and Preview have separate installations and data; installing Stable does not migrate Preview data."
+      ]
+    ],
+    "guide": "Installation and first launch",
+    "modelsGuide": "Models, tasks and screenshots",
+    "supportGuide": "Troubleshooting",
+    "windowsNotice": "Windows downloads are not Authenticode signed. SmartScreen or your organization’s policy may warn or block installation; see the installation guide.",
+    "pendingTitle": "A new look at Caelis Bot.",
+    "pendingBody": "A recording of the current app is being prepared. Explore what you can do below.",
+    "mediaLabel": "Recording in preparation",
+    "mediaNote": "The new demo will show the actual app. The earlier scripted film has been retired from this page."
+  },
+  "zh-cn": {
+    "scenarios": [
+      {
+        "title": "交代目标，跟进结果",
+        "input": "从一个明确的请求开始：",
+        "prompt": "整理这些项目笔记，核对待确认的问题，再列一份简短的行动清单。",
+        "output": "在对话中分享文件。较长的工作可以交给后台任务，进展和结果回到原来的对话；遇到需要你决定的操作，再由你确认。"
+      },
+      {
+        "title": "把想问的地方，指给它看",
+        "input": "截取、标注，再提问：",
+        "prompt": "帮我解释屏幕上这一部分。",
+        "output": "按 F1 选择区域，标注或脱敏后复制、保存或发送给 Bot。“问 Bot”需要支持图片的模型；按 F3 可将剪贴板图片贴在桌面上，方便参照。"
+      },
+      {
+        "title": "让有用的上下文留在身边",
+        "input": "为下一次留下一条笔记：",
+        "prompt": "记下这个项目的写作偏好，明天提醒我检查初稿。",
+        "output": "Notebook 保存可编辑的 Markdown 笔记，也可以在对话中安排提醒。提醒需要 Bot 保持运行；隐藏角色不影响调度，退出应用后会暂停。"
+      }
+    ],
+    "setupTitle": "从下载，到第一次对话。",
+    "setupIntro": "选好连接，认识你的新伙伴。",
+    "setup": [
+      [
+        "安装适合电脑的版本",
+        "Apple Silicon Mac 使用 DMG，Windows x64 使用安装程序。校验下载后打开应用，跟随首次引导开始。"
+      ],
+      [
+        "连接你选择的模型",
+        "桌面安装包已内置 Caelis，选择模型服务并完成登录即可。也可以使用你自己安装并登录的 Codex。"
+      ],
+      [
+        "先一起做一件小事",
+        "确认模型，选择截图等附加功能，再为助手起个名字。问一个问题，或分享一个文件；这些选择之后都可以在设置中调整。"
+      ]
+    ],
+    "connectionsTitle": "你的模型，你的工作方式。",
+    "connectionsIntro": "按需要连接，随时调整。",
+    "connections": [
+      [
+        "对话与工作，各有选择",
+        "在“连接与模型”中选择 Bot 的对话模型，也可以单独设置后台工作的默认模型。可选模型与图片能力取决于已连接的服务。"
+      ],
+      [
+        "工具与应用，按需接入",
+        "从设置添加支持的插件，按各服务要求完成账号和权限配置。电脑操作可能需要切换到前台，并取得系统权限。"
+      ],
+      [
+        "换个入口，继续联系",
+        "将 Telegram 连接到同一个 Bot 对话。在 macOS 中还可配置 SSH 远程机器，明确指定工作交给哪台机器；账号和文件不会自动复制。"
+      ]
+    ],
+    "faqTitle": "开始前，你可能想知道。",
+    "faqs": [
+      [
+        "支持哪些电脑？",
+        "macOS 安装包适用于 Apple Silicon。Windows 安装包要求 Windows 10 22H2 x64 或更新版本及 Microsoft Edge WebView2，原生开发测试使用 Windows 11。目前没有 Intel Mac、Windows ARM64 或 Linux 桌面安装包。"
+      ],
+      [
+        "下载后就有模型和订阅吗？",
+        "安装包内置的是连接模型服务的软件 Caelis，不包含模型服务账号、额度或订阅。Codex 使用你自己的本机安装和登录；各服务的使用条款与费用仍然适用。"
+      ],
+      [
+        "对话完全离线吗？",
+        "笔记和应用数据保存在你的电脑上；请求和附件可能发送给你选择的模型服务或已连接的应用。分享截图前可以先检查，手动截图只发送你确认的选区。"
+      ],
+      [
+        "可以隐藏角色或关掉聊天吗？",
+        "可以。Bot 仍驻留在 macOS 菜单栏或 Windows 系统托盘中。隐藏角色、关闭聊天不会退出应用；选择“退出”才会结束运行。"
+      ],
+      [
+        "怎样更新？",
+        "在“设置 → 更新”中检查，重启安装前由你确认。手动替换应用时请保留应用数据。Windows 正式版与预览版的安装和数据相互独立，安装正式版不会迁移预览版数据。"
+      ]
+    ],
+    "guide": "安装与首次使用",
+    "modelsGuide": "模型、任务与截图",
+    "supportGuide": "常见问题",
+    "windowsNotice": "Windows 下载尚未进行 Authenticode 签名，SmartScreen 或组织策略可能提示或阻止安装，详情见安装指南。",
+    "pendingTitle": "重新认识 Caelis Bot。",
+    "pendingBody": "新版应用实录正在准备中，先看看下方这些可以一起做的事。",
+    "mediaLabel": "新版实录准备中",
+    "mediaNote": "新版演示将展示实际应用。本页已撤下早期的脚本演示。"
+  }
+}

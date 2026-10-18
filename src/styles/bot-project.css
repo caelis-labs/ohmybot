@@ -45,3 +45,23 @@
   .bot-scenario-title h3 { font-size: 21px; }
   .bot-scenario-example blockquote { font-size: 16px; }
 }
+
+.bot-get .bot-downloads { flex-direction: column; align-items: stretch; gap: 10px; }
+.bot-get > span { max-width: 280px; text-align: center; line-height: 1.6; }
+.bot-media-pending { width: 100%; min-width: 0; aspect-ratio: 16 / 9; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; padding: 28px; text-align: center; }
+.bot-media-pending img { width: clamp(64px, 10vw, 128px); height: auto; }
+.bot-media-pending h3 { font-size: clamp(19px, 2.2vw, 30px); letter-spacing: -.035em; }
+.bot-media-pending p { max-width: 440px; color: var(--muted); font-size: 15px; line-height: 1.8; }
+.bot-media-note { margin-top: 14px; color: var(--muted); font-size: 13px; line-height: 1.8; }
+.bot-details { padding-top: 28px; padding-bottom: 42px; }
+.bot-details .text-link { font-size: 14px; }
+.bot-faq details { border-top: 1px solid var(--line); padding: 22px 0; }
+.bot-faq summary { cursor: pointer; font-size: 18px; line-height: 1.6; }
+.bot-faq details p { max-width: 820px; margin-top: 14px; color: var(--muted); line-height: 1.9; }
+@media (max-width: 760px) {
+  .bot-get { align-items: flex-start; flex-direction: column; gap: 10px; }
+  .bot-get .bot-downloads { flex-direction: row; flex-wrap: wrap; }
+  .bot-get > span { max-width: none; text-align: left; }
+  .bot-media-pending { min-height: 260px; gap: 12px; padding: 22px; }
+  .bot-details { padding-top: 20px; padding-bottom: 25px; }
+}
