@@ -16,7 +16,7 @@ npm run dev
 
 ## Design and content
 
-The 2026-10-18 redesign uses an open, warm canvas, the released Caelis companion artwork, concise bilingual copy, and three interactive input-to-result examples. The examples are explicitly illustrative, and their downloadable Markdown files are fictional public samples. They are not live inference or screenshots of the app. Model, platform and privacy details are in the expandable FAQ and linked guides.
+The 2026-10-18 redesign uses an open, warm canvas, a result-led hero, the released Caelis artwork at small companion scale, concise bilingual copy, and three interactive input-to-result examples. The examples are explicitly illustrative, and their downloadable Markdown files are fictional public samples. They are not live inference or screenshots of the app. Model, platform and privacy details are in the expandable FAQ and linked guides.
 
 `src/data/bot-content.json` owns both languages. Claims are checked against published Bot **v0.15.2** (`c6579eecb9da57a91090174b9a414750a3e3ef4f`). A later main commit is not a release. macOS Apple Silicon and Windows x64 are published; Windows is unsigned. Do not advertise POCs, plans or unverified platform parity.
 
@@ -24,7 +24,7 @@ The 2026-10-18 redesign uses an open, warm canvas, the released Caelis companion
 
 ## Artwork and optional film
 
-The transparent character image is rendered from the unmodified, publicly shipped `caelis-garden-outfit-v1.glb` at the release SHA above. It is artwork, not a product screenshot. See `public/assets/bot/PROVENANCE.md`, `ATTRIBUTION.md` and `LICENSE.md` for provenance and original asset terms. The logo is the existing owner-selected Bot mark. No user chats or credentials are included.
+The transparent character image is rendered from the unmodified, publicly shipped `caelis-garden-outfit-v1.glb` at the release SHA above. It is artwork, not a product screenshot. See `public/assets/bot/PROVENANCE.md`, `ATTRIBUTION.md` and `LICENSE.md` for provenance and original asset terms. The logo is the existing owner-selected Bot mark. The hero and companion section show the complete unchanged artwork at a small scale, without portrait cropping or enlarged hands. This is a composition change, not a model/pose repair. No user chats or credentials are included.
 
 The previous slideshow and 56-second recording were removed from the public bundle as part of the authorized V2 redesign. The separately produced V3 candidate film is integrated in English and Chinese: four 48-second, 30fps silent H.264 files, with 1920×1080 desktop and independently composed 1080×1350 phone cuts. It combines released character rendering with authored illustrative workflows; it is not a native recording. `src/data/bot-media.json` records provenance and the twelve exact asset hashes. **Independent visual review rejected V2 and this V3 candidate. V3 remains local while the video worker repairs text ghosting at 30.9–31.3 seconds in all four films and bottom-edge text overflow at 24.5–25.5 seconds in both mobile cuts. Revised delivery hashes and independent acceptance are required; integration is not permission to publish.** The page also works independently of it.
 

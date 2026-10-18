@@ -1,6 +1,6 @@
 # Website artwork and film provenance
 
-The website hero is a studio render of the public released character, not a product screenshot. Source: `caelis-labs/caelis-bot`, v0.15.2, `c6579eecb9da57a91090174b9a414750a3e3ef4f`, `frontend/public/models/caelis-garden-outfit-v1.glb`. The model, identity and materials are unchanged; the original website Blender camera/light setup renders its idle pose, then WebP derivatives are resized/compressed. The small Bot mark is the existing owner-selected logo. Asset license and upstream attribution remain in `public/assets/bot/`.
+The website hero pairs an explicitly labelled fictional result with a small studio render of the public released character, not a product screenshot. Source: `caelis-labs/caelis-bot`, v0.15.2, `c6579eecb9da57a91090174b9a414750a3e3ef4f`, `frontend/public/models/caelis-garden-outfit-v1.glb`. The model, identity and materials are unchanged; the original website Blender camera/light setup renders its idle pose, then WebP derivatives are resized/compressed. The small Bot mark is the existing owner-selected logo. Asset license and upstream attribution remain in `public/assets/bot/`.
 
 ## V3 film candidate
 
@@ -15,3 +15,7 @@ The film uses the same released character GLB, the existing celebrate clip in th
 ## Responsive player contract
 
 Each locale has a desktop `base` and optional `mobileBase`. A separate mobile composition is selected only when opening the player at <=640px. Matching poster/VTT follow the same base; resizing does not interrupt playback. Native captions default off to avoid doubling embedded editorial titles. The page's play control sits below the poster so it cannot cover result text. Native fullscreen is attempted; if the browser declines, a reversible viewport-expanded view remains usable. This fallback is not proof of real iOS/Android fullscreen.
+
+## Character composition constraint
+
+The existing character image bytes and source GLB remain unchanged. CSS keeps a complete, proportionate small companion: no enlarged hands, stretched anatomy, new rig pose or portrait crop. The hero gives visual priority to an example result; the companion section uses a small full-body image. The current rejected V3 posters and final brand scene still need video-worker revisions to avoid enlarged spread-arm views. Final revised media acceptance must include this user requirement alongside the two outstanding film defects.

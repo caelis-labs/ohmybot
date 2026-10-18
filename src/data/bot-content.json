@@ -162,7 +162,8 @@
     "filmTitle": "See it come together.",
     "filmNote": "A creative look at notes, screen questions and work in progress.",
     "captions": "Subtitles",
-    "fullscreen": "Fullscreen"
+    "fullscreen": "Fullscreen",
+    "heroExampleLabel": "Example result"
   },
   "zh-cn": {
     "pageDescription": "认识 Caelis Bot，你的个人 AI 桌面伙伴。一起聊问题、处理文件、完成日常小事，支持 macOS 与 Windows。",
@@ -327,6 +328,7 @@
     "filmTitle": "看看，小事怎样变轻松。",
     "filmNote": "用一支创意短片，看看笔记、屏幕提问和后台任务。",
     "captions": "字幕",
-    "fullscreen": "全屏"
+    "fullscreen": "全屏",
+    "heroExampleLabel": "成果示意"
   }
 }
