@@ -90,15 +90,28 @@ fullscreenToggle?.addEventListener('click', async () => {
   }
 });
 document.addEventListener('fullscreenchange', () => fullscreenToggle?.setAttribute('aria-pressed', String(Boolean(document.fullscreenElement))));
-openFilm?.addEventListener('click', () => {
+const selectFilmSource = () => {
   if (!film) return;
-  const base = matchMedia('(max-width: 640px)').matches && film.dataset.mobileBase ? film.dataset.mobileBase : film.dataset.desktopBase;
+  const mobile = matchMedia('(max-width: 640px)').matches && Boolean(film.dataset.mobileBase);
+  const base = mobile ? film.dataset.mobileBase : film.dataset.desktopBase;
+  if (dialog) dialog.dataset.layout = mobile ? 'mobile' : 'desktop';
   if (base && film.querySelector('source')?.getAttribute('src') !== `${base}.mp4`) {
     film.querySelector('source')?.setAttribute('src', `${base}.mp4`);
     film.querySelector('track')?.setAttribute('src', `${base}.vtt`);
     film.poster = `${base}.webp`;
+    film.width = mobile ? Number(film.dataset.mobileWidth) : 1920;
+    film.height = mobile ? Number(film.dataset.mobileHeight) : 1080;
+    captionToggle?.setAttribute('aria-pressed', 'false');
+    for (const track of film.textTracks) track.mode = 'disabled';
     film.load();
   }
+};
+// Initialize the matching poster/source with preload=none. A new
+// opening may reselect; there is deliberately no resize/media-change listener.
+selectFilmSource();
+openFilm?.addEventListener('click', () => {
+  if (!film) return;
+  selectFilmSource();
   dialog?.showModal(); film.play().catch(() => {});
 });
 dialog?.querySelector('[data-close-film]')?.addEventListener('click', () => dialog.close());

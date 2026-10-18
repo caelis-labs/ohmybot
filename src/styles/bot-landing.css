@@ -28,3 +28,17 @@ h2{font-size:clamp(36px,4.3vw,58px);font-weight:550;letter-spacing:-.055em;line-
 .hero-description{text-wrap:balance}.result-sheet li{font-size:14px}.presence-features p{font-size:13px}.faq-list details>p{font-size:14px}.platform-note{font-size:11px}
 @media(max-width:640px){.hero-description{font-size:14px}.input-note{font-size:12px}.result-sheet li{font-size:13px}.presence-features p,.faq-list details>p{font-size:13px}.platform-note{font-size:10px}}
 :lang(zh-CN) .hero-description{white-space:pre-line;text-wrap:wrap}.workflow-tabs button{white-space:nowrap}
+/* Preserve the authored portrait composition, including when the viewport
+   changes during playback. Reserve vertical room for close/caption controls. */
+.film-dialog[data-layout=mobile]:not(.is-expanded){width:min(600px,calc(100vw - 40px),calc((100dvh - 210px)*.8))}
+.film-dialog video{height:auto}
+.film-dialog[data-layout=mobile] video{aspect-ratio:4/5;object-fit:contain}
+.film-dialog[data-layout=mobile]:not(.is-expanded) video{max-height:none}
+.film-dialog[data-layout=mobile].is-expanded video,.film-dialog[data-layout=mobile] .film-stage:fullscreen video{width:min(100%,calc((100dvh - 148px)*.8));margin-inline:auto}
+
+/* Independent review N1: readable supporting copy and sample actions at all
+   breakpoints. Let long lines wrap rather than reducing the type size. */
+.example-label{font-size:12px;line-height:1.5;letter-spacing:.04em}
+.result-footer{font-size:12px;line-height:1.7}
+.workflow-disclosure{font-size:12px;line-height:1.7;margin-top:18px}
+.result-action{font-size:14px;line-height:1.5;padding-block:8px;min-height:44px}

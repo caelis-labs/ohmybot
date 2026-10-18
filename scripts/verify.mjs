@@ -48,24 +48,29 @@ for (const lang of ['en', 'zh-cn']) {
   assert.ok(html.includes(`weekend-plan-${lang}.md`) && html.includes(`writing-notes-${lang}.md`));
   if (media.ready) {
     assert.ok(media.sourceVersion && media.duration > 0 && media.duration <= 60 && media[lang].description, 'Reviewed film provenance');
-    const base = media[lang].base.slice(1);
+    assert.ok(media[lang].mobileBase, 'Phone cut is required for this film');
+    assert.equal(media.mobileWidth / media.mobileHeight, 4 / 5, 'Authored phone aspect');
+    assert.ok(html.includes(`srcset="${media[lang].mobileBase}.webp"`) && html.includes('media="(max-width: 640px)"'), 'Responsive phone poster');
     const video = html.match(/<video\b[^>]*>/)?.[0] || '';
     for (const attribute of ['controls', 'muted', 'playsinline']) assert.match(video, new RegExp(`\\b${attribute}\\b`));
     assert.ok(!video.includes('autoplay'), 'Film starts on user request');
     assert.ok(video.includes('preload="none"') && video.includes(`poster="${media[lang].base}.webp"`));
     const track = html.match(/<track\b[^>]*>/)?.[0] || '';
     assert.ok(track.includes(`src="${media[lang].base}.vtt"`) && track.includes(`srclang="${lang === 'en' ? 'en' : 'zh-CN'}"`));
-    for (const extension of ['mp4', 'webp', 'vtt']) {
-      const asset = `${base}.${extension}`;
-      assert.equal(createHash('sha256').update(await readFile(path.join(dist, asset))).digest('hex'), media.sha256[path.basename(asset)], `Reviewed media changed: ${asset}`);
+    for (const publicBase of [media[lang].base, media[lang].mobileBase]) {
+      const base = publicBase.slice(1);
+      for (const extension of ['mp4', 'webp', 'vtt']) {
+        const asset = `${base}.${extension}`;
+        assert.equal(createHash('sha256').update(await readFile(path.join(dist, asset))).digest('hex'), media.sha256[path.basename(asset)], `Reviewed media changed: ${asset}`);
+      }
+      assert.ok((await stat(path.join(dist, `${base}.mp4`))).size < 15_000_000, 'Film exceeds 15 MB');
+      assert.ok((await readFile(path.join(dist, `${base}.vtt`), 'utf8')).startsWith('WEBVTT'));
     }
-    assert.ok((await stat(path.join(dist, `${base}.mp4`))).size < 15_000_000, 'Film exceeds 15 MB');
-    assert.ok((await readFile(path.join(dist, `${base}.vtt`), 'utf8')).startsWith('WEBVTT'));
   } else {
     assert.ok(!html.includes('<video') && !/<button[^>]*data-open-film/.test(html), 'No empty film frame while creative V2 is pending');
   }
 }
-for(const file of files) assert.ok(!/caelis-bot-(current|demo)/.test(file), `Obsolete film: ${file}`);
+for(const file of files) assert.ok(!/caelis-bot-(current|demo|film-v2)/.test(file), `Obsolete film: ${file}`);
 for(const width of [600,1000]) assert.ok((await stat(path.join(dist,`assets/bot/companion-${width}.webp`))).size < 160_000, 'Character image budget');
 const js = [...files].filter(file=>file.endsWith('.js'));
 const scriptBytes = (await Promise.all(js.map(file=>stat(path.join(dist,file))))).reduce((sum,file)=>sum+file.size,0) + largestInlineScriptBytes;
