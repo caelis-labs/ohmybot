@@ -150,7 +150,7 @@
     ],
     "downloadText": "Bring your own intelligence. Make it your own.",
     "mac": "Download for macOS",
-    "windows": "Windows downloads",
+    "windows": "Windows Setup.exe",
     "macNote": "Apple Silicon",
     "winNote": "Windows x64",
     "downloadHelp": "Installation & checksums",
@@ -163,7 +163,12 @@
     "filmNote": "A creative look at notes, screen questions and work in progress.",
     "captions": "Subtitles",
     "fullscreen": "Fullscreen",
-    "heroExampleLabel": "Example result"
+    "heroExampleLabel": "Example result",
+    "windowsZip": "Windows ZIP",
+    "zipNote": "Portable",
+    "otherPlatforms": "Other platforms",
+    "choosePlatform": "Choose your platform",
+    "desktopOnly": "Install on a macOS or Windows computer."
   },
   "zh-cn": {
     "pageDescription": "认识 CaelisBot，你的个人 AI 桌面伙伴。一起聊问题、处理文件、完成日常小事，支持 macOS 与 Windows。",
@@ -316,7 +321,7 @@
     ],
     "downloadText": "连接你选择的智能，成为你的伙伴。",
     "mac": "下载 macOS 版",
-    "windows": "Windows 下载",
+    "windows": "Windows 安装版 · Setup.exe",
     "macNote": "Apple Silicon",
     "winNote": "Windows x64",
     "downloadHelp": "安装与文件校验",
@@ -329,6 +334,11 @@
     "filmNote": "用一支创意短片，看看笔记、屏幕提问和后台任务。",
     "captions": "字幕",
     "fullscreen": "全屏",
-    "heroExampleLabel": "成果示意"
+    "heroExampleLabel": "成果示意",
+    "windowsZip": "Windows 免安装版 · ZIP",
+    "zipNote": "解压即用",
+    "otherPlatforms": "其他平台下载",
+    "choosePlatform": "选择下载平台",
+    "desktopOnly": "请在 macOS 或 Windows 电脑上安装。"
   }
 }

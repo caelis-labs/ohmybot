@@ -25,7 +25,8 @@ for (const lang of ['en', 'zh-cn']) {
   assert.equal((html.match(/<h1(?:\s|>)/g) || []).length, 1, `${route}: H1`);
   assert.ok(html.includes(`href="https://ohmybot.si${route}"`), `${route}: canonical`);
   assert.ok(html.includes('https://caelis.dev/download/caelis-bot/'), `${route}: macOS download`);
-  assert.ok(html.includes('https://github.com/caelis-labs/caelis-bot/releases/latest'), `${route}: Windows downloads`);
+  for (const format of ['setup', 'zip']) assert.ok(html.includes(`href="/download/windows/${format}/"`), `${route}: Windows ${format}`);
+  assert.ok(!html.includes('href="https://github.com/caelis-labs/caelis-bot/releases/latest"'), `${route}: no default GitHub Windows download`);
   assert.ok(html.includes(`https://caelis.dev${lang === 'en' ? '' : '/zh-cn'}/docs/caelis-bot/installation/`), `${route}: localized guide`);
   assert.ok(html.includes('Authenticode') && html.includes('WebView2'), `${route}: platform requirements in FAQ`);
   assert.ok(!/Caelis App|caelis-app|data-media-pending|caelis-bot-current|caelis-bot-demo/.test(html), `${route}: no obsolete content or video placeholder`);
@@ -35,6 +36,7 @@ for (const lang of ['en', 'zh-cn']) {
     const url = new URL(raw, `https://ohmybot.si${route}`);
     if (url.origin !== 'https://ohmybot.si') continue;
     const target = decodeURIComponent(url.pathname);
+    if (['/download/windows/setup/', '/download/windows/zip/'].includes(target)) continue;
     const file = target.endsWith('/') ? target + 'index.html' : target;
     assert.ok(files.has(file), `${route}: missing ${attr} ${raw}`);
     if (url.hash && target === route) assert.ok(ids.has(url.hash.slice(1)), `${route}: missing fragment ${raw}`);
@@ -44,7 +46,7 @@ for (const lang of ['en', 'zh-cn']) {
     assert.ok(ids.has(`tab-${name}`) && ids.has(`example-${name}`), `${route}: workflow ${name}`);
   }
   assert.equal((html.match(/role="tabpanel"/g)||[]).length, 3);
-  assert.equal((html.match(/<details(?:\s|>)/g)||[]).length, 6);
+  assert.equal((html.match(/<section class="faq[\s\S]*?<\/section>/)?.[0].match(/<details(?:\s|>)/g)||[]).length, 6);
   assert.ok(html.includes(`weekend-plan-${lang}.md`) && html.includes(`writing-notes-${lang}.md`));
   if (media.ready) {
     assert.ok(media.sourceVersion && media.duration > 0 && media.duration <= 60 && media[lang].description, 'Reviewed film provenance');
