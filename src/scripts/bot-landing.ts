@@ -1,21 +1,33 @@
 import { detectDownloadPlatform } from './download-platform.mjs';
 
 const downloadPlatform = detectDownloadPlatform(navigator);
-const preferredDownloads = document.querySelector<HTMLElement>('[data-preferred-download]');
-const allPlatforms = document.querySelector<HTMLDetailsElement>('[data-download-platforms]');
-if (preferredDownloads && allPlatforms) {
-  const matches = allPlatforms.querySelectorAll<HTMLElement>(`[data-download-platform="${downloadPlatform}"]`);
-  if (matches.length) {
-    matches.forEach(item => preferredDownloads.append(item));
-    preferredDownloads.hidden = false;
-    const mainButton = preferredDownloads.querySelector('a');
-    mainButton?.classList.replace('secondary', 'primary');
-    const summary = allPlatforms.querySelector('summary');
-    if (summary?.dataset.otherLabel) summary.textContent = summary.dataset.otherLabel;
-  } else {
-    const note = document.querySelector<HTMLElement>('[data-download-device-note]');
-    if (note) note.hidden = false;
-  }
+const downloadTabs = document.querySelector<HTMLElement>('[data-download-tabs]');
+const platformTabs = [...document.querySelectorAll<HTMLButtonElement>('[data-download-tab]')];
+const platformPanels = [...document.querySelectorAll<HTMLElement>('[data-download-panel]')];
+const chooseHint = document.querySelector<HTMLElement>('[data-download-choose]');
+const selectDownload = (platform: string, focus = false) => {
+  platformTabs.forEach((tab, index) => {
+    const active = tab.dataset.downloadTab === platform;
+    tab.setAttribute('aria-selected', String(active));
+    tab.tabIndex = active || (platform === '' && index === 0) ? 0 : -1;
+    if (active && focus) tab.focus();
+  });
+  platformPanels.forEach(panel => { panel.hidden = panel.dataset.downloadPanel !== platform; });
+  if (chooseHint) chooseHint.hidden = platform !== '';
+};
+if (downloadTabs) {
+  downloadTabs.hidden = false;
+  selectDownload(downloadPlatform === 'mac' || downloadPlatform === 'windows' ? downloadPlatform : '');
+  platformTabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => selectDownload(tab.dataset.downloadTab || ''));
+    tab.addEventListener('keydown', event => {
+      const next = event.key === 'ArrowRight' ? (index + 1) % platformTabs.length
+        : event.key === 'ArrowLeft' ? (index + platformTabs.length - 1) % platformTabs.length
+        : event.key === 'Home' ? 0 : event.key === 'End' ? platformTabs.length - 1 : -1;
+      if (next < 0) return;
+      event.preventDefault(); selectDownload(platformTabs[next].dataset.downloadTab || '', true);
+    });
+  });
 }
 
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');

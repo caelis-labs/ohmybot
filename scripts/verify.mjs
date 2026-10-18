@@ -45,7 +45,7 @@ for (const lang of ['en', 'zh-cn']) {
   for (const name of ['plan','note','reminder']) {
     assert.ok(ids.has(`tab-${name}`) && ids.has(`example-${name}`), `${route}: workflow ${name}`);
   }
-  assert.equal((html.match(/role="tabpanel"/g)||[]).length, 3);
+  assert.equal((html.match(/role="tabpanel"/g)||[]).length, 5);
   assert.equal((html.match(/<section class="faq[\s\S]*?<\/section>/)?.[0].match(/<details(?:\s|>)/g)||[]).length, 6);
   assert.ok(html.includes(`weekend-plan-${lang}.md`) && html.includes(`writing-notes-${lang}.md`));
   if (media.ready) {
