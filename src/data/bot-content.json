@@ -143,16 +143,6 @@
       ]
     ],
     "guide": "Read the setup guide",
-    "downloadEyebrow": "A LITTLE COMPANY. A LITTLE LESS TO DO.",
-    "downloadTitle": [
-      "Make room",
-      "for CaelisBot."
-    ],
-    "downloadText": "Bring your own intelligence. Make it your own.",
-    "mac": "Download for macOS",
-    "windows": "Windows Setup.exe",
-    "macNote": "Apple Silicon",
-    "winNote": "Windows x64",
     "downloadHelp": "Installation & checksums",
     "footerNote": "Code is open source. Character assets have their own license.",
     "filmLabel": "Watch the product film",
@@ -164,11 +154,16 @@
     "captions": "Subtitles",
     "fullscreen": "Fullscreen",
     "heroExampleLabel": "Example result",
-    "windowsZip": "Windows ZIP",
-    "zipNote": "Portable",
-    "otherPlatforms": "Other platforms",
-    "choosePlatform": "Choose your platform",
-    "desktopOnly": "Install on a macOS or Windows computer."
+    "downloadHeading": "Download CaelisBot",
+    "downloadPlatformLabel": "Choose a platform",
+    "downloadMac": "Download for Apple Silicon",
+    "downloadSetup": "Download installer",
+    "downloadZip": "Download portable ZIP",
+    "minimumRequirements": "Minimum requirements",
+    "macRequirements": "macOS 12 or later · Apple Silicon",
+    "macComputerUse": "Computer Use requires macOS 14 or later.",
+    "windowsRequirements": "Windows 10 22H2 or later · x64 · WebView2",
+    "downloadChooseHint": "Choose a platform to download the desktop app."
   },
   "zh-cn": {
     "pageDescription": "认识 CaelisBot，你的个人 AI 桌面伙伴。一起聊问题、处理文件、完成日常小事，支持 macOS 与 Windows。",
@@ -314,16 +309,6 @@
       ]
     ],
     "guide": "阅读开始使用指南",
-    "downloadEyebrow": "多一个伙伴，少一点琐事",
-    "downloadTitle": [
-      "给 CaelisBot，",
-      "留个位置。"
-    ],
-    "downloadText": "连接你选择的智能，成为你的伙伴。",
-    "mac": "下载 macOS 版",
-    "windows": "Windows 安装版 · Setup.exe",
-    "macNote": "Apple Silicon",
-    "winNote": "Windows x64",
     "downloadHelp": "安装与文件校验",
     "footerNote": "代码开源。角色资产适用独立许可。",
     "filmLabel": "观看功能短片",
@@ -335,10 +320,15 @@
     "captions": "字幕",
     "fullscreen": "全屏",
     "heroExampleLabel": "成果示意",
-    "windowsZip": "Windows 免安装版 · ZIP",
-    "zipNote": "解压即用",
-    "otherPlatforms": "其他平台下载",
-    "choosePlatform": "选择下载平台",
-    "desktopOnly": "请在 macOS 或 Windows 电脑上安装。"
+    "downloadHeading": "下载 CaelisBot",
+    "downloadPlatformLabel": "选择平台",
+    "downloadMac": "下载 Apple Silicon 版",
+    "downloadSetup": "下载安装版",
+    "downloadZip": "下载免安装版",
+    "minimumRequirements": "最低系统要求",
+    "macRequirements": "macOS 12 或更高版本 · Apple Silicon",
+    "macComputerUse": "电脑操作功能需要 macOS 14 或更高版本。",
+    "windowsRequirements": "Windows 10 22H2 或更高版本 · x64 · WebView2",
+    "downloadChooseHint": "选择平台，下载桌面版。"
   }
 }
