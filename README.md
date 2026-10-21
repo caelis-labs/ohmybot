@@ -18,15 +18,15 @@ npm run dev
 
 The 2026-10-18 redesign uses an open, warm canvas, a result-led hero, the released Caelis artwork at small companion scale, concise bilingual copy, and three interactive input-to-result examples. The examples are explicitly illustrative, and their downloadable Markdown files are fictional public samples. They are not live inference or screenshots of the app. Model, platform and privacy details are in the expandable FAQ and linked guides.
 
-`src/data/bot-content.json` owns both languages. Claims are checked against published Bot **v0.15.2** (`c6579eecb9da57a91090174b9a414750a3e3ef4f`). A later main commit is not a release. macOS Apple Silicon and Windows x64 are published; Windows is unsigned. Do not advertise POCs, plans or unverified platform parity.
+`src/data/bot-content.json` owns both languages. Installation and platform claims are checked against published Bot **v0.18.1** (`1acfd0b9ecc50a9270ce321e90365b152221491a`). A later main commit is not a release. macOS Apple Silicon and Windows x64 desktop packages and Linux amd64/arm64 Headless/Web packages are published; Windows is unsigned. Do not advertise POCs, plans or unverified platform parity.
 
 `BotLanding.astro`, `bot-landing.css` and `bot-landing.ts` own presentation and interaction. Tabs have arrow/Home/End keyboard behavior; FAQ uses native details; theme selection persists when storage is available. Hero/reveal/tab animation is short and respects reduced motion. No autoplay film, third-party requests, analytics or WebGL runtime is needed.
 
 ## Artwork and optional film
 
-The transparent character image is rendered from the unmodified, publicly shipped `caelis-garden-outfit-v1.glb` at the release SHA above. It is artwork, not a product screenshot. See `public/assets/bot/PROVENANCE.md`, `ATTRIBUTION.md` and `LICENSE.md` for provenance and original asset terms. The logo is the existing owner-selected Bot mark. The hero and companion section show the complete unchanged artwork at a small scale, without portrait cropping or enlarged hands. This is a composition change, not a model/pose repair. No user chats or credentials are included.
+The transparent character image is rendered from the unmodified, publicly shipped `caelis-garden-outfit-v1.glb` at Bot v0.15.2 (`c6579eecb9da57a91090174b9a414750a3e3ef4f`). It is artwork, not a product screenshot. See `public/assets/bot/PROVENANCE.md`, `ATTRIBUTION.md` and `LICENSE.md` for provenance and original asset terms. The logo is the existing owner-selected Bot mark. The hero and companion section show the complete unchanged artwork at a small scale, without portrait cropping or enlarged hands. This is a composition change, not a model/pose repair. No user chats or credentials are included.
 
-The previous slideshow and 56-second recording were removed from the public bundle as part of the authorized V2 redesign. The separately produced V3.1 candidate film is integrated in English and Chinese: four 48-second, 30fps silent H.264 files, with 1920×1080 desktop and independently composed 1080×1350 phone cuts. It combines released character rendering with authored illustrative workflows; it is not a native recording. `src/data/bot-media.json` records provenance and the twelve exact asset hashes. **Media remains a local candidate, with the delivered CaelisBot branding and smaller, relaxed-arm character composition. The coordinator relayed the video reviewer’s updated assessment: the earlier brief text ghosting and mobile card-edge overflow are nonblocking suggestions, not standalone release blockers. The twelve revised delivery hashes are verified; independent final-media acceptance remains pending; integration is not permission to publish.** The page also works independently of it.
+The previous slideshow and 56-second recording were removed from the public bundle as part of the authorized V2 redesign. The separately produced V3.1 candidate film is integrated in English and Chinese: four 48-second, 30fps silent H.264 files, with 1920×1080 desktop and independently composed 1080×1350 phone cuts. It combines released character rendering with authored illustrative workflows; it is not a native recording. `src/data/bot-media.json` records provenance and the twelve exact asset hashes. The V3.1 film passed independent media and website integration review on 2026-10-18 and was deployed unchanged. This release-information update does not alter its bytes or provenance. The page also works independently of it.
 
 For an approved replacement delivery, set `ready`, duration (maximum 60 seconds), source version, localized MP4/WebP/VTT bases/descriptions and file SHA-256 values. The explicit-play dialog uses native controls, muted inline playback, localized captions and native fullscreen with a reversible viewport-expanded fallback when the browser denies it. Optional `mobileBase` selects a separately composed mobile cut on opening at <=640px, with a corresponding poster and VTT; no mid-play resizing swaps the source. Test both languages on actual integrated pages before accepting the assets. Physical iOS/Android fullscreen needs separate device verification.
 
@@ -37,7 +37,7 @@ For an approved replacement delivery, set `ready`, duration (maximum 60 seconds)
 - Build: `npm run build`, output: `dist`
 - Domains: `ohmybot.si`, `www.ohmybot.si`
 
-GitHub Actions builds pushes and PRs without a publishing step. Git-connected Cloudflare Pages can deploy independently. Live branch deployment rules must be verified before any push. This work remains local; no domain, Pages account or production settings were changed.
+GitHub Actions builds pushes and PRs without a publishing step. Git-connected Cloudflare Pages can deploy independently. Live branch deployment rules must be verified before any push. Production follows the existing main-branch Cloudflare flow; no domain, account or build-setting changes are required.
 
 ## License
 
@@ -46,3 +46,9 @@ Code inherits Apache-2.0 from the original website. Character artwork and media 
 ## Windows downloads
 
 Run `node --test scripts/windows-download.test.mjs` for resolver checks. `public/_routes.json` limits Functions to the download routes; the marketing pages remain static. The resolver is served by Pages, not Astro’s static preview. GitHub remains the release history/backup source. Invalid or unavailable R2 metadata returns a retryable error instead of silently selecting a different package. Publish Windows with `publish_updates=true` so both Setup and ZIP receive the signed update manifest.
+
+## Linux downloads
+
+The Linux / WSL tab keeps the existing platform-selection behavior and links the official `https://releases.caelis.dev/caelis-bot/install.sh` bootstrap. `/download/linux/amd64/` and `/download/linux/arm64/` resolve the corresponding stable public install index, with `?asset=checksum` for the inventory. Routes validate identity, architecture and the exact allowlisted file name; unavailable or invalid metadata returns 503. Signature verification is performed by the official installer, not this redirect. The published package includes Core 0.73.1; Linux does not expose Desktop World, a desktop character or Web terminals.
+
+Run `npm run verify` after building for platform detection plus Windows and Linux resolver tests. The Linux panel reuses the existing design, with a selectable/copyable command and localized guide links. No video or artwork is changed.

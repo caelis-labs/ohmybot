@@ -9,6 +9,7 @@ const c = content[lang]; const zh = lang === 'zh-cn';
 const guide = `https://caelis.dev${zh ? '/zh-cn' : ''}/docs/caelis-bot/`;
 const film = media[lang];
 const heroResult = c.workflows[0];
+const linuxInstall = 'curl -fsSL https://releases.caelis.dev/caelis-bot/install.sh | sh';
 ---
 <SiteLayout lang={lang} title="CaelisBot" description={c.pageDescription}>
   <section class="bot-hero" id="top" aria-labelledby="hero-title">
@@ -60,9 +61,11 @@ const heroResult = c.workflows[0];
   <section class="download-section" id="download" aria-labelledby="download-title">
     <div class="wrap download-inner">
       <h2 id="download-title">{c.downloadHeading}</h2>
+      <a class="download-release" href="https://github.com/caelis-labs/caelis-bot/releases/tag/v0.18.1">{c.releaseLabel}</a>
       <div class="download-tabs" role="tablist" aria-label={c.downloadPlatformLabel} data-download-tabs hidden>
         <button id="download-tab-mac" role="tab" aria-controls="download-panel-mac" aria-selected="false" data-download-tab="mac">macOS</button>
         <button id="download-tab-windows" role="tab" aria-controls="download-panel-windows" aria-selected="false" data-download-tab="windows">Windows</button>
+        <button id="download-tab-linux" role="tab" aria-controls="download-panel-linux" aria-selected="false" data-download-tab="linux">{c.linuxLabel}</button>
       </div>
       <p class="download-choose-hint" data-download-choose hidden>{c.downloadChooseHint}</p>
       <div class="download-panel" id="download-panel-mac" role="tabpanel" aria-labelledby="download-tab-mac" data-download-panel="mac">
@@ -74,6 +77,15 @@ const heroResult = c.workflows[0];
         <h3>CaelisBot <span>Windows</span></h3>
         <div class="download-actions"><a class="button primary" href="/download/windows/setup/">{c.downloadSetup}<span class="download-format">.exe</span><Icon name="download" size={18}/></a><a class="button secondary" href="/download/windows/zip/">{c.downloadZip}<span class="download-format">.zip</span><Icon name="download" size={18}/></a></div>
         <div class="download-requirements"><h4>{c.minimumRequirements}</h4><p>{c.windowsRequirements}</p></div>
+      </div>
+      <div class="download-panel" id="download-panel-linux" role="tabpanel" aria-labelledby="download-tab-linux" data-download-panel="linux">
+        <h3>CaelisBot <span>Headless / Web</span></h3>
+        <p class="linux-summary">{c.linuxSummary}</p>
+        <div class="linux-install"><p>{c.linuxInstall}</p><div class="linux-command"><code>{linuxInstall}</code><button type="button" data-copy-install data-command={linuxInstall} data-copied={c.copiedInstall}>{c.copyInstall}</button></div><span class="copy-status" role="status" data-copy-status></span></div>
+        <p class="linux-open">{c.linuxAfterInstall}</p>
+        <a class="quiet-link linux-guide" href={`${guide}linux/`}>{c.linuxGuide}<Icon name="arrow" size={16}/></a>
+        <div class="linux-packages"><span>{c.linuxPackages}</span><a href="/download/linux/amd64/">amd64 <span>.tar.gz</span><Icon name="download" size={16}/></a><a href="/download/linux/arm64/">arm64 <span>.tar.gz</span><Icon name="download" size={16}/></a></div>
+        <div class="download-requirements"><h4>{c.minimumRequirements}</h4><p>{c.linuxRequirements}</p><p class="download-extra">{c.linuxBoundary}</p></div>
       </div>
       <a class="quiet-link download-guide" href={`${guide}installation/`}>{c.downloadHelp}<Icon name="arrow" size={16}/></a>
     </div>
