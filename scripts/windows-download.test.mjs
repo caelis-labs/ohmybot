@@ -42,7 +42,7 @@ test('platform selection distinguishes desktop, mobile and unknown devices',()=>
     [{userAgent:'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)',platform:'MacIntel',maxTouchPoints:5},'mobile'],
     [{userAgent:'Mozilla/5.0 (iPhone; CPU iPhone OS)',platform:'iPhone'},'mobile'],
     [{userAgent:'Mozilla/5.0 (Linux; Android 14)',platform:'Linux arm'},'mobile'],
-    [{userAgent:'Mozilla/5.0 (X11; Linux x86_64)',platform:'Linux x86_64'},'other'],
+    [{userAgent:'Mozilla/5.0 (X11; Linux x86_64)',platform:'Linux x86_64'},'linux'],
     [{},'other'],
   ]) assert.equal(detectDownloadPlatform(input),expected);
 });

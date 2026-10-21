@@ -3,5 +3,6 @@ export function detectDownloadPlatform({userAgent = '', platform = '', maxTouchP
   if (/Android|iPhone|iPad|iPod/i.test(userAgent) || (/Mac/i.test(platform) && maxTouchPoints > 1)) return 'mobile';
   if (/Windows/i.test(userAgent) || /^Win/i.test(platform)) return 'windows';
   if (/Macintosh|Mac OS X/i.test(userAgent) || /^Mac/i.test(platform)) return 'mac';
+  if (/Linux/i.test(userAgent) || /^Linux/i.test(platform)) return 'linux';
   return 'other';
 }

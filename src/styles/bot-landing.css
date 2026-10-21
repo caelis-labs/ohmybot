@@ -86,3 +86,20 @@ h2{font-size:clamp(36px,4.3vw,58px);font-weight:550;letter-spacing:-.055em;line-
 .download-choose-hint{padding:30px 0 4px;color:var(--muted);font-size:14px}
 .download-tabs[hidden],.download-panel[hidden],.download-choose-hint[hidden]{display:none}
 @media(max-width:640px){.download-section{padding:56px 0 48px}.download-inner h2{font-size:38px}.download-tabs{margin-top:28px;padding-bottom:23px}.download-tabs button{font-size:14px;min-width:120px}.download-panel{padding-top:28px;min-height:290px}.download-panel h3{font-size:25px}.download-actions{gap:12px;margin-top:24px}.download-actions .button{width:100%;min-height:50px}.download-requirements{font-size:12px;margin-top:24px}.download-guide{margin-top:18px}}
+
+/* Keep the published download composition; let three platforms wrap without tiny labels. */
+.download-release{display:inline-block;margin-top:14px;font-size:14px;color:var(--muted);text-underline-offset:4px}
+.download-tabs{flex-wrap:wrap}
+.linux-summary,.linux-open{font-size:14px;line-height:1.7;color:var(--muted);max-width:650px;margin:14px 0}
+.linux-install{margin-top:24px;max-width:800px}
+.linux-install>p{font-size:14px;font-weight:550;margin:0 0 10px}
+.linux-command{display:flex;align-items:center;gap:20px;padding:18px 20px;background:var(--stage);border:1px solid var(--line);border-radius:12px}
+.linux-command code{font-family:"IBM Plex Mono",monospace;font-size:14px;line-height:1.8;overflow-wrap:anywhere;min-width:0;flex:1}
+.linux-command button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:10px 14px;min-height:44px;cursor:pointer;flex-shrink:0}
+.copy-status{display:block;font-size:13px;color:var(--muted);min-height:20px;margin-top:4px}
+.linux-guide{font-size:14px}.linux-packages{display:flex;align-items:center;flex-wrap:wrap;gap:12px 24px;margin-top:26px;font-size:14px}
+.linux-packages>span{color:var(--muted)}.linux-packages a{display:inline-flex;align-items:center;gap:9px;min-height:44px;text-underline-offset:5px}
+.download-panel h3{flex-wrap:wrap}.download-requirements,.download-requirements h4,.download-requirements .download-extra,.download-guide{font-size:14px}
+@media(max-width:640px){.download-tabs{gap:8px}.download-tabs button{min-width:0;padding:10px 12px;flex:1;white-space:nowrap}.linux-command{align-items:flex-start;flex-direction:column;gap:14px;padding:16px}.linux-command button{align-self:flex-end}.linux-packages{gap:8px 18px}.linux-packages>span{width:100%}}
+
+.platform-note{font-size:12px;line-height:1.7}

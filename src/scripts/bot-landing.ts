@@ -17,7 +17,7 @@ const selectDownload = (platform: string, focus = false) => {
 };
 if (downloadTabs) {
   downloadTabs.hidden = false;
-  selectDownload(downloadPlatform === 'mac' || downloadPlatform === 'windows' ? downloadPlatform : '');
+  selectDownload(['mac', 'windows', 'linux'].includes(downloadPlatform) ? downloadPlatform : '');
   platformTabs.forEach((tab, index) => {
     tab.addEventListener('click', () => selectDownload(tab.dataset.downloadTab || ''));
     tab.addEventListener('keydown', event => {
@@ -29,6 +29,15 @@ if (downloadTabs) {
     });
   });
 }
+
+document.querySelector<HTMLButtonElement>('[data-copy-install]')?.addEventListener('click', async event => {
+  const button = event.currentTarget as HTMLButtonElement;
+  try {
+    await navigator.clipboard.writeText(button.dataset.command || '');
+    const status = document.querySelector<HTMLElement>('[data-copy-status]');
+    if (status) status.textContent = button.dataset.copied || '';
+  } catch { /* The full command remains selectable if clipboard access is unavailable. */ }
+});
 
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 

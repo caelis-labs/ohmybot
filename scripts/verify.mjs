@@ -28,6 +28,8 @@ for (const lang of ['en', 'zh-cn']) {
   for (const format of ['setup', 'zip']) assert.ok(html.includes(`href="/download/windows/${format}/"`), `${route}: Windows ${format}`);
   assert.ok(!html.includes('href="https://github.com/caelis-labs/caelis-bot/releases/latest"'), `${route}: no default GitHub Windows download`);
   assert.ok(html.includes(`https://caelis.dev${lang === 'en' ? '' : '/zh-cn'}/docs/caelis-bot/installation/`), `${route}: localized guide`);
+  for (const arch of ['amd64','arm64']) assert.ok(html.includes(`href="/download/linux/${arch}/"`), `${route}: Linux ${arch}`);
+  assert.ok(html.includes('https://releases.caelis.dev/caelis-bot/install.sh') && html.includes('127.0.0.1:9317') && html.includes('systemd'), `${route}: official Linux setup`);
   assert.ok(html.includes('Authenticode') && html.includes('WebView2'), `${route}: platform requirements in FAQ`);
   assert.ok(!/Caelis App|caelis-app|data-media-pending|caelis-bot-current|caelis-bot-demo/.test(html), `${route}: no obsolete content or video placeholder`);
   const ids = new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]));
@@ -36,7 +38,7 @@ for (const lang of ['en', 'zh-cn']) {
     const url = new URL(raw, `https://ohmybot.si${route}`);
     if (url.origin !== 'https://ohmybot.si') continue;
     const target = decodeURIComponent(url.pathname);
-    if (['/download/windows/setup/', '/download/windows/zip/'].includes(target)) continue;
+    if (['/download/windows/setup/', '/download/windows/zip/', '/download/linux/amd64/', '/download/linux/arm64/'].includes(target)) continue;
     const file = target.endsWith('/') ? target + 'index.html' : target;
     assert.ok(files.has(file), `${route}: missing ${attr} ${raw}`);
     if (url.hash && target === route) assert.ok(ids.has(url.hash.slice(1)), `${route}: missing fragment ${raw}`);
@@ -45,7 +47,7 @@ for (const lang of ['en', 'zh-cn']) {
   for (const name of ['plan','note','reminder']) {
     assert.ok(ids.has(`tab-${name}`) && ids.has(`example-${name}`), `${route}: workflow ${name}`);
   }
-  assert.equal((html.match(/role="tabpanel"/g)||[]).length, 5);
+  assert.equal((html.match(/role="tabpanel"/g)||[]).length, 6);
   assert.equal((html.match(/<section class="faq[\s\S]*?<\/section>/)?.[0].match(/<details(?:\s|>)/g)||[]).length, 6);
   assert.ok(html.includes(`weekend-plan-${lang}.md`) && html.includes(`writing-notes-${lang}.md`));
   if (media.ready) {

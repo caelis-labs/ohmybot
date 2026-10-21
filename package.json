@@ -11,7 +11,7 @@
     "build": "astro build",
     "preview": "astro preview --host 127.0.0.1",
     "check": "astro check",
-    "verify": "node --test scripts/windows-download.test.mjs && node scripts/verify.mjs"
+    "verify": "node --test scripts/windows-download.test.mjs scripts/linux-download.test.mjs && node scripts/verify.mjs"
   },
   "dependencies": {
     "astro": "7.3.4",

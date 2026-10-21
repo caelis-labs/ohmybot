@@ -1,6 +1,6 @@
 {
   "en": {
-    "pageDescription": "Meet CaelisBot, your personal AI companion for questions, files and everyday tasks. Available for macOS and Windows.",
+    "pageDescription": "Meet CaelisBot, your personal AI companion for conversations, files and everyday tasks. Desktop apps for macOS and Windows; Headless/Web for Linux.",
     "navExplore": "What it does",
     "navFAQ": "Good to know",
     "navGet": "Get Bot",
@@ -12,7 +12,7 @@
     "intro": "Your personal AI companion. For the questions, files and little things that fill your day.",
     "get": "Get CaelisBot",
     "explore": "See what’s possible",
-    "platform": "Made for macOS & Windows",
+    "platform": "macOS & Windows desktop · Linux Web",
     "hello": "A little help? I’m here.",
     "heroCaption": "A familiar face. A helping hand.",
     "outcomeEyebrow": "FROM “COULD YOU…” TO “HERE YOU GO.”",
@@ -123,11 +123,11 @@
       ],
       [
         "Which computers can run it?",
-        "macOS on Apple Silicon, or Windows 10 22H2 x64 and later with Microsoft Edge WebView2. Windows packages are not Authenticode signed, so SmartScreen or organization policies may warn or block them. Linux desktop is not supported."
+        "Desktop apps support Apple Silicon Macs and Windows 10 22H2 x64 or later with WebView2. Windows packages are not Authenticode signed. Linux amd64/arm64 and WSL use the Headless/Web edition with systemd user services; they do not include the desktop character or Computer Use."
       ],
       [
         "Do I need a model account?",
-        "Yes, connect a supported model service or your local Codex installation. Caelis is included in the desktop packages. The app download does not include a paid model subscription; available models and costs depend on your service."
+        "Yes. Caelis is included in desktop and Linux packages; connect a model service or reuse an authenticated model. Codex is installed separately. Linux Web guides you through Install Codex and Sign in with ChatGPT. Model subscriptions and usage are separate."
       ],
       [
         "Are my chats entirely offline?",
@@ -139,7 +139,7 @@
       ],
       [
         "Can I hide the character?",
-        "Yes. Move, resize or hide it to suit your day. Closing chat or hiding the character keeps Bot running. Quitting the app pauses scheduled reminders until it is running again."
+        "On desktop, yes. Move, resize or hide it to suit your day. Closing chat or hiding the character keeps Bot running. Quitting the app pauses scheduled reminders until it is running again."
       ]
     ],
     "guide": "Read the setup guide",
@@ -163,10 +163,21 @@
     "macRequirements": "macOS 12 or later · Apple Silicon",
     "macComputerUse": "Computer Use requires macOS 14 or later.",
     "windowsRequirements": "Windows 10 22H2 or later · x64 · WebView2",
-    "downloadChooseHint": "Choose a platform to download the desktop app."
+    "downloadChooseHint": "Choose your platform to get started.",
+    "linuxLabel": "Linux",
+    "linuxSummary": "Run Bot as a user service. Open your workspace in the browser.",
+    "linuxInstall": "Install with one command",
+    "linuxAfterInstall": "Then open http://127.0.0.1:9317 on the service machine.",
+    "linuxRequirements": "amd64 or arm64 · systemd user services · Python 3 · OpenSSL · bubblewrap",
+    "linuxGuide": "Linux setup & upgrades",
+    "linuxPackages": "Manual download",
+    "linuxBoundary": "Headless/Web edition; no desktop character, Computer Use or Web terminal.",
+    "copyInstall": "Copy install command",
+    "copiedInstall": "Copied",
+    "releaseLabel": "Stable v0.18.1"
   },
   "zh-cn": {
-    "pageDescription": "认识 CaelisBot，你的个人 AI 桌面伙伴。一起聊问题、处理文件、完成日常小事，支持 macOS 与 Windows。",
+    "pageDescription": "认识 CaelisBot，你的个人 AI 伙伴。一起聊问题、处理文件、完成日常小事。提供 macOS、Windows 桌面版与 Linux Headless/Web 版。",
     "navExplore": "能做什么",
     "navFAQ": "开始之前",
     "navGet": "下载 Bot",
@@ -178,7 +189,7 @@
     "intro": "你的个人 AI 桌面伙伴。\n问题、文件、日常小事，一起解决。",
     "get": "下载 CaelisBot",
     "explore": "看看能做什么",
-    "platform": "为 macOS 与 Windows 而来",
+    "platform": "macOS、Windows 桌面版 · Linux Web 版",
     "hello": "需要帮忙？我在呢。",
     "heroCaption": "熟悉的身影，随时的帮手。",
     "outcomeEyebrow": "从「帮我看看」到「整理好了」",
@@ -289,11 +300,11 @@
       ],
       [
         "支持哪些电脑？",
-        "支持 Apple Silicon Mac，以及 Windows 10 22H2 x64 或更高版本；Windows 需安装 Microsoft Edge WebView2。Windows 安装包未做 Authenticode 签名，SmartScreen 或组织策略可能提示或拦截。暂不支持 Linux 桌面。"
+        "桌面版支持 Apple Silicon Mac，以及 Windows 10 22H2 x64 或更高版本与 WebView2。Windows 安装包尚未进行 Authenticode 签名。Linux amd64/arm64 与 WSL 使用 Headless/Web 版，需要 systemd 用户服务，不包含桌面角色或电脑操控。"
       ],
       [
         "需要模型账号吗？",
-        "需要连接受支持的模型服务，或你本机安装的 Codex。桌面安装包已包含 Caelis，但不包含付费模型订阅；可用模型及费用由你选择的服务决定。"
+        "需要。桌面版与 Linux 包都内置 Caelis，连接模型服务或复用已有认证模型即可。Codex 需另行安装；Linux Web 中可按引导选择“安装 Codex”与“使用 ChatGPT 登录”。模型订阅与用量费用另计。"
       ],
       [
         "对话完全离线吗？",
@@ -305,7 +316,7 @@
       ],
       [
         "可以隐藏角色吗？",
-        "可以。按自己的习惯移动、缩放或隐藏。关闭聊天窗口、隐藏角色不会退出 Bot；退出应用后，定时提醒会暂停，直到再次运行。"
+        "桌面版可以。按自己的习惯移动、缩放或隐藏。关闭聊天窗口、隐藏角色不会退出 Bot；退出应用后，定时提醒会暂停，直到再次运行。"
       ]
     ],
     "guide": "阅读开始使用指南",
@@ -329,6 +340,17 @@
     "macRequirements": "macOS 12 或更高版本 · Apple Silicon",
     "macComputerUse": "电脑操作功能需要 macOS 14 或更高版本。",
     "windowsRequirements": "Windows 10 22H2 或更高版本 · x64 · WebView2",
-    "downloadChooseHint": "选择平台，下载桌面版。"
+    "downloadChooseHint": "选择适合你的平台，开始使用。",
+    "linuxLabel": "Linux",
+    "linuxSummary": "作为用户服务运行，在浏览器里打开你的工作空间。",
+    "linuxInstall": "一条命令安装",
+    "linuxAfterInstall": "安装后，在服务所在机器打开 http://127.0.0.1:9317。",
+    "linuxRequirements": "amd64 或 arm64 · systemd 用户服务 · Python 3 · OpenSSL · bubblewrap",
+    "linuxGuide": "Linux 安装与升级",
+    "linuxPackages": "手动下载",
+    "linuxBoundary": "Headless/Web 版，不提供桌面角色、电脑操控或 Web 终端。",
+    "copyInstall": "复制安装命令",
+    "copiedInstall": "已复制",
+    "releaseLabel": "正式版 v0.18.1"
   }
 }
