@@ -115,6 +115,6 @@ The Bot site owns bilingual guides in `src/data/guides.json`, rendered by `Guide
 
 The homepage uses three looping HTML/CSS product demonstrations with synthetic tasks, based on the App's conversation and task-card styling. No video is embedded. The character uses a static frame of the App idle pose. Motion pauses offscreen and respects reduced-motion preferences.
 
-The independent bilingual download catalogue and chapter-based guides live on this site. Download buttons resolve current release artifacts. `/install.sh` serves the maintained official bootstrap through a same-origin Pages Function; `_routes.json` must include that path. The bootstrap still verifies and installs packages using its official release infrastructure.
+The independent bilingual download catalogue and chapter-based guides live on this site. Download buttons resolve current release artifacts. `/install.sh` is a byte-identical static copy of the official bootstrap, verified on 2026-10-23 and pinned by a SHA-256 test. Refresh it from the official release source when the bootstrap changes. It is excluded from Functions routing. The bootstrap still verifies and installs packages using its official release infrastructure.
 
-Run `npm run check`, `npm run build`, and `npm run verify` before publishing. The verification suite includes download resolvers and installer success/failure paths. This presentation update does not change Bot runtime behavior or require Bot skill changes.
+Run `npm run check`, `npm run build`, and `npm run verify` before publishing. The verification suite includes download resolvers and installer byte integrity. This presentation update does not change Bot runtime behavior or require Bot skill changes.
