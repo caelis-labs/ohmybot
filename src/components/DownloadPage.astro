@@ -1,0 +1,29 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import Icon from './Icon.astro';
+import PlatformIcon from './PlatformIcon.astro';
+import content from '../data/bot-content.json';
+import release from '../data/release.json';
+import type { Locale } from '../data/site';
+const { lang = 'en' } = Astro.props as { lang: Locale };
+const c=content[lang], zh=lang==='zh-cn';
+const guide=`${zh?'/zh-cn':''}/docs`;
+---
+<SiteLayout section="download" lang={lang} title={zh?'下载 CaelisBot':'Download CaelisBot'} description={zh?'选择适合你的电脑的 CaelisBot 版本。':'Get CaelisBot for your computer.'}>
+<section class="download-center" id="top">
+ <header class="download-intro"><h1>{zh?'下载 CaelisBot':'Download CaelisBot'}</h1><p>{zh?'选择适合你的电脑的版本。':'Choose the version for your computer.'}</p></header>
+ <div class="platform-grid">{c.download.platforms.map(platform=><article class="platform-tile" id={platform.id} data-platform-card={platform.id}>
+  <header class="platform-identity"><PlatformIcon platform={platform.id}/><h2>{platform.name}</h2><span class="platform-architecture">{platform.id==='mac'?'Apple Silicon':platform.id==='windows'?'x64':'x64 / ARM64'}</span></header>
+  <div class="platform-content">
+  <div class="platform-actions">
+  {platform.id==='linux'?<div class="install-command"><code>{release.linuxInstall}</code><button data-copy-install data-command={release.linuxInstall} data-copied={c.misc.copied} aria-label={zh?'复制安装命令':'Copy install command'}><Icon name="copy" size={18}/><span>{zh?'复制':'Copy'}</span></button></div>:<a class="button primary" data-download-click={platform.id} href={platform.id==='mac'?release.macos:release.windowsSetup}>{platform.primary}<Icon name="download" size={17}/></a>}
+  {platform.id==='windows'&&<a class="button secondary" href={release.windowsZip}>{zh?'下载便携版 ZIP':'Download portable ZIP'}<Icon name="download" size={17}/></a>}
+  </div>
+  {platform.id==='linux'&&<span class="copy-status" data-copy-status role="status"></span>}
+  <div class="platform-requirements"><h3>{zh?'系统要求':'System requirements'}</h3>{platform.id==='linux'?<dl class="dependency-list"><div><dt>{zh?'架构':'Architecture'}</dt><dd>x64 / ARM64</dd></div><div><dt>{zh?'运行环境':'Runtime'}</dt><dd>systemd {zh?'用户服务':'user service'}</dd></div><div><dt>{zh?'依赖':'Dependencies'}</dt><dd>Python 3 · OpenSSL · bubblewrap</dd></div></dl>:<p>{platform.requirements}</p>}{platform.id==='windows'&&<p>{zh?'Windows 安装包未签名，可能出现 SmartScreen 提示。请先核对下载来源。':'The Windows installer is unsigned and may trigger SmartScreen. Check the download source before proceeding.'}</p>}{'extra' in platform&&<p>{platform.extra}</p>}  <div class="platform-alternatives"><a href={`${guide}/${platform.id==='linux'?'linux':'installation'}/`}>{zh?'安装说明':'Installation guide'}<Icon name="arrow" size={14}/></a></div></div>
+  {platform.id==='linux'&&<div class="manual-downloads"><h3>{zh?'手动下载安装包':'Download packages manually'}</h3><ul><li><a href={release.linuxAmd64}><Icon name="download" size={16}/>caelisbot-linux-amd64.tar.gz</a></li><li><a href={release.linuxArm64}><Icon name="download" size={16}/>caelisbot-linux-arm64.tar.gz</a></li></ul></div>}
+
+ </div></article>)}</div>
+
+</section>
+</SiteLayout>

@@ -1,0 +1,29 @@
+---
+import Icon from './Icon.astro';
+const { kind, zh } = Astro.props;
+const t = (cn: string, en: string) => zh ? cn : en;
+---
+<div class={`product-demo demo-${kind}`} data-product-demo={kind} data-stage="0">
+  <div class="demo-topline"><span>CaelisBot</span></div>
+  {kind === 'handoff' ? <div class="demo-desktop">
+    <div class="demo-pet-note"><span class="before-done">{t('我在继续做，你先忙。','I’m on it. Go about your day.')}</span><span class="after-done">{t('做好啦，等你来看。','All done. Ready when you are.')}</span><Icon name="check" size={18}/></div>
+    <img class="demo-pet" src="/assets/bot/companion-idle-600.webp" width="600" height="840" alt="" loading="lazy"/>
+    <div class="demo-task demo-task-back back-two"><div class="demo-task-tools">⌑ ×</div><strong>{t('整理本周资料','Organize weekly notes')}</strong><span class="demo-task-status"><i></i>{t('正在整理','Organizing')}</span></div>
+    <div class="demo-task demo-task-back back-one"><div class="demo-task-tools">⌑ ×</div><strong>{t('检查网站更新','Check website updates')}</strong><span class="demo-task-status"><i></i>{t('正在检查','Checking')}</span></div>
+    <div class="demo-task"><div class="demo-task-tools"><span>⌑</span><span>×</span></div><div class="demo-task-icon">›_</div><strong>{t('修好邮箱登录','Fix email sign-in')}</strong><span class="demo-task-status"><i></i><span class="before-done">{t('正在处理','In progress')}</span><span class="after-done">{t('已完成','Complete')}</span></span></div>
+    <div class="demo-task-chat"><div class="demo-window-bar"><span>{t('邮箱登录 · 对话','Email sign-in · Conversation')}</span><Icon name="close" size={17}/></div><div class="demo-bot-line"><img src="/assets/bot/chat-avatar.png" alt=""/><p>{t('登录流程已改好，正在跑测试。','Sign-in is updated. Tests are running.')}</p></div><div class="demo-work"><i></i><i></i><i></i><span>{t('继续处理','Working')}</span></div></div>
+  </div> : <div class="demo-chat-body">
+    <div class="demo-user">{kind === 'decisions' ? t('改好邮箱登录，沿用原界面。','Fix email sign-in. Keep the existing UI.') : t('修好登录，测试相关操作你可以确认。','Fix sign-in. You may approve test-related actions.')}</div>
+    {kind === 'decisions' ? <>
+      <div class="demo-time-gap">{t('后来，你正在忙别的','Later, while you’re busy')}</div>
+      <div class="demo-question demo-appear-one"><span>{t('执行中遇到问题','A question comes up')}</span><h4>{t('测试收不到邮件，要连接你的邮箱吗？','No test email. Connect your inbox?')}</h4><div class="demo-options"><span>{t('测试邮箱','Test inbox')}</span><span>{t('真实邮箱','Your inbox')}</span></div></div>
+      <div class="demo-bot-line demo-appear-two"><img src="/assets/bot/chat-avatar.png" alt=""/><div><p>{t('已按你的偏好选择测试邮箱，不连接私人邮箱。','Selected a test inbox, following your preference to keep your personal inbox separate.')}</p></div></div>
+      <div class="demo-finish demo-appear-three"><Icon name="check" size={19}/>{t('任务继续，不用你回来。','Work continues without a check-in.')}</div>
+    </> : <>
+      <div class="demo-test-state"><span class="state-failed">{t('有一项测试没通过','One test failed')}</span><span class="state-running"><i></i>{t('修复好了，再测一次','Fixed. Testing again')}</span><span class="state-passed"><Icon name="check" size={23}/>{t('全部通过了','All tests passed')}</span></div>
+      <div class="demo-bot-line demo-appear-one"><img src="/assets/bot/chat-avatar.png" alt=""/><p><span class="before-done">{t('过期验证码还能登录。找到原因了，我来修。','Expired codes still work. Found the cause. I’ll fix it.')}</span><span class="after-done">{t('修好了，也检查过了。忙完再来看吧。','Fixed and checked. Ready when you are.')}</span></p></div>
+      <div class="demo-approval demo-appear-two"><div class="demo-approval-label"><span class="approval-waiting">{t('需要确认','Approval requested')}</span><span class="approval-resolved"><Icon name="check" size={16}/>{t('Bot 已代为确认','Confirmed by Bot')}</span></div><h4>{t('允许运行本地测试？','Allow local tests?')}</h4><p>{t('你已授权的范围内','Within your existing permission')}</p><div class="demo-options"><span class="demo-allow">{t('允许这一次','Allow once')}<Icon name="check" size={16}/></span><span>{t('不允许','Don’t allow')}</span></div></div>
+    </>}
+    <div class="demo-composer" aria-hidden="true"><span>＋</span><span>{t('写下想法…','Message…')}</span><Icon name="arrow" size={19}/></div>
+  </div>}
+</div>

@@ -1,0 +1,46 @@
+import React from 'react';
+import {createRoot} from 'react-dom/client';
+import {History} from './src/Panel';
+import {I18nProvider} from './src/i18n';
+import {installTransport} from './src/transport';
+import './src/application.css';
+const en=new URLSearchParams(location.search).get('lang')==='en';
+const text=(zh:string,enText:string)=>en?enText:zh;
+let revision=0,stage=-1;
+const item=(id:string,kind:string,content:string)=>({id,kind,text:content,status:'completed',turnKey:'demo',artifacts:[]});
+const request=item('request','user',text('修好邮箱登录，跑完本地测试。测试相关的操作你可以确认。','Fix email sign-in and run local tests. You may approve test-related actions.'));
+const snapshot:any={connection:'ready',phase:'working',currentTurn:'demo',canInterrupt:true,canSend:false,canSteer:true,quiet:false,items:[request],approvals:[],reviews:[],references:[],message:'',previewKey:'demo',previewDismissed:false,botStatus:'',hasEarlier:false,lastReceipt:{id:'',outcome:'',message:''}};
+const failure=item('failure','assistant',text('有一项测试没通过：过期验证码还能登录。我来修好它。','One test failed: expired codes still work. I’ll fix it.'));
+const approved=item('approved','assistant',text('重新运行测试属于你已授权的范围，我已代为确认。','Rerunning tests is within your permission. I’ve approved it for you.'));
+const complete=item('complete','assistant',text('**全部通过了。**\n\n过期验证码已被拦截，登录流程也检查好了。','**All tests passed.**\n\nExpired codes are rejected. Sign-in is checked.'));
+const approval={id:'demo-test-approval',turnKey:'demo',title:text('允许运行本地测试？','Allow local tests?'),action:'npm test',taskTitle:text('修复邮箱登录','Fix email sign-in'),status:'pending',target:'',description:'',details:'',sections:[],questions:[],choices:[{id:'allow',label:text('允许这一次','Allow once'),scope:'once'},{id:'deny',label:text('不允许','Don’t allow'),scope:'deny'}]};
+function setStage(next:number){
+ if(stage===next)return;stage=next;document.body.dataset.stage=String(stage);
+ snapshot.items=stage===0?[request]:stage<4?[request,failure]:stage<6?[request,failure,approved]:[request,failure,approved,complete];
+ snapshot.approvals=stage===2||stage===3?[approval]:[];
+ snapshot.phase=stage===2||stage===3?'waiting_approval':stage>=6?'completed':'working';
+ snapshot.activity=stage===0?{kind:'read',target:''}:stage===1?{kind:'edit',target:''}:stage===4||stage===5?{kind:'execute',target:''}:null;
+ snapshot.canSend=stage>=6;snapshot.canInterrupt=stage<6;snapshot.canSteer=stage<6;revision++;
+}
+installTransport(async (_service,method,args)=>{
+ if(method==='LanguagePreferences')return {preference:en?'en':'zh-CN',locale:en?'en':'zh-CN',revision:1} as any;
+ if(method==='DisplayPreferences')return {mode:'light',theme:'default',revision:1} as any;
+ if(method==='Appearance')return {revision:1,selection:{character:'builtin:caelis',avatar:'follow'},model:'',avatar:'',basic:false,key:'builtin:caelis'} as any;
+ if(method==='HistoryVisible')return true as any;
+ if(method==='ChatSnapshot')return {changed:true,snapshot:structuredClone({...snapshot,revision:++revision})} as any;
+ if(['Snapshot','ComposerSnapshot','PetSnapshot'].includes(method))return structuredClone({...snapshot,revision:++revision}) as any;
+ if(method==='Draft')return {text:'',referenceIds:[],revision:1,notice:''} as any;
+ if(method==='DraftFiles')return [] as any;
+ return undefined as any;
+});
+createRoot(document.getElementById('root')!).render(<I18nProvider><History/></I18nProvider>);
+const started=performance.now(),offsets=[0,1500,4000,6500,8300,10000,12500];
+function frame(now:number){
+ setStage(offsets.filter(t=>now-started>=t).length-1);
+ if(stage===2||stage===3){const trigger=document.querySelector<HTMLButtonElement>('.approval-dock-trigger');if(trigger?.getAttribute('aria-expanded')==='false')trigger.click();}
+ if(stage===3)document.querySelector('.primary-decision')?.classList.add('film-approved');
+ if(stage===6)document.body.dataset.complete='true';
+ requestAnimationFrame(frame);
+}
+setStage(0);requestAnimationFrame(frame);
+const style=document.createElement('style');style.textContent='.film-approved{box-shadow:0 0 0 3px #5d927d45!important;transition:box-shadow .4s!important}';document.head.append(style);

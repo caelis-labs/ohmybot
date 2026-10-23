@@ -1,0 +1,30 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import guides from '../data/guides.json';
+import type { Locale } from '../data/site';
+const { lang='en', slug='index' }=Astro.props as {lang:Locale;slug:keyof typeof guides.en};
+const zh=lang==='zh-cn', base=zh?'/zh-cn/docs/':'/docs/';
+const entries=guides[lang], page=entries[slug];
+const groups=[{title:zh?'入门':'Getting started',keys:['index','installation','first-task']},{title:zh?'日常使用':'Everyday use',keys:['conversation','approvals','channels','appearance']},{title:zh?'进阶与参考':'Advanced & reference',keys:['events','privacy','linux','releases']}];
+const order=groups.flatMap(g=>g.keys) as Array<keyof typeof entries>;
+const current=order.indexOf(slug), previous=order[current-1], next=order[current+1];
+const href=(key:string)=>`${base}${key==='index'?'':key+'/'}`;
+const sections=page[2] as string[][];
+const group=groups.find(g=>g.keys.includes(slug));
+---
+<SiteLayout section="docs" lang={lang} title={`${page[0]} · CaelisBot ${zh?'文档':'Docs'}`} description={page[1] as string}>
+<div class="docs-shell" id="top">
+ <aside class="docs-sidebar"><details open><summary>{zh?'文档目录':'Contents'}</summary><nav aria-label={zh?'章节目录':'Chapters'}>{groups.map(g=><div class="docs-nav-group"><h2>{g.title}</h2>{g.keys.map(key=><a href={href(key)} aria-current={key===slug?'page':undefined}>{entries[key as keyof typeof entries][0]}</a>)}</div>)}</nav></details></aside>
+ <article class="docs-article"><div class="docs-breadcrumb">{zh?'文档':'Docs'}<span>/</span>{group?.title}</div><header><h1>{page[0]}</h1><p class="docs-lead">{page[1]}</p></header>
+ {slug==='index'&&<div class="docs-start"><a href={href('installation')}>{zh?'开始安装 →':'Start installation →'}</a><a href={href('first-task')}>{zh?'交办第一件任务 →':'Try your first task →'}</a></div>}
+ {sections.map(([title,body],i)=><section id={`section-${i+1}`}><h2><a href={`#section-${i+1}`}>{title}</a></h2>{body.split('\n').map(paragraph=><p>{paragraph}</p>)}</section>)}
+ <nav class="chapter-pagination" aria-label={zh?'章节翻页':'Chapter navigation'}>{previous?<a rel="prev" href={href(previous)}><small>{zh?'上一章':'Previous'}</small><span>← {entries[previous][0]}</span></a>:<span/>}{next&&<a rel="next" href={href(next)}><small>{zh?'下一章':'Next'}</small><span>{entries[next][0]} →</span></a>}</nav>
+ </article>
+ <aside class="docs-toc"><span>{zh?'本页内容':'On this page'}</span><nav>{sections.map(([title],i)=><a href={`#section-${i+1}`}>{title}</a>)}</nav></aside>
+</div>
+</SiteLayout>
+
+<script>
+ const contents=document.querySelector<HTMLDetailsElement>('.docs-sidebar details');
+ if(contents && matchMedia('(max-width:760px)').matches)contents.open=false;
+</script>

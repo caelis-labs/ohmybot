@@ -1,0 +1,474 @@
+{
+  "en": {
+    "index": [
+      "Documentation",
+      "Read in order or choose the chapter that matches your current task.",
+      [
+        [
+          "Part I · Getting started",
+          "Install Bot and connect an account, then try a small task. Start with Installation, followed by Your first task."
+        ],
+        [
+          "Part II · Everyday use",
+          "Learn to follow task cards, handle questions and approvals, and continue from your phone. Character and windows explains appearance and desktop space."
+        ],
+        [
+          "Part III · Advanced topics and reference",
+          "Read Follow-up work for timed or result-based continuation. Data and permissions, Linux / WSL, and Version and downloads cover setup details and reference information."
+        ]
+      ]
+    ],
+    "installation": [
+      "Install and get started",
+      "Download, connect an account and try your first task.",
+      [
+        [
+          "1. Choose a download",
+          "Use this site’s download page. macOS packages are for Apple Silicon; Windows packages are x64. Linux / WSL provides a service and web interface. Requirements are listed on the download page."
+        ],
+        [
+          "2. Install and open",
+          "On macOS, open the DMG and drag the app to Applications. On Windows, run the installer. The Windows build is unsigned and may show SmartScreen; verify the source before continuing and stop if unsure."
+        ],
+        [
+          "3. Connect your account",
+          "Follow setup to connect Codex or Caelis. Install and sign in to these separately; Bot does not silently install them or sign in for you. Model providers may charge for usage."
+        ],
+        [
+          "4. Try a small task",
+          "Attach a file and ask for a summary. Specify the outcome you want. Read any requested action before approving it."
+        ],
+        [
+          "If verification fails",
+          "Download the package and checksum for the same version again. On macOS, use shasum -a 256 and compare the digest with the checksum file. Do not open mismatched files or disable system security checks."
+        ]
+      ]
+    ],
+    "conversation": [
+      "Tasks and decisions",
+      "Follow the work without passing messages between windows.",
+      [
+        [
+          "Describe the outcome",
+          "Say what you want, what must stay unchanged and when it should ask you. Attach the files it needs."
+        ],
+        [
+          "Open a task card",
+          "A background task has its own card. Open it to return to the original conversation. Hiding or closing the viewing window does not cancel the task. Ask explicitly to stop work."
+        ],
+        [
+          "Delegate several tasks",
+          "Keep sending new tasks and state each goal and priority. When changing an earlier task, identify it clearly so the instruction applies to the right work."
+        ]
+      ]
+    ],
+    "events": [
+      "Arrange follow-up work",
+      "Choose when to check and what should happen next.",
+      [
+        [
+          "Say what to wait for",
+          "For example: check periodically for a file and organize it when it arrives. You can also arrange a timed reminder or a follow-up after a task completes."
+        ],
+        [
+          "Choose how to check",
+          "Use custom scripts or available tools from enabled Bot plugin connections—not a fixed handful of tools. They check the result; matching conditions wake the assistant to continue. No repeated model check-ins are needed while waiting."
+        ],
+        [
+          "Set it up once",
+          "Test the result first, then register the check, timing and condition. Scripts need authorization; tools use existing connections. Tools in unrelated runtimes are not automatically included."
+        ],
+        [
+          "Keep the computer running",
+          "Sleep pauses execution and quitting stops scheduling. Hiding the character or closing chat does not. Script checks are currently unavailable on Windows."
+        ],
+        [
+          "Change or cancel",
+          "Ask to change or cancel the specific arrangement. Registration is not proof of execution; check the actual result."
+        ]
+      ]
+    ],
+    "privacy": [
+      "Data and permissions",
+      "Where information goes and what you control.",
+      [
+        [
+          "Stored locally",
+          "Conversation history, preferences and task notes stay on your computer and help maintain continuity."
+        ],
+        [
+          "Online models",
+          "A connected online model receives context needed for the request. Local history does not make online processing offline."
+        ],
+        [
+          "Remote channels",
+          "Messages sent through Telegram or Weixin pass through that service. Avoid sharing information unsuitable for third-party messaging."
+        ],
+        [
+          "Permission boundaries",
+          "Automatic confirmations cover only authorized actions with verifiable details. They do not grant new permissions. Decide whether to enable screen and system access for the task at hand."
+        ]
+      ]
+    ],
+    "linux": [
+      "Linux / WSL",
+      "Use the service and web interface, without a Linux desktop character.",
+      [
+        [
+          "1. Choose an installation method",
+          "Copy the command from this site’s download page or choose an amd64 / arm64 package. Check the architecture and downloaded content before executing it."
+        ],
+        [
+          "2. Configure the environment",
+          "Prepare the runtime and model account, then follow the installer output. A running service does not prove the model is signed in. Try a small task first."
+        ],
+        [
+          "3. Open the web interface",
+          "Use the local address shown by the service. Do not expose an unprotected service publicly. Configure controlled network access before connecting remotely."
+        ]
+      ]
+    ],
+    "releases": [
+      "Version and downloads",
+      "Installation information maintained on this site.",
+      [
+        [
+          "Current version",
+          "The catalogue lists v0.18.2 (2026-10-22). Download endpoints resolve public stable release metadata, so the downloaded version may be newer."
+        ],
+        [
+          "Before updating",
+          "Finish current work and save anything needed before following the update prompt. Packages and checksums must match the same version."
+        ],
+        [
+          "Licensing",
+          "Code is Apache-2.0. Character assets have separate terms. The download page contains packages; the footer links to the character license."
+        ]
+      ]
+    ],
+    "first-task": [
+      "Your first task",
+      "Start with a small, clear task to learn how to delegate, follow progress and review results.",
+      [
+        [
+          "Prepare the material",
+          "Choose a file to organize or a small issue to fix. Attach the relevant files and describe the result you need. For a first task, pick something you can review in a few minutes."
+        ],
+        [
+          "State the goal and constraints",
+          "For example: “Summarize these meeting notes into decisions and action items. Keep the owner of each action and flag anything uncertain.”\nFor editing tasks, explain what may change and what must stay unchanged."
+        ],
+        [
+          "Follow the work",
+          "Bot starts after you send the request. Answer any missing-information questions in the conversation. If it creates a background task, use its task card to check progress."
+        ],
+        [
+          "Review and continue",
+          "Check the result, then ask for changes in the same conversation—for example, “Group the actions by owner.” To stop ongoing work, name the task and ask Bot to stop it."
+        ]
+      ]
+    ],
+    "approvals": [
+      "Questions and approvals",
+      "Understand what Bot can handle and which decisions come back to you.",
+      [
+        [
+          "Questions versus approvals",
+          "A question asks for information or a choice, such as which test environment to use. An approval asks whether an action may proceed, such as running a command or accessing a resource. Either can arise during a long task."
+        ],
+        [
+          "How Bot handles them",
+          "With Codex, Bot uses your existing goals and preferences to answer task questions. It can also confirm actions you have authorized when it can verify the details.\nFor example, if you asked it to keep tests away from your personal inbox, it can choose a test inbox and explain why."
+        ],
+        [
+          "When you need to decide",
+          "Missing materials, conflicting instructions or new permissions come back to you. Check the target and scope before allowing, declining or adding instructions."
+        ],
+        [
+          "Set a useful boundary",
+          "For example: “You may edit the sign-in module and run local tests. Ask before deploying.”\nThat instruction covers the stated work; it does not grant permission for unrelated tasks or accounts."
+        ]
+      ]
+    ],
+    "channels": [
+      "Continue from your phone",
+      "Use WeChat or Telegram to send work and respond to decisions.",
+      [
+        [
+          "Before connecting",
+          "Keep Bot running and online on your computer. Your phone is a way to reach it; the computer still does the work. Local work cannot continue while that computer is asleep."
+        ],
+        [
+          "Connect a channel",
+          "Choose WeChat or Telegram in Bot’s channel settings and follow the connection prompts. Send a simple message from your phone and confirm that Bot replies before relying on it for work."
+        ],
+        [
+          "Continue a task",
+          "Send new tasks, add instructions, answer questions and read results. Identify the work you mean, such as “Group the meeting notes from earlier by owner.”\nAttachment support and interaction options vary by channel. Use the options shown in the message."
+        ],
+        [
+          "Respond to decisions",
+          "Read the requested action, then choose an answer or provide the missing information. Bot continues after receiving it. For the full task details, open the task card on your computer."
+        ]
+      ]
+    ],
+    "appearance": [
+      "Character and windows",
+      "Make room for your companion without getting in the way of your work.",
+      [
+        [
+          "Position and size",
+          "Drag the character to a convenient spot and resize it to suit your desktop. Its proportions are preserved."
+        ],
+        [
+          "Hide a character or close a window",
+          "Hiding the character, closing chat or closing a task view does not cancel work. Open a task card when you want to check in.\nQuitting Bot is different: it stops further scheduling."
+        ],
+        [
+          "Change the look",
+          "Open Settings → Appearance and choose an installed character or outfit. A new look keeps the same Bot identity and ongoing work."
+        ],
+        [
+          "Import a character",
+          "Import a supported character pack through Appearance settings. Character assets have their own licenses; check the included terms before sharing or redistributing them."
+        ]
+      ]
+    ]
+  },
+  "zh-cn": {
+    "index": [
+      "文档概览",
+      "按使用过程阅读，或从左侧目录直接找到当前需要的章节。",
+      [
+        [
+          "第一部分 · 入门",
+          "先完成安装与账号连接，再通过一件小任务熟悉交办和验收。初次使用建议按“安装与开始使用 → 第一件任务”的顺序阅读。"
+        ],
+        [
+          "第二部分 · 日常使用",
+          "学习如何查看任务卡片、处理问题与审批，以及通过手机接着工作。桌面角色与窗口一章介绍如何调整外观和减少桌面占用。"
+        ],
+        [
+          "第三部分 · 进阶与参考",
+          "需要定时或等待结果后继续工作时，阅读“安排后续工作”。数据与权限、Linux / WSL、版本与下载提供对应的配置和参考说明。"
+        ]
+      ]
+    ],
+    "installation": [
+      "安装与开始使用",
+      "下载、连接账号，交给它第一件事。",
+      [
+        [
+          "1. 下载适合电脑的版本",
+          "打开本站下载页，选择你的系统。macOS 使用 Apple Silicon 安装包；Windows 使用 x64 安装包；Linux / WSL 使用无桌面的服务与网页界面。具体系统要求在下载页。"
+        ],
+        [
+          "2. 安装并启动",
+          "macOS：打开 DMG，将应用拖入“应用程序”，再正常启动。Windows：运行安装程序。Windows 版尚未签名，可能出现 SmartScreen 提示；先确认下载来源，无法确认时停止安装。"
+        ],
+        [
+          "3. 连接账号",
+          "按首次启动引导连接 Codex 或 Caelis。它们需要单独安装并完成登录，Bot 不会替你静默安装或登录。模型服务可能收费，请确认自己的账号方案。"
+        ],
+        [
+          "4. 试一件小事",
+          "例如：“整理这份文件，先给我一个摘要。”附上文件，写清楚目标。遇到确认请求时，核对要做的操作再决定。"
+        ],
+        [
+          "下载失败或校验不一致",
+          "重新下载同一版本的安装包和校验文件。macOS 可用 shasum -a 256 检查文件摘要，与校验文件比较；不一致时不要打开安装包。不要通过关闭系统安全检查解决安装失败。"
+        ]
+      ]
+    ],
+    "conversation": [
+      "交办与查看任务",
+      "不用在多个窗口之间反复传话。",
+      [
+        [
+          "交代目标和边界",
+          "描述你要的结果，也说清楚哪些地方不能改、什么时候需要问你。附上必要文件，避免让它猜。"
+        ],
+        [
+          "查看正在做的事",
+          "每件后台工作都有任务卡片。打开卡片可以进入对应的原对话；关闭或隐藏查看窗口，不会取消任务。要停止工作，请明确要求停止。"
+        ],
+        [
+          "连续交办多件事",
+          "在对话里继续发送下一件任务，并为每件事说明目标和优先顺序。需要修改之前的任务时，指出对应的工作，避免把新要求应用到另一件事。"
+        ]
+      ]
+    ],
+    "events": [
+      "安排后续工作",
+      "告诉它什么时候检查，什么情况下继续。",
+      [
+        [
+          "先说清楚要等什么",
+          "例如：“每隔一段时间看看文件到了没有，到了就整理。”也可以约定某个时间提醒，或等一项任务完成后继续检查结果。"
+        ],
+        [
+          "选择检查方式",
+          "支持自定义脚本，以及 Bot 已启用插件连接中的可用工具，并不是固定的几个工具。脚本或工具先检查结果，条件满足后才唤醒助手继续工作，等待期间无需模型反复询问。"
+        ],
+        [
+          "首次安排",
+          "先验证检查能得到需要的结果，再登记检查方式、频率和条件。脚本需经过授权；工具使用已有连接。它不会自动获得其他运行环境中的所有工具权限。"
+        ],
+        [
+          "保持电脑运行",
+          "电脑休眠会暂停执行，退出应用会停止调度。隐藏角色或关掉对话窗口不影响安排。脚本检查目前不支持 Windows。"
+        ],
+        [
+          "调整或结束",
+          "直接告诉它修改或取消哪一项安排。登记成功不等于已经执行；以实际结果为准。"
+        ]
+      ]
+    ],
+    "privacy": [
+      "数据与权限",
+      "了解信息存在哪里，哪些操作需要你决定。",
+      [
+        [
+          "保存在电脑上的信息",
+          "对话历史、偏好和任务笔记保存在本机。它会用这些信息延续工作，减少重复交代。"
+        ],
+        [
+          "发送给模型的信息",
+          "使用在线模型时，完成请求所需的上下文会发送给所连接的服务。本地保存历史不代表所有处理都在离线完成。"
+        ],
+        [
+          "远程消息",
+          "使用 Telegram 或微信等渠道时，相关消息会经过该渠道。不要把不适合发送给第三方的敏感内容放进远程消息。"
+        ],
+        [
+          "授权范围",
+          "自动确认只适用于已授权且能核实的操作，不会代替你授予新的权限。需要屏幕或系统能力时，请按实际用途决定是否开放权限。"
+        ]
+      ]
+    ],
+    "linux": [
+      "Linux / WSL",
+      "通过服务与网页使用，不提供 Linux 桌面角色。",
+      [
+        [
+          "1. 选择安装方式",
+          "从本站下载页复制安装命令，或选择 amd64 / arm64 软件包。先核对机器架构和下载内容，再执行安装。"
+        ],
+        [
+          "2. 配置运行环境",
+          "准备所需运行时和模型账号，按照安装输出完成服务配置。服务启动不代表模型已经登录或可用，先提交一件简单任务确认。"
+        ],
+        [
+          "3. 打开网页",
+          "按服务输出的本地地址进入网页。不要直接将未受保护的服务暴露到公网；需要远程访问时，先配置受控的网络访问。"
+        ]
+      ]
+    ],
+    "releases": [
+      "版本与下载",
+      "安装信息集中维护在本站。",
+      [
+        [
+          "当前版本",
+          "本站下载目录展示 v0.18.2（2026-10-22）。下载入口会解析公开的稳定版发布元数据，实际下载版本可能比目录更新。"
+        ],
+        [
+          "更新前",
+          "完成当前工作，保存必要内容，再按应用提示更新。安装包和校验文件应来自同一版本。"
+        ],
+        [
+          "许可",
+          "代码使用 Apache-2.0；角色使用独立资产许可。下载页提供安装入口，页脚提供角色许可原文。"
+        ]
+      ]
+    ],
+    "first-task": [
+      "第一件任务",
+      "从一个范围清楚的小任务开始，熟悉交办、查看和验收的过程。",
+      [
+        [
+          "准备任务材料",
+          "选择一份需要整理的文件，或一个需要修复的小问题。把相关文件附在消息里，并说明希望得到什么结果。第一次使用时，选择几分钟内能检查结果的任务。"
+        ],
+        [
+          "写清目标与要求",
+          "例如：“整理这份会议记录，列出决定和待办事项。每项待办保留负责人，不确定的信息标出来。”\n如果任务涉及修改，再补充哪些内容可以改、哪些必须保持原样。"
+        ],
+        [
+          "查看执行过程",
+          "发送后，Bot 会开始处理。需要补充材料时，在原对话里回答即可；产生后台任务后，可以通过任务卡片查看进展。"
+        ],
+        [
+          "检查结果并继续",
+          "收到结果后，核对关键内容。需要调整时直接接着说，例如“按负责人重新分组”。想结束正在执行的任务，请明确告诉 Bot 停止哪件事。"
+        ]
+      ]
+    ],
+    "approvals": [
+      "问题与审批",
+      "了解 Bot 何时能代为处理，何时需要你的决定。",
+      [
+        [
+          "问题与审批有什么区别",
+          "问题用于补充信息或选择做法，例如使用哪个测试环境。审批用于确认某项操作是否可以执行，例如运行命令或访问资源。两者都可能出现在长任务进行途中。"
+        ],
+        [
+          "Bot 如何代你处理",
+          "配合 Codex 时，Bot 会结合你已经交代的目标和偏好回答任务中的问题。对已经授权、且能核实细节的操作，它可以代为确认，让任务继续。\n例如，你已要求测试不要接入私人邮箱，Bot 就可以据此选择测试邮箱，并向你说明选择原因。"
+        ],
+        [
+          "什么时候会来问你",
+          "缺少关键材料、要求之间有冲突，或操作需要新的权限时，Bot 会把问题交给你。阅读请求中的操作对象和范围，再选择允许、拒绝或补充要求。"
+        ],
+        [
+          "如何交代授权范围",
+          "把允许的操作和需要再次确认的事情一起说明。例如：“可以修改登录模块并运行本地测试；发布上线前先问我。”\n这份约定只覆盖你说明的范围，不会自动变成其他任务或账号的授权。"
+        ]
+      ]
+    ],
+    "channels": [
+      "手机接力",
+      "通过微信或 Telegram 继续交办，接收需要你决定的问题。",
+      [
+        [
+          "使用前的准备",
+          "电脑上的 Bot 需要保持运行并联网。手机是联系 Bot 的入口，任务仍由运行 Bot 的电脑处理；电脑休眠后，不能继续执行本机工作。"
+        ],
+        [
+          "连接消息渠道",
+          "在 Bot 的渠道设置中选择微信或 Telegram，按界面提示完成连接。完成后先从手机发送一条简单消息，确认 Bot 能收到并回复，再交办正式任务。"
+        ],
+        [
+          "在手机上接着做",
+          "可以发送新任务、补充要求、回答问题和查看结果。提到正在进行的工作时，说明是哪件事，例如“刚才那份会议记录，按负责人分组”。\n不同渠道支持的附件和交互方式可能不同，请以消息中的实际选项为准。"
+        ],
+        [
+          "处理需要你决定的事项",
+          "收到问题或审批请求时，先看操作内容，再回复选择或补充信息。Bot 收到后会继续处理；需要查看完整工作细节时，回到电脑打开对应任务卡片。"
+        ]
+      ]
+    ],
+    "appearance": [
+      "桌面角色与窗口",
+      "调整角色的位置和外观，让它以适合你的方式留在桌面。",
+      [
+        [
+          "移动与调整大小",
+          "拖动角色，把它移到不挡住工作的地方。可以按桌面使用习惯调整角色大小，角色会保持比例。"
+        ],
+        [
+          "隐藏角色与关闭窗口",
+          "隐藏角色、关闭聊天窗口或收起任务查看窗口，都不会取消工作。需要看进展时，再打开对应的任务卡片。\n退出 Bot 与隐藏角色不同：退出应用会停止后续调度。"
+        ],
+        [
+          "更换角色与服装",
+          "打开“设置 → 外观”，选择已安装的角色或服装。更换外观不会更换 Bot 的对话身份，也不需要重新交代正在做的任务。"
+        ],
+        [
+          "导入自己的角色",
+          "在外观设置中导入支持的角色内容包。角色资源使用独立的资产许可；分享或再分发前，请查看该角色附带的许可说明。"
+        ]
+      ]
+    ]
+  }
+}

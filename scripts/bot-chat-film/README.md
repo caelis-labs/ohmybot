@@ -1,0 +1,7 @@
+# Real Bot UI film
+
+Source: caelis-bot 28d2394b17dcd1c6fd465e6f9036ca3d1b831691, production `frontend/src/Panel.tsx` History/Prompt, I18nProvider, BotAvatar and application.css. No product component or CSS was redesigned. `film.tsx` supplies synthetic snapshots through an inert transport. The only presentation cue is a brief highlight on the existing approval button. No real backend, account, filesystem operation or approval is called.
+
+To reproduce: create a disposable directory; copy Bot frontend/src, frontend/assets, frontend/public/icons and portraits, resources/character-pack.json, internal/i18n/locales, package.json and package-lock.json preserving their paths. Install the locked dependencies with Node 24. Copy film.tsx.template to frontend/film.tsx and vite.config.mjs.template as vite.config.mjs to the directory root. Create frontend/index.html with a root div and module /film.tsx, body data-surface="history", html data-mode="light". Run Vite on 127.0.0.1:9347. Use ?lang=en for English.
+
+Capture the actual browser viewport at 480 x 520 for 16.5 seconds from reload. Preserve screenshot timestamps. Encode with ffmpeg concat demuxer, fps=30, libx264 crf19, yuv420p and faststart. Last frame is the reduced-motion poster. Website controls remain available for pause/replay; autoplay pauses offscreen. This is a rendered product demonstration with synthetic facts, not live-task or native-OS acceptance evidence.

@@ -1,5 +1,8 @@
 /projects/caelis-bot/ / 301
 /zh-cn/projects/caelis-bot/ /zh-cn/ 301
-/download/caelis-bot/* https://caelis.dev/download/caelis-bot/:splat 302
-/docs/* https://caelis.dev/docs/:splat 302
-/zh-cn/docs/* https://caelis.dev/zh-cn/docs/:splat 302
+/download/caelis-bot/ /download/macos/ 302
+/download/caelis-bot/* /download/ 302
+/docs/caelis-bot/ /docs/ 301
+/docs/caelis-bot/* /docs/:splat 301
+/zh-cn/docs/caelis-bot/ /zh-cn/docs/ 301
+/zh-cn/docs/caelis-bot/* /zh-cn/docs/:splat 301

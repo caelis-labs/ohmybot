@@ -1,0 +1,12 @@
+---
+import Icon from './Icon.astro';
+import { alternatePath } from '../data/site';
+const {lang, section} = Astro.props;
+const zh=lang==='zh-cn';
+const prefix=zh?'/zh-cn':'';
+---
+<a class="skip-link" href="#main">{zh?'跳转到正文':'Skip to content'}</a>
+<header class="subpage-header">
+ <a class="subpage-brand" href={`${prefix}/`} aria-label={zh?'返回 CaelisBot 首页':'CaelisBot home'}><img src="/favicon-64.png" width="28" height="28" alt=""/>CaelisBot<span>/</span><span>{section==='docs'?(zh?'文档':'Docs'):(zh?'下载':'Downloads')}</span></a>
+ <nav aria-label={zh?'页面导航':'Page navigation'}><a href={section==='docs'?`${prefix}/download/`:`${prefix}/docs/`}>{section==='docs'?(zh?'下载':'Downloads'):(zh?'安装指南':'Setup guide')}</a><a href={alternatePath(Astro.url.pathname)}>{zh?'EN':'中文'}</a><button class="icon-button theme-toggle" data-theme-toggle aria-label={zh?'切换主题':'Switch theme'}><span class="theme-sun"><Icon name="sun" size={18}/></span><span class="theme-moon"><Icon name="moon" size={18}/></span></button></nav>
+</header>

@@ -1,1 +1,1 @@
-{"version":1,"include":["/download/windows/*","/download/linux/*"],"exclude":[]}
+{"version": 1, "include": ["/download/windows/*", "/download/linux/*", "/download/macos/*", "/install.sh"], "exclude": []}

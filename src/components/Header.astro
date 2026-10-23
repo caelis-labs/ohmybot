@@ -1,8 +1,55 @@
 ---
 import Icon from './Icon.astro';
 import content from '../data/bot-content.json';
-import {alternatePath, type Locale} from '../data/site';
-const {lang='en'} = Astro.props as {lang:Locale};const c=content[lang];
+import { alternatePath, type Locale } from '../data/site';
+const { lang = 'en' } = Astro.props as { lang: Locale };
+const c = content[lang];
+const zh = lang === 'zh-cn';
+const guide = `${zh ? '/zh-cn' : ''}/docs/`;
+const nav = [
+  { label: c.nav.docs, href: guide, external: false },
+];
 ---
-<a class="skip-link" href="#main">{lang==='en'?'Skip to content':'跳转到正文'}</a>
-<header class="site-header"><div class="header-inner"><a class="brand" href={lang==='en'?'/':'/zh-cn/'} aria-label="CaelisBot home"><img src="/bot-icon.png" width="32" height="32" alt=""/><span>CaelisBot<span class="brand-dot">.</span></span></a><nav class="desktop-nav" aria-label={lang==='en'?'Main navigation':'主导航'}><a href="#everyday">{c.navExplore}</a><a href="#faq">{c.navFAQ}</a><a href="https://github.com/caelis-labs/caelis-bot">GitHub<Icon name="external" size={13}/></a></nav><div class="header-tools"><a class="language-link" href={alternatePath(Astro.url.pathname)} aria-label={lang==='en'?'切换到中文':'Switch to English'} lang={lang==='en'?'zh-CN':'en'}>{lang==='en'?'中文':'EN'}</a><button class="icon-button theme-toggle" type="button" data-theme-toggle aria-label={lang==='en'?'Switch theme':'切换主题'}><span class="theme-sun"><Icon name="sun" size={18}/></span><span class="theme-moon"><Icon name="moon" size={18}/></span></button><a class="nav-download" href="#download">{c.navGet}<Icon name="arrow" size={16}/></a></div></div></header>
+<a class="skip-link" href="#main">{c.misc.skip}</a>
+<header class="site-header" data-site-header>
+  <div class="header-inner">
+    <a class="brand" href={zh ? '/zh-cn/' : '/'} aria-label={c.misc.home}>
+      <img src="/favicon-64.png" width="32" height="32" alt="" />
+      <span>CaelisBot<span class="brand-dot">.</span></span>
+    </a>
+    <nav class="desktop-nav" aria-label={zh ? '主导航' : 'Main navigation'}>
+      {nav.map(item => (
+        <a href={item.href} aria-label={item.external ? `${item.label} (${zh ? '新窗口' : 'opens in a new tab'})` : undefined} target={item.external ? '_blank' : undefined} rel={item.external ? 'noreferrer' : undefined}>
+          {item.label}
+          {item.external && <Icon name="external" size={13} />}
+        </a>
+      ))}
+      <a href={zh ? '/zh-cn/download/' : '/download/'}>{c.nav.download}</a>
+    </nav>
+    <div class="header-tools">
+
+      <a class="language-link" href={alternatePath(Astro.url.pathname)} aria-label={c.misc.switchLanguage} lang={zh ? 'en' : 'zh-CN'}>
+        {zh ? 'EN' : '中文'}
+      </a>
+      <button class="icon-button theme-toggle" type="button" data-theme-toggle aria-label={c.misc.switchTheme}>
+        <span class="theme-sun"><Icon name="sun" size={18} /></span>
+        <span class="theme-moon"><Icon name="moon" size={18} /></span>
+      </button>
+      <button class="icon-button nav-toggle" type="button" data-nav-toggle data-label-menu={c.misc.menu} data-label-close={c.misc.closeMenu} aria-expanded="false" aria-controls="mobile-nav" aria-label={c.misc.menu}>
+        <Icon name="menu" size={20} />
+      </button>
+
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label={zh ? '移动导航' : 'Mobile navigation'} data-nav-panel hidden>
+    <div class="mobile-nav-inner">
+      {nav.map(item => (
+        <a href={item.href} target={item.external ? '_blank' : undefined} rel={item.external ? 'noreferrer' : undefined}>
+          {item.label}
+          {item.external && <Icon name="external" size={14} />}
+        </a>
+      ))}
+      <a href={zh ? '/zh-cn/download/' : '/download/'}>{c.nav.download}</a>
+    </div>
+  </nav>
+</header>

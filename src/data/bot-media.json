@@ -1,17 +1,17 @@
 {
-  "ready": true,
+  "ready": false,
   "kind": "product-film",
   "generation": 3.1,
   "duration": 48,
   "sourceVersion": "v0.15.2",
   "en": {
     "base": "/assets/video/caelis-bot-film-v3.1-en",
-    "description": "What CaelisBot can do — a 48-second illustrative product film",
+    "description": "A 48-second illustrative brand film about CaelisBot",
     "mobileBase": "/assets/video/caelis-bot-film-v3.1-en-mobile"
   },
   "zh-cn": {
     "base": "/assets/video/caelis-bot-film-v3.1-zh-cn",
-    "description": "CaelisBot 能做什么：48 秒功能示意短片",
+    "description": "CaelisBot 的 48 秒示意品牌短片",
     "mobileBase": "/assets/video/caelis-bot-film-v3.1-zh-cn-mobile"
   },
   "sha256": {

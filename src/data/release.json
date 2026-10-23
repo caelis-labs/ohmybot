@@ -1,0 +1,15 @@
+{
+  "tag": "v0.18.2",
+  "version": "0.18.2",
+  "date": "2026-10-22",
+  "notes": "https://github.com/caelis-labs/caelis-bot/releases/tag/v0.18.2",
+  "github": "https://github.com/caelis-labs/caelis-bot",
+  "license": "https://github.com/caelis-labs/caelis-bot/blob/main/LICENSE",
+  "macos": "/download/macos/",
+  "windowsSetup": "/download/windows/setup/",
+  "windowsZip": "/download/windows/zip/",
+  "linuxAmd64": "/download/linux/amd64/",
+  "linuxArm64": "/download/linux/arm64/",
+  "linuxInstall": "curl -fsSL https://ohmybot.si/install.sh | sh",
+  "downloadSize": "~110 MB"
+}

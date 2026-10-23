@@ -1,5 +1,8 @@
 ---
-import type {Locale} from '../data/site';
-const {lang='en'}=Astro.props as {lang:Locale};
+import type { Locale } from '../data/site';
+const { lang = 'en' } = Astro.props as { lang: Locale };
+const zh = lang === 'zh-cn';
 ---
-<footer class="site-footer"><div class="wrap footer-inner"><a class="footer-brand" href="https://caelis.dev/">Caelis Labs<span>↗</span></a><p>© {new Date().getFullYear()} Caelis Labs</p><div><a href="/assets/bot/LICENSE.md">{lang==='en'?'Character license':'角色许可'}</a><a href="https://github.com/caelis-labs/ohmybot">{lang==='en'?'Website source':'网站源码'}</a><a href="#top">{lang==='en'?'Back to top':'返回顶部'} ↑</a></div></div></footer>
+<footer class="site-footer">
+  <div class="wrap footer-bottom"><a class="footer-brand" href={zh ? '/zh-cn/' : '/'}>CaelisBot<span>.</span></a><span>© {new Date().getFullYear()} Caelis Labs</span><nav aria-label={zh ? '页脚' : 'Footer'}><a href={zh ? "/zh-cn/docs/" : "/docs/"}>{zh ? "使用指南" : "User guide"}</a><a href="/assets/bot/LICENSE.md">{zh ? '角色许可' : 'Character license'}</a><a href="#top" aria-label={zh ? '返回顶部' : 'Back to top'}>↑</a></nav></div>
+</footer>

@@ -1,96 +1,99 @@
 ---
+import ProductDemo from "./ProductDemo.astro";
 import SiteLayout from '../layouts/SiteLayout.astro';
-import Icon from './Icon.astro';
+import Icon from '../components/Icon.astro';
 import content from '../data/bot-content.json';
-import media from '../data/bot-media.json';
+import release from '../data/release.json';
 import type { Locale } from '../data/site';
-const { lang = 'en' } = Astro.props as {lang:Locale};
-const c = content[lang]; const zh = lang === 'zh-cn';
-const guide = `https://caelis.dev${zh ? '/zh-cn' : ''}/docs/caelis-bot/`;
-const film = media[lang];
-const heroResult = c.workflows[0];
-const linuxInstall = 'curl -fsSL https://releases.caelis.dev/caelis-bot/install.sh | sh';
+
+const { lang = 'en' } = Astro.props as { lang: Locale };
+const c = content[lang];
+const zh = lang === 'zh-cn';
+const site = Astro.site ?? new URL('https://ohmybot.si');
+const guide = `${zh ? '/zh-cn' : ''}/docs`;
+const downloads = zh ? '/zh-cn/download/' : '/download/';
+
+const e = c.experience;
+
+const softwareJsonLd = {
+  '@type': 'SoftwareApplication',
+  name: 'CaelisBot',
+  applicationCategory: 'ProductivityApplication',
+  operatingSystem: 'macOS 12+, Windows 10 22H2+, Linux',
+  description: c.metaDescription,
+  url: new URL(zh ? '/zh-cn/' : '/', site).toString(),
+  downloadUrl: new URL(zh ? '/zh-cn/#download' : '/#download', site).toString(),
+  softwareVersion: release.version,
+  license: release.license,
+  sameAs: [release.github],
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+};
+const faqJsonLd = {
+  '@type': 'FAQPage',
+  mainEntity: c.faq.items.map(([question, answer]) => ({
+    '@type': 'Question',
+    name: question,
+    acceptedAnswer: { '@type': 'Answer', text: answer },
+  })),
+};
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [softwareJsonLd, faqJsonLd],
+};
 ---
-<SiteLayout lang={lang} title="CaelisBot" description={c.pageDescription}>
-  <section class="bot-hero" id="top" aria-labelledby="hero-title">
-    <div class="hero-inner">
+<SiteLayout
+  lang={lang}
+  title={c.metaTitle}
+  description={c.metaDescription}
+  jsonLd={structuredData}
+  preloadImage="/assets/bot/companion-idle-600.webp"
+>
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="hero-orbit" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="wrap hero-layout">
       <div class="hero-copy">
-        <p class="eyebrow hero-enter">{c.eyebrow}</p>
-        <h1 id="hero-title" class="hero-enter">CaelisBot<span>.</span></h1>
-        <p class="hero-promise hero-enter">{c.promise.map(line=><span>{line}</span>)}</p>
-        <p class="hero-description hero-enter">{c.intro}</p>
-        <div class="hero-actions hero-enter"><a class="button primary" href="#download">{c.get}<Icon name="arrow" size={19}/></a><a class="quiet-link" href="#everyday">{c.explore}<span aria-hidden="true">↓</span></a></div>
-        <p class="platform-note hero-enter">{c.platform}</p>
+
+        <h1 class="hero-enter" id="hero-title">CaelisBot<span>.</span></h1>
+        <p class="hero-promise hero-enter">{e.promise[0]}<br/><span>{e.promise[1]}</span></p>
+        <p class="hero-intro hero-enter">{e.intro}</p>
+        <div class="hero-actions hero-enter">
+          <a class="button primary" href={downloads} data-download-cta data-href-mac={release.macos} data-href-windows={release.windowsSetup} data-href-linux={`${downloads}#linux`} data-href-other={downloads} data-label-mac={c.hero.primary} data-label-windows={c.hero.primaryWindows} data-label-linux={c.hero.primaryLinux} data-label-other={c.nav.download}><span data-download-label>{c.nav.download}</span><Icon name="download" size={18}/></a>
+        </div>
       </div>
-      <div class="hero-art hero-enter">
-        <article class="hero-result" aria-label={c.heroExampleLabel}>
-          <p class="hero-result-label">{c.heroExampleLabel}<Icon name="check" size={18}/></p>
-          <h2>{heroResult.resultTitle}</h2>
-          <ul>{heroResult.resultLines.slice(0,2).map(line=><li><Icon name="check" size={16}/>{line}</li>)}</ul>
-          <p class="hero-result-footer">{heroResult.resultFooter}</p>
-        </article>
-        <div class="hero-companion"><p class="hello-note">{c.hello}</p><img class="hero-character" src="/assets/bot/companion-600.webp" width="600" height="840" alt={zh ? '小小的 Caelis 桌面伙伴' : 'A small Caelis desktop companion'} fetchpriority="high"/></div>
+      <div class="hero-portrait hero-enter" data-parallax>
+        <div class="portrait-halo" aria-hidden="true"></div>
+        <span class="portrait-greeting">{zh ? '嗯嗯，交给我吧～' : 'Leave it to me ♡'}<span aria-hidden="true">✦</span></span>
+        <img src="/assets/bot/companion-idle-600.webp" width="600" height="840" fetchpriority="high" alt={zh ? 'CaelisBot 粉色头发的桌面角色' : 'CaelisBot, the pink-haired desktop companion'}/>
       </div>
     </div>
   </section>
 
-  <section class="outcomes section" id="everyday" aria-labelledby="outcomes-title">
+  <section class="story section" id="product" aria-labelledby="product-title">
     <div class="wrap">
-      <div class="section-heading reveal"><p class="eyebrow">{c.outcomeEyebrow}</p><h2 id="outcomes-title">{c.outcomeTitle.map(line=><span>{line}</span>)}</h2><p>{c.outcomeIntro}</p></div>
-      <div class="workflow reveal" data-workflow>
-        <div class="workflow-nav"><span class="example-label">{c.example}</span><div class="workflow-tabs" role="tablist" aria-label={c.example}>{c.workflows.map((w,i)=><button id={`tab-${w.id}`} role="tab" aria-controls={`example-${w.id}`} aria-selected={i===0 ? 'true':'false'} tabindex={i===0 ? 0:-1} data-workflow-tab={w.id}>{w.tab}</button>)}</div></div>
-        {c.workflows.map((w,i)=><div class="workflow-panel" id={`example-${w.id}`} role="tabpanel" aria-labelledby={`tab-${w.id}`} tabindex="0" hidden={i!==0}>
-          <div class="workflow-input"><p class="micro-label">{c.inputLabel}</p><h3>{w.inputTitle}</h3><div class="input-note"><span class="file-name"><Icon name={w.id==='reminder'?'sun':'book'} size={17}/>{w.inputFile}</span><ul>{w.inputLines.map(line=><li>{line}</li>)}</ul></div><blockquote>“{w.prompt}”</blockquote><span class="workflow-arrow" aria-hidden="true"><Icon name="arrow" size={28}/></span></div>
-          <div class="workflow-output"><p class="micro-label">{c.outputLabel}</p><article class:list={['result-sheet',{'reminder-sheet':w.id==='reminder'}]}><div class="result-top"><span>{w.resultKind}</span><Icon name="check" size={18}/></div><h3>{w.resultTitle}</h3><ul>{w.resultLines.map(line=><li><span class="result-check"><Icon name="check" size={13}/></span>{line}</li>)}</ul><p class="result-footer">{w.resultFooter}</p></article><a class="result-action" href={w.file ? `/examples/${w.file}` : `${guide}conversation/`} download={w.file || undefined}>{w.action}<Icon name={w.file?'download':'arrow'} size={17}/></a></div>
+      <header class="section-heading reveal"><h2 id="product-title">{e.storyTitle[0]}<br/><span>{e.storyTitle[1]}</span></h2></header>
+      <div class="product-stories">
+        {e.steps.map((step, index) => <div class="product-story-row" id={['handoff','decisions','events'][index]}>
+          <article class="product-story-copy"><h3>{step.title}</h3><div>{step.body.split("\n").map(line => <p>{line}</p>)}</div><a class="text-link" href={`${guide}/${index === 2 ? 'events' : 'conversation'}/`}>{step.link}<Icon name="arrow" size={17}/></a></article>
+          <ProductDemo kind={['handoff','decisions','events'][index]} zh={zh}/>
         </div>)}
-        <p class="workflow-disclosure">{c.sampleNote}</p>
       </div>
-      {media.ready && <div class="film-entry reveal"><div class="film-copy"><p class="eyebrow">{c.filmEyebrow}</p><h3>{c.filmTitle}</h3><p>{c.filmNote}</p></div><button class="film-poster" data-open-film aria-label={c.filmLabel}><picture>{film.mobileBase && <source media="(max-width: 640px)" srcset={`${film.mobileBase}.webp`} width={media.mobileWidth} height={media.mobileHeight}/>}<img src={`${film.base}.webp`} width={media.width} height={media.height} loading="lazy" alt={film.description}/></picture><span>{c.filmLabel}<Icon name="play" size={20}/></span></button></div>}
     </div>
   </section>
 
-  <section class="presence section" id="companion" aria-labelledby="presence-title">
-    <div class="wrap presence-layout">
-      <div class="presence-art reveal"><img src="/assets/bot/companion-600.webp" width="600" height="840" loading="lazy" alt=""/><span>{c.presenceNote}</span></div>
-      <div class="presence-copy reveal"><p class="eyebrow">{c.presenceEyebrow}</p><h2 id="presence-title">{c.presenceTitle.map(line=><span>{line}</span>)}</h2><p class="presence-description">{c.presenceBody}</p><div class="presence-features">{c.features.map(([title,body],i)=><div><span class="feature-number">0{i+1}</span><h3>{title}</h3><p>{body}</p></div>)}</div></div>
+  <section class="ownership section" id="character" aria-labelledby="ownership-title">
+    <div class="wrap">
+      <div class="ownership-heading reveal"><h2 id="ownership-title">{e.ownershipTitle[0]}<br/><span>{e.ownershipTitle[1]}</span></h2><p class="ownership-intro">{e.ownershipIntro}</p></div>
+      <div class="ownership-grid">
+        <article id="models" class="reveal"><h3>{e.modelsTitle}</h3><p>{e.modelsBody}</p></article>
+        <article id="privacy" class="reveal"><h3>{e.memoryTitle}</h3><p>{e.memoryBody}</p></article>
+      </div>
     </div>
   </section>
 
-  <section class="faq section" id="faq" aria-labelledby="faq-title"><div class="wrap faq-layout"><div><p class="eyebrow">{zh ? '简单了解，再开始' : 'A GOOD PLACE TO START'}</p><h2 id="faq-title">{c.faqTitle}</h2><a class="quiet-link" href={`${guide}installation/`}>{c.guide}<Icon name="arrow" size={18}/></a></div><div class="faq-list">{c.faqs.map(([question,answer])=><details><summary>{question}<Icon name="chevron" size={19}/></summary><p>{answer}</p></details>)}</div></div></section>
-
-  <section class="download-section" id="download" aria-labelledby="download-title">
-    <div class="wrap download-inner">
-      <h2 id="download-title">{c.downloadHeading}</h2>
-      <a class="download-release" href="https://github.com/caelis-labs/caelis-bot/releases/tag/v0.18.1">{c.releaseLabel}</a>
-      <div class="download-tabs" role="tablist" aria-label={c.downloadPlatformLabel} data-download-tabs hidden>
-        <button id="download-tab-mac" role="tab" aria-controls="download-panel-mac" aria-selected="false" data-download-tab="mac">macOS</button>
-        <button id="download-tab-windows" role="tab" aria-controls="download-panel-windows" aria-selected="false" data-download-tab="windows">Windows</button>
-        <button id="download-tab-linux" role="tab" aria-controls="download-panel-linux" aria-selected="false" data-download-tab="linux">{c.linuxLabel}</button>
-      </div>
-      <p class="download-choose-hint" data-download-choose hidden>{c.downloadChooseHint}</p>
-      <div class="download-panel" id="download-panel-mac" role="tabpanel" aria-labelledby="download-tab-mac" data-download-panel="mac">
-        <h3>CaelisBot <span>macOS</span></h3>
-        <div class="download-actions"><a class="button primary" href="https://caelis.dev/download/caelis-bot/">{c.downloadMac}<Icon name="download" size={18}/></a></div>
-        <div class="download-requirements"><h4>{c.minimumRequirements}</h4><p>{c.macRequirements}</p><p class="download-extra">{c.macComputerUse}</p></div>
-      </div>
-      <div class="download-panel" id="download-panel-windows" role="tabpanel" aria-labelledby="download-tab-windows" data-download-panel="windows">
-        <h3>CaelisBot <span>Windows</span></h3>
-        <div class="download-actions"><a class="button primary" href="/download/windows/setup/">{c.downloadSetup}<span class="download-format">.exe</span><Icon name="download" size={18}/></a><a class="button secondary" href="/download/windows/zip/">{c.downloadZip}<span class="download-format">.zip</span><Icon name="download" size={18}/></a></div>
-        <div class="download-requirements"><h4>{c.minimumRequirements}</h4><p>{c.windowsRequirements}</p></div>
-      </div>
-      <div class="download-panel" id="download-panel-linux" role="tabpanel" aria-labelledby="download-tab-linux" data-download-panel="linux">
-        <h3>CaelisBot <span>Headless / Web</span></h3>
-        <p class="linux-summary">{c.linuxSummary}</p>
-        <div class="linux-install"><p>{c.linuxInstall}</p><div class="linux-command"><code>{linuxInstall}</code><button type="button" data-copy-install data-command={linuxInstall} data-copied={c.copiedInstall}>{c.copyInstall}</button></div><span class="copy-status" role="status" data-copy-status></span></div>
-        <p class="linux-open">{c.linuxAfterInstall}</p>
-        <a class="quiet-link linux-guide" href={`${guide}linux/`}>{c.linuxGuide}<Icon name="arrow" size={16}/></a>
-        <div class="linux-packages"><span>{c.linuxPackages}</span><a href="/download/linux/amd64/">amd64 <span>.tar.gz</span><Icon name="download" size={16}/></a><a href="/download/linux/arm64/">arm64 <span>.tar.gz</span><Icon name="download" size={16}/></a></div>
-        <div class="download-requirements"><h4>{c.minimumRequirements}</h4><p>{c.linuxRequirements}</p><p class="download-extra">{c.linuxBoundary}</p></div>
-      </div>
-      <a class="quiet-link download-guide" href={`${guide}installation/`}>{c.downloadHelp}<Icon name="arrow" size={16}/></a>
+  <section class="faq-section section" id="download" aria-labelledby="faq-title">
+    <div class="wrap">
+      <div class="faq-layout" id="faq"><div class="faq-heading"><h2 id="faq-title">{zh ? '你可能还想知道' : 'A few things to know'}</h2></div><div class="faq-list">{c.faq.items.map(([question, answer]) => <details><summary>{question}<span>+</span></summary><p>{answer}</p></details>)}</div></div>
     </div>
   </section>
 
-  {media.ready && <dialog class="film-dialog" data-film-dialog aria-label={c.filmLabel}><div class="film-stage" data-film-stage><button class="film-close" data-close-film aria-label={c.closeFilm}><Icon name="close"/></button><video controls muted playsinline preload="none" data-desktop-base={film.base} data-mobile-base={film.mobileBase} width={media.width} height={media.height} data-mobile-width={media.mobileWidth} data-mobile-height={media.mobileHeight} poster={`${film.base}.webp`} aria-label={film.description}><source src={`${film.base}.mp4`} type="video/mp4"/><track kind="captions" src={`${film.base}.vtt`} srclang={zh?'zh-CN':'en'} label={zh?'中文':'English'}/></video><div class="film-controls"><p>{zh ? '功能示意短片 · 非现场录屏' : 'Illustrative product film · not a live recording'}</p><button data-film-captions aria-pressed="false">{c.captions}</button><button data-film-fullscreen>{c.fullscreen}<Icon name="expand" size={16}/></button></div></div></dialog>}
-  <script>import '../scripts/bot-landing';</script>
 </SiteLayout>

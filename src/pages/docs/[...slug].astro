@@ -1,0 +1,6 @@
+---
+import GuidePage from '../../components/GuidePage.astro';
+export function getStaticPaths() { return [undefined,'installation','conversation','events','privacy','linux','releases','first-task','approvals','channels','appearance'].map(slug => ({params:{slug}})); }
+const slug = (Astro.params.slug || 'index') as 'index' | 'installation' | 'conversation' | 'events' | 'privacy' | 'linux' | 'releases' | 'first-task' | 'approvals' | 'channels' | 'appearance';
+---
+<GuidePage lang="en" slug={slug} />
